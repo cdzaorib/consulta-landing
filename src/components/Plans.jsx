@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
+import ActionLink from './ActionLink.jsx';
 import './Plans.css';
 
 const PLANS = [
@@ -74,7 +75,7 @@ export default function Plans() {
                   <li key={feature}>{feature}</li>
                 ))}
               </ul>
-              <a href="#" className={`btn btn-${plan.variant}`}>{plan.cta}</a>
+              <ActionLink href="#" className={`btn btn-${plan.variant}`}>{plan.cta}</ActionLink>
             </motion.div>
           ))}
         </div>

@@ -62,21 +62,31 @@
   margin-bottom: var(--space-5);
 }
 
+/* Bento assimétrico: 6 colunas, cartões alternando 4/2 e 2/4.
+   Quebra a monotonia do 2x2 sem virar bagunça — cada linha ainda fecha. */
 .feature-row {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: var(--space-3);
 }
 
-@media (max-width: 560px) {
+.feature-item:nth-child(4n + 1) { grid-column: span 4; }
+.feature-item:nth-child(4n + 2) { grid-column: span 2; }
+.feature-item:nth-child(4n + 3) { grid-column: span 2; }
+.feature-item:nth-child(4n + 4) { grid-column: span 4; }
+
+@media (max-width: 760px) {
+  /* Abaixo disso o span 2 fica estreito demais para o texto: tudo volta
+     a ocupar a linha inteira. */
   .feature-row { grid-template-columns: 1fr; }
+  .feature-item[class] { grid-column: auto; }
 }
 
 .feature-item {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-card);
+  padding: var(--space-5);
   transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
 }
 

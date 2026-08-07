@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
+import ActionLink from './ActionLink.jsx';
 import './Header.css';
 
 const NAV_LINKS = [
@@ -33,8 +34,8 @@ export default function Header() {
           ))}
         </div>
         <div className="nav-cta">
-          <a href="#" className="btn btn-ghost">Entrar</a>
-          <a href="#planos" className="btn btn-primary">Testar grátis</a>
+          <ActionLink href="#" className="btn btn-ghost">Entrar</ActionLink>
+          <ActionLink href="#planos" className="btn btn-primary">Testar grátis</ActionLink>
         </div>
       </nav>
     </motion.header>

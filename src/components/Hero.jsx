@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import AgendaWidget from './AgendaWidget.jsx';
+import ActionLink from './ActionLink.jsx';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
 import { IconPaper, IconCalendarCheck, IconWallet } from './Icons.jsx';
 import './Hero.css';
@@ -23,9 +25,24 @@ const PROOFS = [
 
 export default function Hero() {
   const reduceMotion = usePrefersReducedMotion();
+  const ref = useRef(null);
+
+  // O halo desliza a um terço da velocidade da rolagem. É pouco o
+  // suficiente para não ser notado como efeito — só dá profundidade.
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end start'],
+  });
+  const haloY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const haloOpacity = useTransform(scrollYProgress, [0, 1], [0.75, 0.15]);
 
   return (
-    <section className="hero">
+    <section className="hero" ref={ref}>
+      <motion.div
+        className="hero-halo"
+        aria-hidden="true"
+        style={reduceMotion ? undefined : { y: haloY, opacity: haloOpacity }}
+      />
       <div className="wrap hero-grid">
         <motion.div
           variants={container}
@@ -41,8 +58,8 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p className="lead" variants={item}>
-            Agenda, prontuário e financeiro no mesmo lugar — para a sua equipe parar de correr
-            atrás de ficha, de confirmação e de pagamento em aberto.
+            Agenda, prontuário e financeiro no mesmo lugar — sua equipe para de correr atrás
+            de ficha, confirmação e pagamento em aberto.
           </motion.p>
 
           <motion.ul className="hero-proofs" variants={item}>
@@ -55,8 +72,8 @@ export default function Hero() {
           </motion.ul>
 
           <motion.div className="hero-actions" variants={item}>
-            <a href="#planos" className="btn btn-primary btn-lg">Testar 14 dias grátis</a>
-            <a href="#antes-depois" className="btn btn-ghost btn-lg">Ver o que muda</a>
+            <ActionLink href="#planos" className="btn btn-primary btn-lg">Testar 14 dias grátis</ActionLink>
+            <ActionLink href="#antes-depois" className="btn btn-ghost btn-lg">Ver o que muda</ActionLink>
           </motion.div>
 
           <motion.p className="hero-note" variants={item}>

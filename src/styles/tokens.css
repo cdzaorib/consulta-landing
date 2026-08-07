@@ -84,13 +84,27 @@
   --radius-lg: 18px;
   --radius-pill: 999px;
 
-  /* Sombras suaves — "Soft UI Evolution": mais claras que neumorfismo,
-     mais presentes que flat. Nunca coloridas. */
-  --shadow-sm: 0 1px 2px rgba(22, 36, 31, 0.05);
-  --shadow: 0 2px 8px rgba(22, 36, 31, 0.06), 0 1px 2px rgba(22, 36, 31, 0.04);
-  --shadow-lg: 0 12px 32px rgba(22, 36, 31, 0.10), 0 2px 8px rgba(22, 36, 31, 0.05);
+  /* Raios maiores, de bento: cartões arredondados o bastante para
+     parecerem objetos, não divs com borda. */
+  --radius-card: 20px;
+  --radius-panel: 28px;
 
-  /* Ritmo de espaçamento 4/8 */
+  /* Sombras em três camadas — contato, difusão e ambiente. Uma sombra só
+     achata; três dão a sensação de objeto pousado sobre o papel.
+     Sempre no matiz da tinta, nunca preto puro nem colorida. */
+  --shadow-sm:
+    0 1px 1px rgba(22, 36, 31, 0.04),
+    0 2px 4px rgba(22, 36, 31, 0.03);
+  --shadow:
+    0 1px 1px rgba(22, 36, 31, 0.04),
+    0 4px 10px rgba(22, 36, 31, 0.05),
+    0 10px 24px rgba(22, 36, 31, 0.04);
+  --shadow-lg:
+    0 1px 2px rgba(22, 36, 31, 0.05),
+    0 8px 20px rgba(22, 36, 31, 0.07),
+    0 24px 56px rgba(22, 36, 31, 0.08);
+
+  /* Ritmo de espaçamento 4/8, extendido para o topo generoso */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -98,23 +112,32 @@
   --space-5: 24px;
   --space-6: 32px;
   --space-7: 48px;
-  --space-8: 64px;
-  --space-9: 96px;
+  --space-8: 72px;
+  --space-9: 112px;
+  --space-10: 160px;
 
   /* Tipografia */
   --font-serif: 'Fraunces', Georgia, serif;
   --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
-  /* Escala fluida */
+  /* Escala fluida, com mais distância entre display e corpo:
+     hierarquia se lê antes de qualquer palavra. */
   --text-xs: 12px;
   --text-sm: 14px;
   --text-base: 16px;
   --text-md: 18px;
-  --text-lg: clamp(20px, 2.2vw, 24px);
-  --text-xl: clamp(24px, 3vw, 32px);
-  --text-2xl: clamp(28px, 3.6vw, 40px);
-  --text-3xl: clamp(34px, 5.4vw, 60px);
+  --text-lg: clamp(21px, 2.3vw, 26px);
+  --text-xl: clamp(26px, 3.2vw, 36px);
+  --text-2xl: clamp(30px, 4.2vw, 48px);
+  --text-3xl: clamp(38px, 6vw, 72px);
+
+  /* Eixos variáveis da Fraunces por papel tipográfico.
+     opsz alto = traço mais fino e elegante nos tamanhos grandes;
+     SOFT arredonda os terminais; WONK ativa as formas "tortas". */
+  --fraunces-display: 'opsz' 144, 'SOFT' 30, 'WONK' 1;
+  --fraunces-heading: 'opsz' 72, 'SOFT' 24, 'WONK' 0;
+  --fraunces-ui: 'opsz' 24, 'SOFT' 40, 'WONK' 0;
 
   /* Movimento — tokens únicos para toda a página ter o mesmo ritmo */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);

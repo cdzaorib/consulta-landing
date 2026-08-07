@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
 import { IconCheck } from './Icons.jsx';
+import ActionLink from './ActionLink.jsx';
 import './FinalCta.css';
 
 const container = {
@@ -53,9 +54,9 @@ export default function FinalCta() {
           </motion.ul>
 
           <motion.div className="hero-actions final-actions" variants={item}>
-            <a href="#planos" className="btn btn-primary btn-lg">
+            <ActionLink href="#planos" className="btn btn-primary btn-lg">
               Quero testar com a agenda da minha clínica
-            </a>
+            </ActionLink>
           </motion.div>
 
           <motion.p className="final-note" variants={item}>

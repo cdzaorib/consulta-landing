@@ -1,7 +1,7 @@
 .fin-card {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-card);
   padding: var(--space-5);
   box-shadow: var(--shadow);
   display: flex;
@@ -37,6 +37,7 @@
 
 .fin-total-value {
   font-family: var(--font-serif);
+  font-variation-settings: var(--fraunces-heading);
   font-size: var(--text-lg);
   color: var(--primary-strong);
   letter-spacing: -0.01em;

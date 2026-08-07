@@ -11,7 +11,7 @@
 .testi {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-card);
   padding: var(--space-6);
   display: flex;
   flex-direction: column;

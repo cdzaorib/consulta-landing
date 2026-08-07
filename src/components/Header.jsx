@@ -1,42 +1,126 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
+import Logo from './Logo.jsx';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
+import { NAV, SITE } from '../content.js';
 import './Header.css';
 
-const NAV_LINKS = [
-  { href: '#dia', label: 'Como funciona' },
-  { href: '#numeros', label: 'Números' },
-  { href: '#depoimentos', label: 'Depoimentos' },
-  { href: '#planos', label: 'Planos' },
-];
-
 export default function Header() {
+  const reduceMotion = usePrefersReducedMotion();
+  const [open, setOpen] = useState(false);
+  const toggleRef = useRef(null);
+  const panelRef = useRef(null);
+
   const { scrollY } = useScroll();
   const background = useTransform(
     scrollY,
-    [0, 80],
-    ['rgba(243, 246, 243, 0.88)', 'rgba(243, 246, 243, 0.98)']
+    [0, 72],
+    ['rgba(241, 245, 241, 0.72)', 'rgba(241, 245, 241, 0.94)']
   );
-  const boxShadow = useTransform(
+  const borderColor = useTransform(
     scrollY,
-    [0, 80],
-    ['0 0 0 rgba(22, 36, 31, 0)', '0 1px 12px rgba(22, 36, 31, 0.06)']
+    [0, 72],
+    ['rgba(220, 229, 221, 0)', 'rgba(220, 229, 221, 1)']
   );
 
+  // Escape fecha o menu e devolve o foco ao botão que o abriu.
+  useEffect(() => {
+    if (!open) return undefined;
+
+    function onKeyDown(event) {
+      if (event.key === 'Escape') {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    }
+
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [open]);
+
+  // Trava o scroll do body enquanto o painel está aberto.
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
   return (
-    <motion.header style={{ background, boxShadow }}>
-      <nav className="wrap nav">
-        <div className="logo">
-          <span className="dot" />Conclínica
-        </div>
-        <div className="nav-links">
-          {NAV_LINKS.map((link) => (
-            <a key={link.href} href={link.href}>{link.label}</a>
+    <motion.header style={{ background, borderColor }}>
+      <a className="skip-link" href="#conteudo">
+        Ir para o conteúdo
+      </a>
+
+      <nav className="wrap nav" aria-label="Principal">
+        <a href="#topo" className="nav-logo" aria-label={`${SITE.name}, página inicial`}>
+          <Logo />
+        </a>
+
+        <ul className="nav-links">
+          {NAV.map((link) => (
+            <li key={link.href}>
+              <a href={link.href}>{link.label}</a>
+            </li>
           ))}
-        </div>
+        </ul>
+
         <div className="nav-cta">
-          <a href="#" className="btn btn-ghost">Entrar</a>
-          <a href="#planos" className="btn btn-primary">Teste grátis</a>
+          <a href={SITE.loginUrl} className="btn btn-quiet">
+            Entrar
+          </a>
+          <a href={SITE.trialUrl} className="btn btn-primary">
+            Teste grátis
+          </a>
         </div>
+
+        <button
+          type="button"
+          ref={toggleRef}
+          className="nav-toggle"
+          aria-expanded={open}
+          aria-controls="menu-mobile"
+          onClick={() => setOpen((v) => !v)}
+        >
+          <span className="visually-hidden">{open ? 'Fechar menu' : 'Abrir menu'}</span>
+          <span className={`bars${open ? ' is-open' : ''}`} aria-hidden="true">
+            <span />
+            <span />
+          </span>
+        </button>
       </nav>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="menu-mobile"
+            ref={panelRef}
+            className="nav-panel"
+            initial={reduceMotion ? false : { opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <ul>
+              {NAV.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} onClick={() => setOpen(false)}>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <div className="nav-panel-cta">
+              <a href={SITE.loginUrl} className="btn btn-ghost btn-block">
+                Entrar
+              </a>
+              <a href={SITE.trialUrl} className="btn btn-primary btn-block">
+                Teste grátis de 7 dias
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }

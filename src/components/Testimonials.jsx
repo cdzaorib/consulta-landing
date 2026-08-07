@@ -1,30 +1,11 @@
 import { motion } from 'framer-motion';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
+import { VIEWPORT_SOFT, fadeUp, lift, reveal, stagger } from '../lib/motion.js';
+import { TESTIMONIALS, TRUST_CARD } from '../content.js';
 import './Testimonials.css';
 
-const TESTIMONIALS = [
-  {
-    quote: '"Consegui integrar as cinco unidades da minha rede num painel só. Hoje acompanho tudo remotamente, com muito mais transparência do que quando cada clínica tinha sua própria planilha."',
-    initials: 'PB',
-    name: 'Dr. Pedro Baches',
-    role: 'Clínica geral, rede de 5 unidades',
-  },
-  {
-    quote: '"O que mais mudou foi o fim do papel. A secretária não perde mais tempo procurando ficha e o histórico do paciente está sempre completo, mesmo trocando de profissional."',
-    initials: 'MC',
-    name: 'Dra. Marina Costa',
-    role: 'Odontologia',
-  },
-  {
-    quote: '"A confirmação automática por WhatsApp derrubou nossas faltas quase pela metade. Isso sozinho já pagou o sistema no primeiro mês."',
-    initials: 'RT',
-    name: 'Rafael Torres',
-    role: 'Gestor administrativo, fisioterapia',
-  },
-];
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
+const card = {
+  hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
@@ -34,37 +15,72 @@ export default function Testimonials() {
   return (
     <section id="depoimentos">
       <div className="wrap">
-        <div className="day-header">
-          <div className="eyebrow">Depoimentos</div>
-          <h2>Quem administra uma clínica, sente a diferença</h2>
-        </div>
+        <motion.div className="section-head" {...reveal(reduceMotion, fadeUp)}>
+          <p className="eyebrow">Quem usa</p>
+          <h2>Clínica pequena não tem margem para retrabalho</h2>
+          <p>
+            Consultórios de um profissional e clínicas com poucas salas — o mesmo sistema,
+            sem precisar de um time de TI para manter de pé.
+          </p>
+        </motion.div>
 
-        <div className="testi-grid">
+        <motion.div
+          className="testi-grid"
+          variants={stagger(0.1)}
+          initial={reduceMotion ? false : 'hidden'}
+          whileInView="visible"
+          viewport={VIEWPORT_SOFT}
+        >
           {TESTIMONIALS.map((testi) => (
-            <motion.div
+            <motion.figure
               className="testi"
               key={testi.name}
-              initial={reduceMotion ? false : 'hidden'}
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }}
-              variants={cardVariants}
-              whileHover={reduceMotion ? undefined : {
-                y: -4,
-                scale: 1.015,
-                transition: { type: 'spring', stiffness: 300, damping: 20 },
-              }}
+              variants={card}
+              whileHover={reduceMotion ? undefined : lift}
             >
-              <p>{testi.quote}</p>
-              <div className="who">
-                <div className="avatar">{testi.initials}</div>
-                <div>
-                  <div className="name">{testi.name}</div>
-                  <div className="role">{testi.role}</div>
-                </div>
-              </div>
-            </motion.div>
+              <span className="quote-mark" aria-hidden="true">
+                &ldquo;
+              </span>
+              <blockquote>{testi.quote}</blockquote>
+              <figcaption className="who">
+                <span className="avatar" aria-hidden="true">
+                  {testi.initials}
+                </span>
+                <span>
+                  <span className="name">{testi.name}</span>
+                  <span className="role">{testi.role}</span>
+                </span>
+              </figcaption>
+            </motion.figure>
           ))}
-        </div>
+
+          <motion.div className="trust-card" variants={card}>
+            <span className="trust-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 2.5 20 5.6v6.1c0 4.5-3.3 8.6-8 9.8-4.7-1.2-8-5.3-8-9.8V5.6L12 2.5Z"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="m8.6 12.2 2.4 2.4 4.4-4.8"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+            <h3>{TRUST_CARD.title}</h3>
+            <p className="trust-intro">{TRUST_CARD.intro}</p>
+            <ul>
+              {TRUST_CARD.items.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

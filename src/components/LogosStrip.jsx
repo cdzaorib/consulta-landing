@@ -1,17 +1,16 @@
+import { SPECIALTIES } from '../content.js';
 import './LogosStrip.css';
-
-const SPECIALTIES = ['Clínica geral', 'Odontologia', 'Fisioterapia', 'Psicologia', 'Dermatologia'];
 
 export default function LogosStrip() {
   return (
-    <div className="logos-strip">
+    <div className="specialties">
       <div className="wrap">
-        <span className="label">Confiado por especialidades como</span>
-        <div className="items">
+        <p className="label mono">Feito para clínicas e consultórios de</p>
+        <ul className="items">
           {SPECIALTIES.map((item) => (
-            <span key={item}>{item}</span>
+            <li key={item}>{item}</li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   );

@@ -1,51 +1,83 @@
-.hero { padding: 88px 0 64px; }
+.hero {
+  position: relative;
+  padding-block: clamp(48px, 6vw, 92px) clamp(56px, 7vw, 104px);
+  overflow: hidden;
+}
+
+/* Halo sálvia/terracota bem diluído atrás do conteúdo — dá profundidade
+   sem depender de imagem. */
+.hero-glow {
+  position: absolute;
+  inset: -30% -10% auto -10%;
+  height: 720px;
+  pointer-events: none;
+  background:
+    radial-gradient(46% 42% at 22% 34%, rgba(78, 113, 89, 0.16), transparent 68%),
+    radial-gradient(34% 34% at 82% 20%, rgba(196, 115, 90, 0.13), transparent 70%);
+  filter: blur(6px);
+}
 
 .hero-grid {
+  position: relative;
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 64px;
+  grid-template-columns: 1fr;
+  gap: clamp(40px, 5vw, 64px);
   align-items: center;
 }
 
-@media (max-width: 900px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+@media (min-width: 940px) {
+  .hero-grid {
+    grid-template-columns: 1.02fr 0.98fr;
+    gap: clamp(48px, 5vw, 80px);
+  }
 }
 
-.hero h1 {
-  font-size: clamp(34px, 4.6vw, 54px);
-  line-height: 1.08;
-  margin-bottom: 22px;
+.hero-copy h1 {
+  margin-bottom: var(--space-5);
+  max-width: 15ch;
 }
 
-.hero h1 em {
-  font-style: italic;
-  color: var(--green-deep);
+.hero-copy h1 em {
+  color: var(--sage-600);
 }
 
 .hero .lead {
-  font-size: 18px;
-  color: var(--ink-soft);
-  max-width: 46ch;
-  margin-bottom: 32px;
+  font-size: var(--t-lead);
+  color: var(--ink-2);
+  max-width: 44ch;
+  margin-bottom: var(--space-6);
+}
+
+.hero .actions {
+  margin-bottom: var(--space-6);
 }
 
 .hero-note {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  color: var(--ink-faint);
+  gap: var(--space-2);
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+  max-width: 40ch;
 }
 
-.hero-note .avatars { display: flex; }
-
-.hero-note .avatars span {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: var(--bg-alt);
-  border: 2px solid var(--bg);
-  margin-left: -8px;
+.hero-note .shield {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
 }
 
-.hero-note .avatars span:first-child { margin-left: 0; }
+.hero-visual {
+  /* No mobile o card não pode encostar nas bordas do wrap */
+  max-width: 520px;
+  width: 100%;
+  justify-self: center;
+}
+
+@media (min-width: 940px) {
+  .hero-visual {
+    justify-self: end;
+    max-width: none;
+  }
+}

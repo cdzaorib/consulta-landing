@@ -1,66 +1,42 @@
 import { motion } from 'framer-motion';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
+import { EASE_OUT, VIEWPORT, VIEWPORT_SOFT, fadeUp, reveal, stagger } from '../lib/motion.js';
 import './DaySection.css';
 
-const blockVariants = {
-  hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
-};
-
-const featureContainer = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.15 } },
-};
-
 const featureVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+  hidden: { opacity: 0, y: 14 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.42, ease: EASE_OUT } },
 };
 
 export default function DaySection({ hour, label, title, description, features }) {
   const reduceMotion = usePrefersReducedMotion();
 
   return (
-    <motion.div
-      className="day-block"
-      initial={reduceMotion ? false : 'hidden'}
-      whileInView="visible"
-      viewport={{ once: false, amount: 0.3 }}
-      variants={blockVariants}
-    >
-      <div className="day-time">
-        <div className="hour mono">{hour}</div>
-        <div className="label">{label}</div>
-      </div>
+    <motion.article className="day-block" {...reveal(reduceMotion, fadeUp, VIEWPORT_SOFT)}>
+      <header className="day-time">
+        <p className="hour mono">{hour}</p>
+        <p className="label">{label}</p>
+      </header>
 
       <div className="day-content">
         <h3>{title}</h3>
         <p className="desc">{description}</p>
 
-        <motion.div
+        <motion.ul
           className="feature-row"
+          variants={stagger(0.07, 0.1)}
           initial={reduceMotion ? false : 'hidden'}
           whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-          variants={featureContainer}
+          viewport={VIEWPORT}
         >
           {features.map((feature) => (
-            <motion.div
-              className="feature-item"
-              key={feature.name}
-              variants={featureVariants}
-              whileHover={reduceMotion ? undefined : {
-                y: -3,
-                scale: 1.02,
-                transition: { type: 'spring', stiffness: 300, damping: 20 },
-              }}
-            >
-              <div className="name">{feature.name}</div>
-              <div className="sub">{feature.sub}</div>
-            </motion.div>
+            <motion.li className="feature-item" key={feature.name} variants={featureVariants}>
+              <p className="name">{feature.name}</p>
+              <p className="sub">{feature.sub}</p>
+            </motion.li>
           ))}
-        </motion.div>
+        </motion.ul>
       </div>
-    </motion.div>
+    </motion.article>
   );
 }

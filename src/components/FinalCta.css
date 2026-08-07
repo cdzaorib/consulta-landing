@@ -1,9 +1,56 @@
 .final-cta {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-dark);
+  color: var(--on-dark);
+  border-radius: var(--r-xl);
+  padding: clamp(40px, 6vw, 84px) clamp(24px, 4vw, 64px);
 }
 
-.final-cta h2 { font-size: clamp(28px, 4vw, 42px); margin-bottom: 16px; }
-.final-cta p { color: var(--ink-soft); font-size: 17px; margin-bottom: 32px; }
-.final-cta .hero-actions { justify-content: center; }
+/* O conteúdo sobe acima do brilho; o brilho precisa continuar absoluto,
+   por isso o seletor é mais específico que a regra genérica abaixo. */
+.final-cta > * {
+  position: relative;
+}
+
+.final-cta .final-glow {
+  position: absolute;
+  inset: auto auto -25% -15%;
+  width: min(760px, 125%);
+  height: 560px;
+  pointer-events: none;
+  background:
+    radial-gradient(50% 50% at 30% 55%, rgba(78, 113, 89, 0.5), transparent 70%),
+    radial-gradient(40% 42% at 74% 72%, rgba(172, 82, 56, 0.32), transparent 72%);
+}
+
+.final-cta h2 {
+  color: var(--on-dark);
+  max-width: 18ch;
+  margin-bottom: var(--space-4);
+}
+
+.final-lead {
+  font-size: var(--t-lead);
+  color: var(--on-dark-2);
+  max-width: 46ch;
+  margin-bottom: var(--space-6);
+}
+
+.final-note {
+  margin-top: var(--space-5);
+  font-size: var(--t-xs);
+  color: var(--on-dark-3);
+  max-width: 44ch;
+}
+
+.btn-outline-dark {
+  border-color: rgba(226, 234, 227, 0.28);
+  color: var(--on-dark);
+  background: transparent;
+}
+
+.btn-outline-dark:hover {
+  border-color: rgba(226, 234, 227, 0.55);
+  background: rgba(226, 234, 227, 0.08);
+}

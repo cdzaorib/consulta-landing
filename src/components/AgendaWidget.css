@@ -1,88 +1,229 @@
 .agenda-card {
-  background: var(--paper);
+  background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 1px 2px rgba(22, 36, 31, 0.04);
+  border-radius: var(--r-xl);
+  padding: clamp(18px, 3vw, 24px);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+/* Fio terracota no topo do card — marca o objeto como "produto" */
+.agenda-card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 26px;
+  right: 26px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--clay-300), transparent);
 }
 
 .agenda-head {
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 18px;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
 }
 
-.agenda-head .title { font-size: 14px; font-weight: 500; }
-.agenda-head .date { font-family: var(--font-mono); font-size: 12px; color: var(--ink-faint); }
+.agenda-title {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  font-variation-settings: 'SOFT' 20, 'WONK' 1;
+  letter-spacing: -0.015em;
+}
+
+.agenda-date {
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+}
 
 .agenda-live {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
+  flex: none;
   font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--green);
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sage-600);
+  background: var(--sage-100);
+  padding: 4px 9px;
+  border-radius: var(--r-pill);
 }
 
 .agenda-live .pulse {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--green);
-  animation: pulse 1.8s ease-in-out infinite;
+  background: var(--sage-500);
+  animation: agenda-pulse 2s var(--ease) infinite;
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.8); }
+@keyframes agenda-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.7);
+  }
+}
+
+/* ---------- Horários ---------- */
+
+.agenda-slots {
+  display: flex;
+  flex-direction: column;
 }
 
 .slot {
   display: grid;
-  grid-template-columns: 52px 1fr;
-  gap: 14px;
+  grid-template-columns: 46px 1fr;
+  gap: var(--space-3);
   align-items: center;
-  padding: 10px 0;
+  padding: 7px 0;
   border-top: 1px solid var(--line);
 }
 
-.slot:first-of-type { border-top: none; }
+.slot:first-child {
+  border-top: none;
+}
 
 .slot time {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--ink-faint);
+  font-size: var(--t-xs);
+  color: var(--ink-3);
 }
 
 .slot-block {
-  height: 34px;
-  border-radius: 7px;
-  background: var(--bg-alt);
   position: relative;
-  overflow: hidden;
-}
-
-.slot-fill {
-  position: absolute;
-  inset: 0;
   display: flex;
   align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
   padding: 0 12px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--paper);
-  background: var(--green);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  transition: background var(--dur) var(--ease);
 }
 
-.slot-fill.brick { background: var(--brick); }
+.slot-block.tone-sage {
+  background: var(--sage-600);
+  color: #ffffff;
+}
+
+.slot-block.tone-clay {
+  background: var(--clay-600);
+  color: #ffffff;
+}
+
+.slot-block.tone-empty {
+  background: transparent;
+  border: 1px dashed var(--line-strong);
+  color: var(--ink-3);
+}
+
+.slot-body {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  min-width: 0;
+  flex: 1;
+}
+
+.slot-name {
+  font-size: var(--t-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slot-kind {
+  font-size: var(--t-micro);
+  opacity: 0.78;
+  white-space: nowrap;
+  flex: none;
+}
+
+.slot-empty {
+  font-size: var(--t-xs);
+  font-style: italic;
+}
+
+.slot-check {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.slot-check svg {
+  width: 11px;
+  height: 11px;
+}
+
+/* ---------- Rodapé com o feed de eventos ---------- */
 
 .agenda-foot {
-  margin-top: 16px;
-  padding-top: 16px;
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
   border-top: 1px solid var(--line);
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  font-size: 12px;
-  color: var(--ink-faint);
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.agenda-event {
+  position: relative;
+  min-width: 0;
+  flex: 1 1 200px;
+  min-height: 22px;
+}
+
+.event-line {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--t-xs);
+  color: var(--ink-2);
+}
+
+.event-icon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  color: var(--accent);
+}
+
+.agenda-counts {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex: none;
+  font-size: var(--t-micro);
+  color: var(--ink-3);
+}
+
+/* Só nos aparelhos bem estreitos o tipo de atendimento sai de cena */
+@media (max-width: 340px) {
+  .slot {
+    grid-template-columns: 40px 1fr;
+    gap: var(--space-2);
+  }
+
+  .slot-kind {
+    display: none;
+  }
 }

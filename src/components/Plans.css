@@ -1,57 +1,148 @@
 .plans-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-@media (max-width: 900px) {
-  .plans-grid { grid-template-columns: 1fr; }
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  align-items: stretch;
 }
 
 .plan {
-  background: var(--paper);
+  background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 32px 28px;
+  border-radius: var(--r-lg);
+  padding: var(--space-5);
   display: flex;
   flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition:
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+
+.plan:hover {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-md);
 }
 
 .plan.featured {
-  border: 1px solid var(--green-deep);
-  box-shadow: 0 4px 24px rgba(30, 63, 49, 0.08);
+  border-color: var(--sage-600);
+  box-shadow: var(--shadow-lg);
 }
 
 .plan .badge {
   align-self: flex-start;
-  background: var(--bg-alt);
-  color: var(--green-deep);
-  font-size: 11px;
+  background: var(--sand-100);
+  color: var(--ink-2);
+  font-size: var(--t-micro);
   font-weight: 500;
-  padding: 4px 10px;
-  border-radius: 20px;
-  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+  padding: 5px 11px;
+  border-radius: var(--r-pill);
+  margin-bottom: var(--space-4);
 }
 
-.plan h3 { font-size: 19px; margin-bottom: 6px; }
-
-.plan .price {
-  font-family: var(--font-serif);
-  font-size: 32px;
-  margin: 14px 0 4px;
+.plan .badge-featured {
+  background: var(--brand-deep);
+  color: #ffffff;
 }
 
-.plan .price span { font-size: 14px; color: var(--ink-faint); font-family: var(--font-sans); }
+.plan h3 {
+  font-size: 1.4rem;
+  margin-bottom: var(--space-2);
+}
 
-.plan ul {
-  list-style: none;
-  margin: 22px 0 28px;
+.plan .pitch {
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+  line-height: 1.55;
+  margin-bottom: var(--space-5);
+}
+
+.plan-features {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
 }
 
-.plan li { font-size: 14px; color: var(--ink-soft); padding-left: 20px; position: relative; }
-.plan li::before { content: '—'; position: absolute; left: 0; color: var(--brick); }
+.plan-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+  line-height: 1.5;
+}
 
-.plan .btn { justify-content: center; margin-top: auto; }
+.plan-features .tick {
+  flex: none;
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--sage-100);
+  color: var(--sage-700);
+}
+
+.plan-features .tick svg {
+  width: 11px;
+  height: 11px;
+}
+
+.plan .btn {
+  margin-top: auto;
+}
+
+/* ---------- Faixa Enterprise ---------- */
+
+.plan-enterprise {
+  margin-top: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.plan-enterprise h3 {
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+}
+
+.plan-enterprise p {
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+  max-width: 52ch;
+}
+
+.plans-note {
+  margin-top: var(--space-5);
+  text-align: center;
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+}
+
+.plans-note a {
+  color: var(--sage-700);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (min-width: 900px) {
+  .plans-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .plan-enterprise {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .plan-enterprise .btn {
+    flex: none;
+  }
+}

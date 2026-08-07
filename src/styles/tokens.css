@@ -1,22 +1,114 @@
+/* =========================================================================
+   Design tokens — Conclínica
+   Paleta sálvia (marca) + terracota (acento) sobre neutros quentes.
+   Todos os pares de texto/fundo usados na página são validados em
+   scripts/check-contrast.mjs (WCAG AA).
+   ========================================================================= */
+
 :root {
-  /* Cores */
-  --bg: #F3F6F3;
-  --bg-alt: #E7EDE7;
-  --ink: #16241F;
-  --ink-soft: #4A5850;
-  --ink-faint: #7C8A82;
-  --green: #2F5D48;
-  --green-deep: #1E3F31;
-  --brick: #B34B32;
-  --brick-deep: #8C3A26;
-  --line: #D3DBD3;
-  --paper: #FCFDFC;
+  /* ---------- Rampa sálvia (marca) ---------- */
+  --sage-50: #f1f5f1;
+  --sage-100: #e2eae3;
+  --sage-200: #c6d6c9;
+  --sage-300: #a0b8a6;
+  --sage-400: #74947d;
+  --sage-500: #4e7159;
+  --sage-600: #395a44;
+  --sage-700: #2b4634;
+  --sage-800: #1e3327;
+  --sage-900: #15251c;
+  --sage-950: #0d1811;
 
-  /* Raio */
-  --radius: 10px;
+  /* ---------- Rampa terracota (acento) ---------- */
+  --clay-50: #fbf3ef;
+  --clay-100: #f5e3d9;
+  --clay-200: #e9c4b3;
+  --clay-300: #d89c84;
+  --clay-400: #c4735a;
+  --clay-500: #ac5238;
+  --clay-600: #8f402a;
+  --clay-700: #703222;
 
-  /* Tipografia */
-  --font-serif: 'Fraunces', serif;
-  --font-sans: 'IBM Plex Sans', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  /* ---------- Neutros quentes ---------- */
+  --sand-50: #faf8f4;
+  --sand-100: #f2ede4;
+  --sand-200: #e4dcce;
+
+  /* ---------- Papéis semânticos ---------- */
+  --bg: var(--sage-50);
+  --bg-warm: var(--sand-50);
+  --surface: #ffffff;
+  --surface-sunken: var(--sage-100);
+  --surface-dark: var(--sage-950);
+
+  --ink: #0d1811;
+  --ink-2: #3a4a40;
+  --ink-3: #59695f;
+  --on-dark: var(--sage-50);
+  --on-dark-2: var(--sage-200);
+  --on-dark-3: var(--sage-300);
+
+  --line: #dce5dd;
+  --line-strong: #c3d2c6;
+  --line-dark: rgba(226, 234, 227, 0.16);
+
+  --brand: var(--sage-700);
+  --brand-deep: var(--sage-800);
+  --brand-soft: var(--sage-100);
+  --accent: var(--clay-500);
+  --accent-deep: var(--clay-600);
+  --accent-soft: var(--clay-100);
+
+  /* ---------- Tipografia ---------- */
+  --font-serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Escala fluida — mobile-first, cresce até o desktop */
+  --t-display: clamp(2.25rem, 1.6rem + 2.6vw, 3.5rem);
+  --t-h2: clamp(1.75rem, 1.35rem + 1.75vw, 2.75rem);
+  --t-h3: clamp(1.25rem, 1.1rem + 0.65vw, 1.6rem);
+  --t-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  --t-body: 1rem;
+  --t-sm: 0.875rem;
+  --t-xs: 0.8125rem;
+  --t-micro: 0.6875rem;
+
+  /* ---------- Espaçamento ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* Ritmo vertical generoso entre seções */
+  --section-y: clamp(72px, 8.5vw, 132px);
+  --wrap-max: 1140px;
+  --wrap-pad: clamp(20px, 4vw, 40px);
+
+  /* ---------- Raio ---------- */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  /* ---------- Sombras (tingidas de sálvia, nunca cinza puro) ---------- */
+  --shadow-sm: 0 1px 2px rgba(13, 24, 17, 0.04), 0 1px 1px rgba(13, 24, 17, 0.03);
+  --shadow-md: 0 2px 4px rgba(13, 24, 17, 0.03), 0 10px 28px -10px rgba(13, 24, 17, 0.12);
+  --shadow-lg: 0 4px 8px rgba(13, 24, 17, 0.04), 0 28px 60px -18px rgba(13, 24, 17, 0.18);
+
+  /* ---------- Movimento ---------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 140ms;
+  --dur: 220ms;
+  --dur-slow: 420ms;
+
+  /* Alvo mínimo de toque (WCAG 2.5.5) */
+  --tap: 44px;
 }

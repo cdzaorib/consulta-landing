@@ -1,39 +1,11 @@
 import { motion } from 'framer-motion';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
+import { VIEWPORT_SOFT, fadeUp, lift, reveal, stagger } from '../lib/motion.js';
+import { ENTERPRISE, PLANS, SITE } from '../content.js';
 import './Plans.css';
 
-const PLANS = [
-  {
-    badge: 'Consultório',
-    name: 'Individual',
-    price: 'R$ 89',
-    period: '/mês',
-    features: ['Agenda online', 'Prontuário eletrônico', 'Confirmação via WhatsApp', '1 profissional'],
-    cta: 'Começar teste grátis',
-    variant: 'ghost',
-  },
-  {
-    badge: 'Mais escolhido',
-    name: 'Clínica',
-    price: 'R$ 249',
-    period: '/mês',
-    features: ['Tudo do plano Individual', 'Faturamento TISS', 'Controle financeiro completo', 'Até 10 profissionais'],
-    cta: 'Começar teste grátis',
-    variant: 'primary',
-    featured: true,
-  },
-  {
-    badge: 'Rede',
-    name: 'Enterprise',
-    price: 'Sob consulta',
-    features: ['Multiunidades', 'Integração via API', 'Gestão remota centralizada', 'Suporte dedicado'],
-    cta: 'Falar com consultor',
-    variant: 'ghost',
-  },
-];
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
+const card = {
+  hidden: { opacity: 0, y: 22 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
@@ -41,43 +13,82 @@ export default function Plans() {
   const reduceMotion = usePrefersReducedMotion();
 
   return (
-    <section id="planos">
+    <section id="planos" className="band-warm">
       <div className="wrap">
-        <div className="day-header">
-          <div className="eyebrow">Planos</div>
-          <h2>Um plano para cada tamanho de clínica</h2>
-        </div>
+        <motion.div className="section-head center" {...reveal(reduceMotion, fadeUp)}>
+          <p className="eyebrow">Planos</p>
+          <h2>Comece pelo tamanho da sua clínica hoje</h2>
+          <p>
+            Todos os planos começam com 7 dias de teste grátis. Dá para subir de plano
+            quando a clínica crescer, sem trocar de sistema.
+          </p>
+        </motion.div>
 
-        <div className="plans-grid">
+        <motion.ul
+          className="plans-grid"
+          variants={stagger(0.1)}
+          initial={reduceMotion ? false : 'hidden'}
+          whileInView="visible"
+          viewport={VIEWPORT_SOFT}
+        >
           {PLANS.map((plan) => (
-            <motion.div
+            <motion.li
               className={`plan${plan.featured ? ' featured' : ''}`}
               key={plan.name}
-              initial={reduceMotion ? false : 'hidden'}
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }}
-              variants={cardVariants}
-              whileHover={reduceMotion ? undefined : {
-                y: -4,
-                scale: 1.015,
-                transition: { type: 'spring', stiffness: 300, damping: 20 },
-              }}
+              variants={card}
+              whileHover={reduceMotion ? undefined : lift}
             >
-              <div className="badge">{plan.badge}</div>
+              <p className={`badge${plan.featured ? ' badge-featured' : ''}`}>{plan.badge}</p>
               <h3>{plan.name}</h3>
-              <div className="price">
-                {plan.price}
-                {plan.period && <span>{plan.period}</span>}
-              </div>
-              <ul>
+              <p className="pitch">{plan.pitch}</p>
+
+              <ul className="plan-features">
                 {plan.features.map((feature) => (
-                  <li key={feature}>{feature}</li>
+                  <li key={feature}>
+                    <span className="tick" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none">
+                        <path
+                          d="M3.4 8.3 6.3 11.2l6.3-6.7"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                    {feature}
+                  </li>
                 ))}
               </ul>
-              <a href="#" className={`btn btn-${plan.variant}`}>{plan.cta}</a>
-            </motion.div>
+
+              <a href={SITE.trialUrl} className={`btn btn-${plan.variant} btn-block`}>
+                {plan.cta}
+                <span className="arrow" aria-hidden="true">
+                  →
+                </span>
+              </a>
+            </motion.li>
           ))}
-        </div>
+        </motion.ul>
+
+        <motion.div className="plan-enterprise" {...reveal(reduceMotion, fadeUp)}>
+          <div>
+            <h3>{ENTERPRISE.name}</h3>
+            <p>{ENTERPRISE.pitch}</p>
+          </div>
+          <a href={SITE.demoUrl} className="btn btn-ghost">
+            {ENTERPRISE.cta}
+            <span className="arrow" aria-hidden="true">
+              →
+            </span>
+          </a>
+        </motion.div>
+
+        <p className="plans-note">
+          Os valores de cada plano são apresentados na{' '}
+          <a href={SITE.plansUrl}>página de planos</a>, de acordo com o número de profissionais
+          da clínica.
+        </p>
       </div>
     </section>
   );

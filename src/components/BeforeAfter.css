@@ -1,0 +1,160 @@
+/* Grade compartilhada entre a legenda e cada linha, para que as colunas
+   fiquem alinhadas. Mobile-first: empilhado até 860px. */
+
+.shift-legend {
+  display: none;
+}
+
+.shift-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.shift {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: var(--space-4);
+  display: grid;
+  gap: var(--space-2);
+  box-shadow: var(--shadow-sm);
+}
+
+.shift-theme {
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-deep);
+}
+
+.shift-before,
+.shift-after {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--t-sm);
+  line-height: 1.55;
+}
+
+.shift-before {
+  color: var(--ink-2);
+  background: var(--sand-100);
+  border-radius: var(--r-md);
+  padding: 11px var(--space-3);
+}
+
+.shift-after {
+  color: var(--ink);
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+  padding: 11px var(--space-3);
+  border-radius: var(--r-md);
+  background: var(--sage-50);
+  border-left: 2px solid var(--sage-500);
+}
+
+/* só o bloco de texto cresce — a marca e o chip mantêm o tamanho natural */
+.shift-after > span:not(.shift-mark):not(.shift-chip) {
+  flex: 1 1 14rem;
+  min-width: 0;
+}
+
+.shift-mark {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.shift-mark svg {
+  width: 12px;
+  height: 12px;
+}
+
+.shift-mark.before {
+  background: var(--sand-200);
+  color: var(--clay-700);
+}
+
+.shift-mark.after {
+  background: var(--sage-600);
+  color: #ffffff;
+}
+
+.shift-chip {
+  flex: none;
+  align-self: flex-start;
+}
+
+/* Seta: aponta para baixo no empilhado, para a direita no lado a lado */
+.shift-arrow {
+  width: 20px;
+  height: 20px;
+  margin-block: -2px;
+  color: var(--sage-400);
+  justify-self: center;
+  transform: rotate(90deg);
+}
+
+.shift-arrow svg {
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 860px) {
+  .shift-legend {
+    display: grid;
+    grid-template-columns: 96px 1fr 44px 1.05fr;
+    gap: var(--space-4);
+    padding: 0 var(--space-5) var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--t-micro);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-3);
+  }
+
+  .legend-before {
+    grid-column: 2;
+  }
+
+  .legend-after {
+    grid-column: 4;
+    color: var(--sage-600);
+  }
+
+  .shift-list {
+    gap: var(--space-3);
+  }
+
+  .shift {
+    grid-template-columns: 96px 1fr 44px 1.05fr;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    transition:
+      border-color var(--dur) var(--ease),
+      box-shadow var(--dur) var(--ease);
+  }
+
+  .shift:hover {
+    border-color: var(--line-strong);
+    box-shadow: var(--shadow-md);
+  }
+
+  .shift-theme {
+    margin: 0;
+  }
+
+  .shift-arrow {
+    transform: none;
+  }
+
+  .shift-after {
+    align-items: center;
+  }
+}

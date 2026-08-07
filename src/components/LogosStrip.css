@@ -1,0 +1,30 @@
+.logos-strip {
+  padding: 36px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.logos-strip .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.logos-strip .label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.logos-strip .items {
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+  font-family: var(--font-serif);
+  font-size: 17px;
+  color: var(--ink-faint);
+}

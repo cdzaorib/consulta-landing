@@ -1,0 +1,156 @@
+@import './tokens.css';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+section {
+  padding: 96px 0;
+}
+
+@media (max-width: 720px) {
+  section { padding: 64px 0; }
+  .wrap { padding: 0 20px; }
+}
+
+/* focus visibility */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+/* ---------- Logo (Header + Footer) ---------- */
+.logo {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--brick);
+  display: inline-block;
+}
+
+/* ---------- Buttons (Header, Hero, Plans, FinalCta) ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover { transform: translateY(-1px); }
+
+.btn-primary {
+  background: var(--green-deep);
+  color: var(--paper);
+}
+
+.btn-primary:hover { background: var(--green); }
+
+.btn-ghost {
+  border-color: var(--line);
+  color: var(--ink);
+  background: transparent;
+}
+
+.btn-ghost:hover { border-color: var(--ink-faint); }
+
+/* ---------- Eyebrow label (Hero, section headers) ---------- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--brick-deep);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 16px;
+  height: 1px;
+  background: var(--brick-deep);
+}
+
+/* ---------- Hero-style action row (Hero + FinalCta) ---------- */
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Section header (Como funciona, Depoimentos, Planos) ---------- */
+.day-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 64px;
+}
+
+.day-header .eyebrow { justify-content: center; }
+.day-header .eyebrow::before { display: none; }
+.day-header h2 { font-size: clamp(28px, 3.4vw, 38px); margin-bottom: 14px; }
+.day-header p { color: var(--ink-soft); font-size: 17px; }

@@ -1,0 +1,26 @@
+.metrics {
+  background: var(--green-deep);
+  color: var(--paper);
+  border-radius: 20px;
+  padding: 56px 40px;
+  margin: 0 32px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: 900px) {
+  .metrics { grid-template-columns: repeat(2, 1fr); margin: 0 16px; padding: 40px 24px; }
+}
+
+.metric .num {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.metric .cap {
+  font-size: 13px;
+  color: rgba(252, 253, 252, 0.65);
+}

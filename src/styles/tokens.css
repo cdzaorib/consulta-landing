@@ -1,0 +1,22 @@
+:root {
+  /* Cores */
+  --bg: #F3F6F3;
+  --bg-alt: #E7EDE7;
+  --ink: #16241F;
+  --ink-soft: #4A5850;
+  --ink-faint: #7C8A82;
+  --green: #2F5D48;
+  --green-deep: #1E3F31;
+  --brick: #B34B32;
+  --brick-deep: #8C3A26;
+  --line: #D3DBD3;
+  --paper: #FCFDFC;
+
+  /* Raio */
+  --radius: 10px;
+
+  /* Tipografia */
+  --font-serif: 'Fraunces', serif;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}

@@ -1,8 +1,8 @@
 .day-block {
   display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 48px;
-  padding: 56px 0;
+  grid-template-columns: 200px 1fr;
+  gap: var(--space-7);
+  padding: var(--space-7) 0;
   border-top: 1px solid var(--line);
   align-items: start;
 }
@@ -10,34 +10,62 @@
 .day-block:last-child { border-bottom: 1px solid var(--line); }
 
 @media (max-width: 780px) {
-  .day-block { grid-template-columns: 1fr; gap: 20px; }
+  .day-block {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding: var(--space-6) 0;
+  }
 }
 
-.day-time { position: sticky; top: 100px; }
+.day-time {
+  position: sticky;
+  top: 96px;
+}
+
+@media (max-width: 780px) {
+  /* Sticky em coluna única faria o horário flutuar sobre o texto */
+  .day-time {
+    position: static;
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+  }
+}
 
 .day-time .hour {
-  font-family: var(--font-mono);
   font-size: 34px;
-  color: var(--ink-faint);
+  color: var(--text-faint);
   line-height: 1;
-  margin-bottom: 8px;
+  margin-bottom: var(--space-2);
+}
+
+@media (max-width: 780px) {
+  .day-time .hour { font-size: 24px; margin-bottom: 0; }
 }
 
 .day-time .label {
   font-size: 13px;
-  color: var(--brick-deep);
+  color: var(--accent-strong);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 500;
 }
 
-.day-content h3 { font-size: 24px; margin-bottom: 12px; }
-.day-content p.desc { color: var(--ink-soft); max-width: 60ch; margin-bottom: 24px; }
+.day-content h3 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-3);
+}
+
+.day-content p.desc {
+  color: var(--text-muted);
+  max-width: 62ch;
+  margin-bottom: var(--space-5);
+}
 
 .feature-row {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: var(--space-3);
 }
 
 @media (max-width: 560px) {
@@ -45,11 +73,26 @@
 }
 
 .feature-item {
-  background: var(--paper);
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 16px 18px;
+  padding: var(--space-4) var(--space-5);
+  transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
 }
 
-.feature-item .name { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
-.feature-item .sub { font-size: 13px; color: var(--ink-faint); }
+.feature-item:hover {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.feature-item .name {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  margin-bottom: var(--space-1);
+}
+
+.feature-item .sub {
+  font-size: 13px;
+  color: var(--text-faint);
+  line-height: 1.45;
+}

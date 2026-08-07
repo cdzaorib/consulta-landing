@@ -1,0 +1,108 @@
+.ba-section {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.ba-table {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.ba-heads {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-3);
+}
+
+.ba-head {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.ba-head.before { color: var(--before-text); }
+.ba-head.after {
+  color: var(--after-text);
+  grid-column: 3;
+}
+
+.ba-row {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr;
+  gap: var(--space-4);
+  align-items: stretch;
+  margin-bottom: var(--space-3);
+}
+
+.ba-cell {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+/* "Antes": dessaturado, sem sombra, borda apagada — parece inerte de propósito */
+.ba-cell.before {
+  background: var(--before-surface);
+  border: 1px solid var(--before-line);
+  color: var(--before-text);
+}
+
+/* "Depois": cor cheia, superfície elevada */
+.ba-cell.after {
+  background: var(--surface);
+  border: 1px solid var(--after-line);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  font-weight: 500;
+}
+
+.ba-icon { margin-top: 2px; }
+.ba-cell.before .ba-icon { color: var(--dust-400); }
+.ba-cell.after .ba-icon { color: var(--primary); }
+
+.ba-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-faint);
+}
+
+@media (max-width: 820px) {
+  /* No mobile o par vira empilhado: "antes" em cima, "depois" logo abaixo,
+     com a seta apontando para baixo entre os dois. */
+  .ba-heads { display: none; }
+
+  .ba-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+  }
+
+  .ba-arrow { transform: rotate(90deg); height: 24px; }
+
+  .ba-cell { padding: var(--space-4); }
+
+  /* Sem os cabeçalhos de coluna, cada lado precisa se identificar sozinho */
+  .ba-cell.before::before,
+  .ba-cell.after::before {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: absolute;
+    transform: translateY(-22px);
+  }
+
+  .ba-cell { position: relative; }
+  .ba-cell.before { margin-top: 22px; }
+  .ba-cell.before::before { content: 'Como costuma ser'; color: var(--before-text); }
+  .ba-cell.after::before { content: 'Com o Consulta'; color: var(--after-text); }
+  .ba-cell.after { margin-top: 22px; }
+}

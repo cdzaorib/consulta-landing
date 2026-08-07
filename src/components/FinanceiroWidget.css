@@ -1,0 +1,136 @@
+.fin-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  min-height: 340px;
+}
+
+.fin-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--line);
+}
+
+.fin-head .title { font-size: var(--text-sm); font-weight: 500; }
+.fin-head .date { font-size: var(--text-xs); color: var(--text-faint); }
+.fin-badge { color: var(--primary); }
+
+.fin-totals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+}
+
+.fin-total-label {
+  font-size: var(--text-xs);
+  color: var(--text-faint);
+  margin-bottom: var(--space-1);
+}
+
+.fin-total-value {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  color: var(--primary-strong);
+  letter-spacing: -0.01em;
+}
+
+.fin-total-value.is-open { color: var(--accent-strong); }
+
+.fin-chart {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-3);
+  align-items: end;
+  min-height: 120px;
+  padding-top: var(--space-2);
+}
+
+.fin-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.fin-bars {
+  width: 100%;
+  max-width: 34px;
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2px;
+}
+
+.fin-bar {
+  width: 100%;
+  background: var(--primary);
+  border-radius: 3px;
+  min-height: 2px;
+}
+
+/* "A receber" se distingue por cor E por hachura diagonal */
+.fin-bar.is-open {
+  background: var(--accent);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 3px,
+    rgba(252, 253, 252, 0.45) 3px,
+    rgba(252, 253, 252, 0.45) 6px
+  );
+}
+
+.fin-day {
+  font-size: 10px;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.fin-legend {
+  display: flex;
+  gap: var(--space-5);
+  padding-top: var(--space-4);
+  margin-top: var(--space-2);
+  border-top: 1px solid var(--line);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.fin-key {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.fin-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--primary);
+  display: inline-block;
+  flex: none;
+}
+
+.fin-swatch.is-open {
+  background: var(--accent);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 2px,
+    rgba(252, 253, 252, 0.5) 2px,
+    rgba(252, 253, 252, 0.5) 4px
+  );
+}

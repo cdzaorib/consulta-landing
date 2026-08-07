@@ -2,9 +2,9 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import './Header.css';
 
 const NAV_LINKS = [
+  { href: '#antes-depois', label: 'O que muda' },
   { href: '#dia', label: 'Como funciona' },
-  { href: '#numeros', label: 'Números' },
-  { href: '#depoimentos', label: 'Depoimentos' },
+  { href: '#produto', label: 'O sistema' },
   { href: '#planos', label: 'Planos' },
 ];
 
@@ -34,7 +34,7 @@ export default function Header() {
         </div>
         <div className="nav-cta">
           <a href="#" className="btn btn-ghost">Entrar</a>
-          <a href="#planos" className="btn btn-primary">Teste grátis</a>
+          <a href="#planos" className="btn btn-primary">Testar grátis</a>
         </div>
       </nav>
     </motion.header>

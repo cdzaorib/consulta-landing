@@ -1,0 +1,83 @@
+.live-section {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.live-panel {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.live-tabs {
+  display: flex;
+  gap: var(--space-2);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: var(--space-7);
+  /* Em telas estreitas as abas rolam em vez de quebrar ou espremer */
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.live-tabs::-webkit-scrollbar { display: none; }
+
+.live-tab {
+  position: relative;
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-faint);
+  padding: var(--space-3) var(--space-4);
+  min-height: 44px;
+  white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.live-tab:hover { color: var(--text-muted); }
+.live-tab.is-active { color: var(--primary-strong); }
+
+.live-tab-underline {
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: -1px;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+/* O painel recebe foco ao ser alcançado por teclado */
+.live-body:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 6px;
+  border-radius: var(--radius);
+}
+
+.live-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .live-grid { grid-template-columns: 1fr; gap: var(--space-6); }
+  .live-tabs { margin-bottom: var(--space-6); }
+}
+
+.live-copy h3 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-3);
+}
+
+.live-copy p {
+  color: var(--text-muted);
+  font-size: var(--text-md);
+  max-width: 46ch;
+}
+
+.live-widget { min-width: 0; }

@@ -1,8 +1,10 @@
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
+import BeforeAfter from './components/BeforeAfter.jsx';
+import Metrics from './components/Metrics.jsx';
 import LogosStrip from './components/LogosStrip.jsx';
 import DaySection from './components/DaySection.jsx';
-import Metrics from './components/Metrics.jsx';
+import LiveProduct from './components/LiveProduct.jsx';
 import Testimonials from './components/Testimonials.jsx';
 import Plans from './components/Plans.jsx';
 import FinalCta from './components/FinalCta.jsx';
@@ -12,8 +14,8 @@ const DAY_BLOCKS = [
   {
     hour: '08h',
     label: 'Abertura',
-    title: 'O paciente chega, o sistema já sabe',
-    description: 'A recepção confirma consultas por WhatsApp, o paciente faz check-in por QR Code e entra automaticamente na fila — sem ficha de papel, sem planilha de horários.',
+    title: 'O paciente chega e a recepção já sabe quem é',
+    description: 'A confirmação sai por WhatsApp na véspera, o paciente faz check-in por QR Code e entra sozinho na fila — sem ficha de papel e sem alguém reescrevendo a tabela de horários.',
     features: [
       { name: 'Agenda online', sub: 'Confirmação automática via WhatsApp' },
       { name: 'Fila inteligente', sub: 'Encaixes e reordenação em tempo real' },
@@ -25,7 +27,7 @@ const DAY_BLOCKS = [
     hour: '10h',
     label: 'Consulta',
     title: 'O prontuário se escreve enquanto o médico atende',
-    description: 'A conversa da consulta vira documentação clínica estruturada automaticamente, no modelo de registro de cada especialidade — o profissional foca no paciente, não no teclado.',
+    description: 'A conversa da consulta vira documentação clínica estruturada no modelo de registro de cada especialidade — o profissional olha para o paciente, não para o teclado.',
     features: [
       { name: 'Prontuário eletrônico', sub: 'Modelos por especialidade' },
       { name: 'Transcrição assistida', sub: 'Conversa vira registro estruturado' },
@@ -37,7 +39,7 @@ const DAY_BLOCKS = [
     hour: '17h',
     label: 'Fechamento',
     title: 'O caixa fecha sozinho, com os números certos',
-    description: 'Cobranças, convênios e repasses são lançados direto na agenda. No fim do dia, os relatórios já mostram o que entrou, o que falta receber e onde está a inadimplência.',
+    description: 'Cobranças, convênios e repasses são lançados direto na agenda. No fim do dia os relatórios já mostram o que entrou, o que falta receber e onde está a inadimplência.',
     features: [
       { name: 'Cobrança recorrente', sub: 'Boletos automáticos, pontuais ou fixos' },
       { name: 'Controle financeiro', sub: 'Entradas, saídas e repasses por profissional' },
@@ -50,9 +52,17 @@ const DAY_BLOCKS = [
 export default function App() {
   return (
     <>
+      <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
       <Header />
-      <main>
+
+      <main id="conteudo">
         <Hero />
+
+        {/* O "antes x depois" vem logo após o hero: é a primeira coisa
+            depois da promessa, não um detalhe no fim da página. */}
+        <BeforeAfter />
+        <Metrics />
+
         <LogosStrip />
 
         <section id="dia">
@@ -69,11 +79,12 @@ export default function App() {
           </div>
         </section>
 
-        <Metrics />
+        <LiveProduct />
         <Testimonials />
         <Plans />
         <FinalCta />
       </main>
+
       <Footer />
     </>
   );

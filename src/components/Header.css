@@ -1,8 +1,8 @@
 header {
   position: sticky;
   top: 0;
-  z-index: 50;
-  backdrop-filter: blur(8px);
+  z-index: var(--z-header);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
 
@@ -10,24 +10,38 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 76px;
+  gap: var(--space-4);
+  height: 72px;
 }
 
 .nav-links {
   display: flex;
-  gap: 36px;
-  font-size: 14px;
-  color: var(--ink-soft);
+  gap: var(--space-6);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
 }
 
-.nav-links a:hover { color: var(--ink); }
+.nav-links a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.nav-links a:hover { color: var(--text); }
 
 .nav-cta {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: var(--space-3);
 }
 
 @media (max-width: 860px) {
   .nav-links { display: none; }
+}
+
+@media (max-width: 520px) {
+  /* Em tela pequena o "Entrar" sai: sobra só a ação principal */
+  .nav-cta .btn-ghost { display: none; }
+  .nav { height: 64px; }
 }

@@ -2,30 +2,46 @@ import { motion } from 'framer-motion';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
 import './Testimonials.css';
 
+/**
+ * Depoimentos ilustrativos. O detalhe do porte ("2 dentistas e uma
+ * secretária") é proposital: é o que faz o leitor se reconhecer, em vez
+ * de ler mais um case de rede grande.
+ */
 const TESTIMONIALS = [
   {
-    quote: '"Consegui integrar as cinco unidades da minha rede num painel só. Hoje acompanho tudo remotamente, com muito mais transparência do que quando cada clínica tinha sua própria planilha."',
-    initials: 'PB',
-    name: 'Dr. Pedro Baches',
-    role: 'Clínica geral, rede de 5 unidades',
-  },
-  {
-    quote: '"O que mais mudou foi o fim do papel. A secretária não perde mais tempo procurando ficha e o histórico do paciente está sempre completo, mesmo trocando de profissional."',
+    quote:
+      'A gente perdia uns três horários por semana com paciente que simplesmente não aparecia. Depois que a confirmação passou a sair sozinha na véspera, isso praticamente acabou. Não precisei contratar ninguém pra isso.',
     initials: 'MC',
     name: 'Dra. Marina Costa',
     role: 'Odontologia',
+    size: '2 dentistas · 1 secretária',
   },
   {
-    quote: '"A confirmação automática por WhatsApp derrubou nossas faltas quase pela metade. Isso sozinho já pagou o sistema no primeiro mês."',
+    quote:
+      'O que mudou mesmo foi o fim da gaveta de fichas. Antes, se o paciente trocasse de profissional, o histórico ficava pela metade. Hoje qualquer um abre e vê tudo o que já foi feito.',
+    initials: 'PB',
+    name: 'Dr. Pedro Baches',
+    role: 'Clínica geral',
+    size: 'Consultório com 4 salas',
+  },
+  {
+    quote:
+      'Eu cuido da parte administrativa sozinho. Antes eu fechava o caixa no sábado, na planilha. Agora abro o relatório na segunda de manhã e já sei quem está devendo e quanto entrou na semana.',
     initials: 'RT',
     name: 'Rafael Torres',
     role: 'Gestor administrativo, fisioterapia',
+    size: '3 fisioterapeutas',
   },
 ];
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+};
+
+const gridVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
 };
 
 export default function Testimonials() {
@@ -36,35 +52,37 @@ export default function Testimonials() {
       <div className="wrap">
         <div className="day-header">
           <div className="eyebrow">Depoimentos</div>
-          <h2>Quem administra uma clínica, sente a diferença</h2>
+          <h2>Quem cuida de uma clínica pequena sente primeiro</h2>
+          <p>Consultórios de 1 a 10 profissionais — o mesmo porte da sua.</p>
         </div>
 
-        <div className="testi-grid">
+        <motion.div
+          className="testi-grid"
+          initial={reduceMotion ? false : 'hidden'}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={gridVariants}
+        >
           {TESTIMONIALS.map((testi) => (
-            <motion.div
+            <motion.figure
               className="testi"
               key={testi.name}
-              initial={reduceMotion ? false : 'hidden'}
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }}
               variants={cardVariants}
-              whileHover={reduceMotion ? undefined : {
-                y: -4,
-                scale: 1.015,
-                transition: { type: 'spring', stiffness: 300, damping: 20 },
-              }}
+              whileHover={reduceMotion ? undefined : { y: -3 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 22 }}
             >
-              <p>{testi.quote}</p>
-              <div className="who">
-                <div className="avatar">{testi.initials}</div>
-                <div>
-                  <div className="name">{testi.name}</div>
-                  <div className="role">{testi.role}</div>
-                </div>
-              </div>
-            </motion.div>
+              <blockquote>{testi.quote}</blockquote>
+              <figcaption className="who">
+                <span className="avatar" aria-hidden="true">{testi.initials}</span>
+                <span>
+                  <span className="name">{testi.name}</span>
+                  <span className="role">{testi.role}</span>
+                  <span className="size mono">{testi.size}</span>
+                </span>
+              </figcaption>
+            </motion.figure>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

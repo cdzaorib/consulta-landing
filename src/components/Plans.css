@@ -1,7 +1,8 @@
 .plans-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: var(--space-4);
+  align-items: start;
 }
 
 @media (max-width: 900px) {
@@ -9,49 +10,92 @@
 }
 
 .plan {
-  background: var(--paper);
+  background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 32px 28px;
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-5);
   display: flex;
   flex-direction: column;
+  height: 100%;
+  transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
 }
 
+.plan:hover {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow);
+}
+
+/* Só um plano recebe ênfase — uma ação primária por tela */
 .plan.featured {
-  border: 1px solid var(--green-deep);
-  box-shadow: 0 4px 24px rgba(30, 63, 49, 0.08);
+  border-color: var(--primary-strong);
+  box-shadow: var(--shadow-lg);
 }
 
 .plan .badge {
   align-self: flex-start;
-  background: var(--bg-alt);
-  color: var(--green-deep);
+  background: var(--surface-sunken);
+  color: var(--primary-strong);
+  font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 500;
-  padding: 4px 10px;
-  border-radius: 20px;
-  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 5px 11px;
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-4);
 }
 
-.plan h3 { font-size: 19px; margin-bottom: 6px; }
+.plan.featured .badge {
+  background: var(--primary-wash);
+  color: var(--primary-deep);
+}
+
+.plan h3 { font-size: var(--text-md); margin-bottom: var(--space-1); }
 
 .plan .price {
   font-family: var(--font-serif);
-  font-size: 32px;
-  margin: 14px 0 4px;
+  font-size: var(--text-xl);
+  margin: var(--space-3) 0 var(--space-1);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
 }
 
-.plan .price span { font-size: 14px; color: var(--ink-faint); font-family: var(--font-sans); }
+.plan .price span {
+  font-size: var(--text-sm);
+  color: var(--text-faint);
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+}
 
 .plan ul {
   list-style: none;
-  margin: 22px 0 28px;
+  margin: var(--space-5) 0 var(--space-6);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--space-3);
 }
 
-.plan li { font-size: 14px; color: var(--ink-soft); padding-left: 20px; position: relative; }
-.plan li::before { content: '—'; position: absolute; left: 0; color: var(--brick); }
+.plan li {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  padding-left: var(--space-5);
+  position: relative;
+  line-height: 1.45;
+}
 
-.plan .btn { justify-content: center; margin-top: auto; }
+.plan li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 10px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--accent);
+}
+
+.plan .btn {
+  justify-content: center;
+  margin-top: auto;
+  width: 100%;
+}

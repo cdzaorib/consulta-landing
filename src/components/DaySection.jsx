@@ -25,7 +25,7 @@ export default function DaySection({ hour, label, title, description, features }
       className="day-block"
       initial={reduceMotion ? false : 'hidden'}
       whileInView="visible"
-      viewport={{ once: false, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.3 }}
       variants={blockVariants}
     >
       <div className="day-time">
@@ -41,7 +41,7 @@ export default function DaySection({ hour, label, title, description, features }
           className="feature-row"
           initial={reduceMotion ? false : 'hidden'}
           whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           variants={featureContainer}
         >
           {features.map((feature) => (

@@ -1,0 +1,115 @@
+.pront-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  /* Altura reservada: o texto é digitado, então sem isso o card
+     cresceria durante a animação e empurraria a página (CLS). */
+  min-height: 340px;
+}
+
+.pront-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--line);
+}
+
+.pront-who {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.pront-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--primary-wash);
+  color: var(--primary-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: var(--text-sm);
+  flex: none;
+}
+
+.pront-head .title { font-size: var(--text-sm); font-weight: 500; }
+.pront-head .date { font-size: var(--text-xs); color: var(--text-faint); }
+
+.pront-badge { color: var(--primary); }
+
+.pront-body {
+  flex: 1;
+  padding: var(--space-4) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.pront-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+  margin-bottom: var(--space-1);
+}
+
+.pront-text {
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  color: var(--text);
+  /* Reserva uma linha mesmo vazio, para o layout não saltar */
+  min-height: 1.55em;
+}
+
+.pront-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--primary);
+  vertical-align: text-bottom;
+  margin-left: 1px;
+  animation: pront-blink 1s steps(2, start) infinite;
+}
+
+@keyframes pront-blink {
+  to { visibility: hidden; }
+}
+
+.pront-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line);
+  font-size: var(--text-xs);
+  color: var(--text-faint);
+}
+
+.pront-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: color var(--dur) var(--ease-out);
+}
+
+.pront-status::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-faint);
+  flex: none;
+  transition: background var(--dur) var(--ease-out);
+}
+
+.pront-foot.is-done .pront-status { color: var(--primary-strong); font-weight: 500; }
+.pront-foot.is-done .pront-status::before { background: var(--primary); }

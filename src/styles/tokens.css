@@ -1,22 +1,126 @@
-:root {
-  /* Cores */
-  --bg: #F3F6F3;
-  --bg-alt: #E7EDE7;
-  --ink: #16241F;
-  --ink-soft: #4A5850;
-  --ink-faint: #7C8A82;
-  --green: #2F5D48;
-  --green-deep: #1E3F31;
-  --brick: #B34B32;
-  --brick-deep: #8C3A26;
-  --line: #D3DBD3;
-  --paper: #FCFDFC;
+/* ==========================================================================
+   Design tokens — arquitetura em 3 camadas (primitivo → semântico → componente)
+   Paleta: sálvia + terracota sobre papel quente.
+   Escolhida para fugir do "SaaS genérico": sem azul corporativo, sem gradiente
+   roxo/rosa de produto de IA, sem neon. Tom humano, clínico sem ser frio.
+   ========================================================================== */
 
-  /* Raio */
-  --radius: 10px;
+:root {
+  /* ---------- Camada 1: primitivos ---------- */
+
+  /* Papel quente (fundo) */
+  --paper-0: #FCFDFC;
+  --paper-1: #F3F6F3;
+  --paper-2: #E7EDE7;
+  --paper-3: #D3DBD3;
+
+  /* Tinta */
+  --ink-900: #16241F;
+  --ink-600: #4A5850;
+  /* #647268 e não um cinza mais claro: abaixo disso o texto de apoio
+     cai de 4.5:1 sobre o papel. Medido, não estimado. */
+  --ink-400: #647268;
+
+  /* Sálvia — cor primária da marca */
+  --sage-900: #16332A;
+  --sage-700: #1E3F31;
+  --sage-500: #2F5D48;
+  --sage-200: #C3D6C9;
+  --sage-100: #E8F0EA;
+
+  /* Terracota — acento, usado com parcimônia */
+  --brick-700: #8C3A26;
+  --brick-500: #B34B32;
+  --brick-100: #F7EAE6;
+
+  /* Cinza "antes" — deliberadamente dessaturado e mais frio que o papel.
+     É o que faz o contraste antes/depois funcionar sem precisar de ícone. */
+  --dust-600: #5E6863;
+  --dust-400: #9AA39E;
+  --dust-200: #C7CDC9;
+  --dust-100: #E4E7E5;
+
+  /* Sinal */
+  --danger-500: #A83B2B;
+
+  /* ---------- Camada 2: semânticos ---------- */
+
+  --bg: var(--paper-1);
+  --bg-alt: var(--paper-2);
+  --surface: var(--paper-0);
+  --surface-sunken: var(--paper-2);
+
+  --text: var(--ink-900);
+  --text-muted: var(--ink-600);
+  --text-faint: var(--ink-400);
+  --text-on-dark: var(--paper-0);
+
+  --primary: var(--sage-500);
+  --primary-strong: var(--sage-700);
+  --primary-deep: var(--sage-900);
+  --primary-wash: var(--sage-100);
+  --on-primary: var(--paper-0);
+
+  --accent: var(--brick-500);
+  --accent-strong: var(--brick-700);
+  --accent-wash: var(--brick-100);
+
+  --line: var(--paper-3);
+  --line-strong: var(--sage-200);
+  --ring: var(--sage-500);
+
+  /* Estados antes/depois */
+  --before-text: var(--dust-600);
+  --before-line: var(--dust-200);
+  --before-surface: var(--dust-100);
+  --after-text: var(--sage-700);
+  --after-line: var(--sage-200);
+  --after-surface: var(--sage-100);
+
+  /* ---------- Camada 3: componente ---------- */
+
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  /* Sombras suaves — "Soft UI Evolution": mais claras que neumorfismo,
+     mais presentes que flat. Nunca coloridas. */
+  --shadow-sm: 0 1px 2px rgba(22, 36, 31, 0.05);
+  --shadow: 0 2px 8px rgba(22, 36, 31, 0.06), 0 1px 2px rgba(22, 36, 31, 0.04);
+  --shadow-lg: 0 12px 32px rgba(22, 36, 31, 0.10), 0 2px 8px rgba(22, 36, 31, 0.05);
+
+  /* Ritmo de espaçamento 4/8 */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
 
   /* Tipografia */
-  --font-serif: 'Fraunces', serif;
-  --font-sans: 'IBM Plex Sans', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Escala fluida */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-md: 18px;
+  --text-lg: clamp(20px, 2.2vw, 24px);
+  --text-xl: clamp(24px, 3vw, 32px);
+  --text-2xl: clamp(28px, 3.6vw, 40px);
+  --text-3xl: clamp(34px, 5.4vw, 60px);
+
+  /* Movimento — tokens únicos para toda a página ter o mesmo ritmo */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 150ms;
+  --dur: 240ms;
+  --dur-slow: 400ms;
+
+  --z-header: 100;
 }

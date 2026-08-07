@@ -8,62 +8,87 @@
 
 html {
   scroll-behavior: smooth;
+  /* Compensa o header sticky ao pular por âncora */
+  scroll-padding-top: 88px;
 }
 
 body {
   background: var(--bg);
-  color: var(--ink);
+  color: var(--text);
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: var(--text-base);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3 {
   font-family: var(--font-serif);
   font-weight: 500;
-  color: var(--ink);
-  letter-spacing: -0.01em;
+  color: var(--text);
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+  text-wrap: balance;
 }
+
+p { text-wrap: pretty; }
 
 .mono {
   font-family: var(--font-mono);
   letter-spacing: 0.02em;
+  /* Números de largura fixa: evita o texto "pular" em contadores e horários */
+  font-variant-numeric: tabular-nums;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+a { color: inherit; text-decoration: none; }
 
-img {
-  max-width: 100%;
-  display: block;
-}
+img { max-width: 100%; display: block; }
 
 .wrap {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 var(--space-6);
 }
 
-section {
-  padding: 96px 0;
-}
+section { padding: var(--space-9) 0; }
 
 @media (max-width: 720px) {
-  section { padding: 64px 0; }
+  section { padding: var(--space-8) 0; }
   .wrap { padding: 0 20px; }
 }
 
-/* focus visibility */
-a:focus-visible, button:focus-visible {
-  outline: 2px solid var(--green);
+/* Acessibilidade: pular para o conteúdo */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: calc(var(--z-header) + 10);
+  background: var(--primary-deep);
+  color: var(--text-on-dark);
+  padding: 12px 20px;
+  border-radius: 0 0 var(--radius) 0;
+  font-size: var(--text-sm);
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--ring);
   outline-offset: 3px;
+  border-radius: var(--radius-sm);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ---------- Logo (Header + Footer) ---------- */
@@ -73,84 +98,114 @@ a:focus-visible, button:focus-visible {
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-2);
+  letter-spacing: -0.02em;
 }
 
 .logo .dot {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: var(--brick);
+  background: var(--accent);
   display: inline-block;
+  flex: none;
 }
 
-/* ---------- Buttons (Header, Hero, Plans, FinalCta) ---------- */
+/* ---------- Botões ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 11px 20px;
+  justify-content: center;
+  gap: var(--space-2);
+  /* min-height 44px: alvo de toque mínimo */
+  min-height: 44px;
+  padding: 12px 22px;
   border-radius: var(--radius);
-  font-size: 14px;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
   font-weight: 500;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
 }
 
 .btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
 
 .btn-primary {
-  background: var(--green-deep);
-  color: var(--paper);
+  background: var(--primary-strong);
+  color: var(--on-primary);
+  box-shadow: var(--shadow-sm);
 }
 
-.btn-primary:hover { background: var(--green); }
+.btn-primary:hover {
+  background: var(--primary);
+  box-shadow: var(--shadow);
+}
 
 .btn-ghost {
   border-color: var(--line);
-  color: var(--ink);
-  background: transparent;
+  color: var(--text);
+  background: var(--surface);
 }
 
-.btn-ghost:hover { border-color: var(--ink-faint); }
+.btn-ghost:hover { border-color: var(--text-faint); }
 
-/* ---------- Eyebrow label (Hero, section headers) ---------- */
+.btn-lg {
+  min-height: 52px;
+  padding: 15px 30px;
+  font-size: var(--text-md);
+}
+
+/* ---------- Eyebrow ---------- */
 .eyebrow {
   font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--brick-deep);
+  font-size: var(--text-xs);
+  color: var(--accent-strong);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
 }
 
 .eyebrow::before {
   content: '';
   width: 16px;
   height: 1px;
-  background: var(--brick-deep);
+  background: var(--accent-strong);
+  flex: none;
 }
 
-/* ---------- Hero-style action row (Hero + FinalCta) ---------- */
+/* ---------- Linha de ações ---------- */
 .hero-actions {
   display: flex;
-  gap: 14px;
-  margin-bottom: 36px;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
   flex-wrap: wrap;
 }
 
-/* ---------- Section header (Como funciona, Depoimentos, Planos) ---------- */
+/* ---------- Cabeçalho de seção ---------- */
 .day-header {
   text-align: center;
-  max-width: 640px;
-  margin: 0 auto 64px;
+  max-width: 660px;
+  margin: 0 auto var(--space-8);
 }
 
 .day-header .eyebrow { justify-content: center; }
 .day-header .eyebrow::before { display: none; }
-.day-header h2 { font-size: clamp(28px, 3.4vw, 38px); margin-bottom: 14px; }
-.day-header p { color: var(--ink-soft); font-size: 17px; }
+.day-header h2 { font-size: var(--text-2xl); margin-bottom: var(--space-3); }
+.day-header p { color: var(--text-muted); font-size: var(--text-md); }
+
+/* ---------- Ícones ---------- */
+.icon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  stroke-width: 1.6;
+}

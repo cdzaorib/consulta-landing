@@ -35,7 +35,7 @@ export default function Hero() {
             A agenda, o prontuário e o financeiro da sua clínica, <em>sincronizados</em>.
           </motion.h1>
           <motion.p className="lead" variants={item}>
-            O Consulta organiza o dia inteiro do consultório — do check-in do paciente ao fechamento do caixa —
+            O Conclínica organiza o dia inteiro do consultório — do check-in do paciente ao fechamento do caixa —
             para que sua equipe pare de correr atrás de papel e planilha.
           </motion.p>
           <motion.div className="hero-actions" variants={item}>

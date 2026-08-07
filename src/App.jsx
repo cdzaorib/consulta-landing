@@ -60,7 +60,7 @@ export default function App() {
             <div className="day-header">
               <div className="eyebrow">Como funciona</div>
               <h2>Um sistema, o dia inteiro da clínica</h2>
-              <p>Em vez de módulos soltos, o Consulta acompanha o fluxo real de um dia de atendimento — da chegada do primeiro paciente ao fechamento do caixa.</p>
+              <p>Em vez de módulos soltos, o Conclínica acompanha o fluxo real de um dia de atendimento — da chegada do primeiro paciente ao fechamento do caixa.</p>
             </div>
 
             {DAY_BLOCKS.map((block) => (

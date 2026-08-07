@@ -25,7 +25,7 @@ export default function Header() {
     <motion.header style={{ background, boxShadow }}>
       <nav className="wrap nav">
         <div className="logo">
-          <span className="dot" />Consulta
+          <span className="dot" />Conclínica
         </div>
         <div className="nav-links">
           {NAV_LINKS.map((link) => (

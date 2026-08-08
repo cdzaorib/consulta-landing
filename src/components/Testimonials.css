@@ -45,6 +45,19 @@
   color: var(--ink);
 }
 
+/* Cinco estrelas âmbar, como no carrossel do site oficial */
+.stars {
+  display: flex;
+  gap: 3px;
+  margin-top: calc(var(--space-2) * -1);
+}
+
+.stars svg {
+  width: 15px;
+  height: 15px;
+  fill: var(--brand-amber);
+}
+
 .testi .who {
   display: flex;
   align-items: center;
@@ -66,6 +79,11 @@
   font-size: var(--t-xs);
   font-weight: 500;
   color: var(--sage-700);
+}
+
+.testi .avatar svg {
+  width: 19px;
+  height: 19px;
 }
 
 .testi .name,

@@ -184,40 +184,45 @@ section {
    Logo (Header + Footer)
    ========================================================================= */
 
+/* O lockup usa a sans do projeto, não a Fraunces: o wordmark oficial da
+   Conclínica é uma geométrica em caixa baixa, e a serifa descaracterizaria
+   a marca. */
 .logo {
-  font-family: var(--font-serif);
-  font-size: 1.3rem;
-  font-weight: 600;
-  font-variation-settings: 'SOFT' 20, 'WONK' 1;
-  letter-spacing: -0.02em;
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  color: var(--ink);
+  gap: 8px;
   white-space: nowrap;
 }
 
-.logo .mark {
-  width: 26px;
-  height: 26px;
+.logo-mark {
+  width: 30px;
+  height: 20px;
   flex: none;
-  border-radius: 7px;
-  background: var(--brand-deep);
-  display: grid;
-  place-items: center;
+  color: var(--brand-mark);
 }
 
-.logo .mark svg {
-  width: 15px;
-  height: 15px;
+.logo-word {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
 }
 
-.logo.on-dark {
+.logo-con {
+  color: var(--brand-mark);
+}
+
+.logo-clinica {
+  color: var(--brand-ink);
+}
+
+.logo.on-dark .logo-mark,
+.logo.on-dark .logo-con {
+  color: var(--brand-mark-light);
+}
+
+.logo.on-dark .logo-clinica {
   color: var(--on-dark);
-}
-
-.logo.on-dark .mark {
-  background: rgba(226, 234, 227, 0.12);
 }
 
 /* =========================================================================

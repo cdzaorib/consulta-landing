@@ -122,10 +122,10 @@ export const DAY_BLOCKS = [
     description:
       'O prontuário com IA transcreve a conversa da consulta e organiza um registro fiel ao atendimento. O profissional olha para o paciente, não para o teclado.',
     features: [
-      { name: 'Prontuário com IA', sub: 'A conversa vira documentação clínica estruturada' },
+      { name: 'Assistente IA', sub: 'Anotações completas em segundos, sem digitar' },
+      { name: 'Prontuário configurável', sub: 'Anamnese, prescrição e pedidos do seu jeito' },
       { name: 'Laudos e exames', sub: 'Resultados e anexos vinculados ao paciente' },
       { name: 'Assinatura digital', sub: 'Receitas e documentos com validade legal' },
-      { name: 'Histórico completo', sub: 'Todo o percurso do paciente em uma tela' },
     ],
   },
   {
@@ -135,68 +135,58 @@ export const DAY_BLOCKS = [
     description:
       'Cobranças, convênios e repasses são lançados junto com o atendimento. No fim do dia os relatórios já mostram o que entrou, o que falta receber e onde está a glosa.',
     features: [
+      { name: 'Cobrança online', sub: 'Cartão, boleto ou pix, com cobrança recorrente' },
       { name: 'Contas a pagar e receber', sub: 'Fluxo de caixa da clínica em tempo real' },
       { name: 'Repasse por profissional', sub: 'Quanto cabe a cada um, calculado automaticamente' },
-      { name: 'Faturamento TISS', sub: 'Guias enviadas direto às operadoras' },
-      { name: 'Controle de glosas', sub: 'Importação de demonstrativos XML e auditoria' },
+      { name: 'Faturamento TISS', sub: 'Guias às operadoras e controle de glosas' },
     ],
   },
 ];
 
 /* -------------------------------------------------------------------------
    Números
-   Fonte: conclinica.com.br — redução de faltas de até 40% com confirmação
-   automática; agendamento online 24h; teste grátis de 7 dias; conformidade
-   LGPD/CFM com backup diário na AWS.
+   Fonte: faixa de estatísticas da home da Conclínica (conferida em
+   screenshot do site): 12M+ marcações agendadas, 3M+ pacientes atendidos,
+   10K+ médicos cadastrados e 500+ clientes ativos.
+
+   As demais promessas (até 40% menos faltas, agenda aberta 24h) ficam nos
+   chips da seção "antes x depois", onde têm mais contexto.
    ------------------------------------------------------------------------- */
 
 export const METRICS = [
-  {
-    id: 'faltas',
-    prefix: 'até ',
-    target: 40,
-    suffix: '%',
-    caption: 'menos faltas na agenda com a confirmação automática de consultas',
-  },
-  {
-    id: 'agenda',
-    staticValue: '24h',
-    caption: 'de agendamento online: o paciente marca sozinho, fora do horário da recepção',
-  },
-  {
-    id: 'teste',
-    target: 7,
-    suffix: ' dias',
-    caption: 'de teste grátis, com a clínica rodando de verdade e sem instalar nada',
-  },
-  {
-    id: 'conformidade',
-    staticValue: 'LGPD',
-    caption: 'e normas do CFM: dados criptografados na nuvem, com backup diário na AWS',
-  },
+  { id: 'marcacoes', target: 12, suffix: 'M+', caption: 'marcações agendadas' },
+  { id: 'pacientes', target: 3, suffix: 'M+', caption: 'pacientes atendidos' },
+  { id: 'medicos', target: 10, suffix: 'K+', caption: 'médicos cadastrados' },
+  { id: 'clientes', target: 500, suffix: '+', caption: 'clínicas e consultórios ativos' },
 ];
 
 /* -------------------------------------------------------------------------
    Depoimentos
-   As duas citações vêm do material público da Conclínica. Os nomes vieram da
-   versão anterior deste projeto e devem ser conferidos com a empresa antes da
-   apresentação.
+
+   O primeiro está conferido contra o carrossel de depoimentos da home:
+   citação, nome, especialidade e as cinco estrelas são os do site.
+
+   O segundo tem a citação real, mas o autor NÃO pôde ser conferido — o
+   carrossel tem três slides e só o primeiro foi capturado. Por isso vai sem
+   nome, atribuído apenas ao perfil. Ver docs/imagens-desejadas.md.
    ------------------------------------------------------------------------- */
 
 export const TESTIMONIALS = [
   {
     quote:
-      'O Conclínica me ajudou muito ao permitir uma integração completa das minhas 5 clínicas.',
-    initials: 'PB',
-    name: 'Dr. Pedro Baches',
-    role: 'Clínica geral — 5 unidades',
+      'Através do Conclínica houve uma otimização nos processos de atendimento aos pacientes, além de mais segurança na emissão dos documentos entregues aos mesmos.',
+    initials: 'RG',
+    name: 'Rafael Gualberto',
+    role: 'Ortopedia e traumatologia',
+    rating: 5,
   },
   {
     quote:
-      'Houve uma otimização nos processos de atendimento aos pacientes, além de mais segurança na emissão dos documentos entregues a eles.',
-    initials: 'MC',
-    name: 'Dra. Marina Costa',
-    role: 'Odontologia — 3 profissionais',
+      'O Conclínica me ajudou muito ao permitir uma integração completa das minhas 5 clínicas.',
+    // sem `initials`: o autor não foi conferido, então não inventamos uma pessoa
+    name: 'Gestor de rede',
+    role: 'Clínica geral — 5 unidades',
+    rating: 5,
   },
 ];
 

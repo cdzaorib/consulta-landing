@@ -52,6 +52,14 @@
   --line-strong: #c3d2c6;
   --line-dark: rgba(226, 234, 227, 0.16);
 
+  /* ---------- Cores oficiais da Conclínica ----------
+     Amostradas dos screenshots do site: verde do wordmark e do símbolo,
+     verde dos textos/links, ardósia do "clínica" e âmbar dos CTAs. */
+  --brand-mark: #008872;
+  --brand-mark-light: #01a98e;
+  --brand-ink: #1e282e;
+  --brand-amber: #faab1c;
+
   --brand: var(--sage-700);
   --brand-deep: var(--sage-800);
   --brand-soft: var(--sage-100);

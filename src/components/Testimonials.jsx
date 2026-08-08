@@ -42,9 +42,28 @@ export default function Testimonials() {
                 &ldquo;
               </span>
               <blockquote>{testi.quote}</blockquote>
+
+              <p className="stars" aria-label={`${testi.rating} de 5 estrelas`}>
+                {Array.from({ length: testi.rating }, (_, i) => (
+                  <svg key={i} viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="m10 1.6 2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L1.6 7.7l5.8-.8L10 1.6Z" />
+                  </svg>
+                ))}
+              </p>
+
               <figcaption className="who">
                 <span className="avatar" aria-hidden="true">
-                  {testi.initials}
+                  {testi.initials ?? (
+                    <svg viewBox="0 0 20 20" fill="none">
+                      <path
+                        d="M3 17V8.2l4.5-3 4.5 3V17M12 17v-5.4l3-2 2 1.4V17M3 17h14"
+                        stroke="currentColor"
+                        strokeWidth="1.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  )}
                 </span>
                 <span>
                   <span className="name">{testi.name}</span>

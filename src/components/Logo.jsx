@@ -1,24 +1,30 @@
-import { SITE } from '../content.js';
-
 /**
- * Wordmark do Conclínica: o "C" aberto com o ponto terracota no vão,
- * mesma construção do favicon.
+ * Lockup da Conclínica, reproduzido a partir do site oficial:
+ * laço de infinito + "con" em verde da marca e "clínica" em ardósia escura,
+ * tudo em caixa baixa.
+ *
+ * É uma reconstrução aproximada — trocar pelo SVG oficial assim que a
+ * empresa enviar o arquivo (ver docs/imagens-desejadas.md).
  */
 export default function Logo({ onDark = false, as: Tag = 'span' }) {
   return (
     <Tag className={`logo${onDark ? ' on-dark' : ''}`}>
-      <span className="mark" aria-hidden="true">
-        <svg viewBox="0 0 48 48" fill="none">
-          <path
-            d="M32.49 15.51A12 12 0 1 0 32.49 32.49"
-            stroke="#F1F5F1"
-            strokeWidth="6"
-            strokeLinecap="round"
-          />
-          <circle cx="34.5" cy="24" r="4.2" fill="#C4735A" />
-        </svg>
+      <svg className="logo-mark" viewBox="0 0 48 32" fill="none" aria-hidden="true">
+        <g stroke="currentColor" strokeWidth="4.2">
+          <circle cx="13" cy="16" r="9" />
+          <circle cx="31" cy="16" r="9" />
+        </g>
+        <path
+          d="M16.5 21.5 27.5 10.5"
+          stroke="currentColor"
+          strokeWidth="4.2"
+          strokeLinecap="round"
+        />
+      </svg>
+      <span className="logo-word">
+        <span className="logo-con">con</span>
+        <span className="logo-clinica">clínica</span>
       </span>
-      {SITE.name}
     </Tag>
   );
 }

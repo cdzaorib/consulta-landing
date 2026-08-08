@@ -101,27 +101,35 @@
   color: var(--ink-3);
 }
 
-/* ---------- Card de confiança ---------- */
+/* ---------- Faixa de confiança ---------- */
 
-.trust-card {
+.trust-band {
+  margin-top: var(--space-4);
   background: var(--sage-900);
   color: var(--on-dark);
   border-radius: var(--r-lg);
   padding: var(--space-6) var(--space-5);
+  display: grid;
+  gap: var(--space-5);
+}
+
+.trust-head {
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
   gap: var(--space-3);
 }
 
 .trust-icon {
   width: 30px;
   height: 30px;
+  flex: none;
   color: var(--accent-on-dark);
 }
 
-.trust-card h3 {
+.trust-band h3 {
   color: var(--on-dark);
   font-size: 1.25rem;
+  margin-bottom: 4px;
 }
 
 .trust-intro {
@@ -129,14 +137,12 @@
   color: var(--on-dark-2);
 }
 
-.trust-card ul {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  margin-top: var(--space-2);
+.trust-items {
+  display: grid;
+  gap: var(--space-3);
 }
 
-.trust-card li {
+.trust-items li {
   position: relative;
   padding-left: 18px;
   font-size: var(--t-xs);
@@ -144,7 +150,7 @@
   color: var(--on-dark-2);
 }
 
-.trust-card li::before {
+.trust-items li::before {
   content: '';
   position: absolute;
   left: 0;
@@ -153,6 +159,26 @@
   height: 6px;
   border-radius: 50%;
   background: var(--accent-on-dark);
+}
+
+@media (min-width: 620px) {
+  .trust-items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3) var(--space-5);
+  }
+}
+
+@media (min-width: 1000px) {
+  .trust-band {
+    grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+    align-items: center;
+    gap: var(--space-7);
+    padding: var(--space-6);
+  }
+
+  .trust-items {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 760px) {

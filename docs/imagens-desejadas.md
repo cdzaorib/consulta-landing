@@ -52,18 +52,30 @@ funciona bem e é interativa, então vale manter — mas uma captura real ao lad
 (ou alternando com ela) prova que o produto existe. É a imagem que mais
 converte numa landing de software.
 
-## 3. Capturas das outras três telas do produto
-
-Uma para cada bloco da seção "Um dia na clínica":
+## 3. As três telas do produto em resolução cheia
 
 | Bloco | Tela | Página de origem |
 | --- | --- | --- |
-| 08h — Abertura | Agenda / fila de espera | https://conclinica.com.br/agenda-medica/ |
+| 08h — Abertura | Agenda do dia com os status | https://conclinica.com.br/agenda-medica/ |
 | 10h — Consulta | Prontuário eletrônico com IA | https://conclinica.com.br/software-medico-clinica/ |
-| 17h — Fechamento | Painel financeiro / fluxo de caixa | https://conclinica.com.br/gestao-clinicas/controle-financeiro/ |
+| 17h — Fechamento | Cobrança / novo boleto | https://conclinica.com.br/gestao-clinicas/controle-financeiro/ |
 
-**Por que importa:** hoje cada bloco mostra só quatro cartões de texto. Uma
-captura por bloco transforma a seção em demonstração.
+**Estado atual:** os três blocos da seção "Um dia na clínica" já mostram um
+recorte de cada tela, reconstruído em HTML/CSS a partir dos seus screenshots
+(`src/components/DayScreen.jsx`). Os rótulos, os status e a ordem dos campos
+são os reais:
+
+- agenda: "Em atendimento", "Não confirmado", "Em espera", "Livre", com os
+  pacientes e convênios da tela (João Silva/Particular, Gustavo Freitas/Amil,
+  Eliana Gonçalves/Bradesco)
+- prontuário: Profissional, Especialidade, Queixa principal e o grupo
+  "Detalhes do histórico" com Anamnese, Prescrição e Pedidos de exames
+- cobrança: Cobrança, Descrição, Data, Valor e os botões Cancelar / Gerar
+  boleto
+
+**Por que ainda vale pegar as imagens:** é reconstrução, não captura — a
+tipografia, os ícones da barra lateral e o visual real do sistema não estão
+ali. Com os arquivos, cada `<DayScreen>` vira um `<img>`.
 
 Vale também a tela de laudos, se a seção crescer:
 https://conclinica.com.br/laudos-e-exames/
@@ -73,20 +85,18 @@ https://conclinica.com.br/laudos-e-exames/
 **Onde:** seção "O que os gestores e médicos dizem sobre nosso sistema" da
 home, https://conclinica.com.br/
 
-**O que pegar:** a foto de rosto de **Rafael Gualberto** e de
-**Dr. Pedro Baches**.
+**O que pegar:** a foto de rosto de **Rafael Gualberto**, **Leonardo Daumas**
+e **Dr. Pedro Baches**.
 
-**Por que importa:** os dois depoimentos já estão conferidos e com a citação
-integral — só os avatares seguem como iniciais em círculo (`RG`, `PB`). Foto
-real aumenta bastante a credibilidade da seção.
-
-Vale também capturar o slide 2 do carrossel (são três), que ainda não
-apareceu, caso queira um terceiro depoimento.
+**Por que importa:** os três slides do carrossel já estão na página, com a
+citação integral, a especialidade e as cinco estrelas de cada um. Só os
+avatares seguem como iniciais em círculo (`RG`, `LD`, `PB`). Foto real
+aumenta bastante a credibilidade da seção.
 
 **Histórico:** a versão anterior deste projeto atribuía a citação do Rafael
 Gualberto a uma "Dra. Marina Costa", que não existe no site — já foi
 corrigido. O "Dr. Pedro Baches", que eu havia removido por não conseguir
-conferir, é real: está no slide 3, em ortopedia e traumatologia.
+conferir, é real: está no slide 3.
 
 ## 5. Logos de clínicas clientes
 

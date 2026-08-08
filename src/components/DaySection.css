@@ -42,6 +42,17 @@
   margin-bottom: var(--space-5);
 }
 
+/* Empilhado no mobile; no desktop as funcionalidades ficam ao lado do
+   recorte da tela. */
+.day-split {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.day-screen-wrap {
+  min-width: 0;
+}
+
 .feature-row {
   display: grid;
   grid-template-columns: 1fr;
@@ -101,6 +112,23 @@
   .feature-row {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-4);
+  }
+}
+
+@media (min-width: 980px) {
+  .day-split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  /* lado a lado, os cards voltam para uma coluna */
+  .day-split .feature-row {
+    grid-template-columns: 1fr;
+  }
+
+  .day-split .day-screen {
+    margin-top: 0;
   }
 }
 

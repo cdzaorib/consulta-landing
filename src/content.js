@@ -99,6 +99,11 @@ export const SPECIALTIES = [
    Um dia na clínica
    Fonte: páginas de agenda médica, prontuário com IA, faturamento TISS,
    controle financeiro e estoque da Conclínica.
+
+   O campo `screen` reconstrói em HTML/CSS o recorte da tela real que aparece
+   nos screenshots do produto — mesmos rótulos, mesmos status e mesma ordem
+   dos campos. Não é captura: é uma reconstrução, para dar ideia da interface
+   enquanto as imagens oficiais não entram no repositório.
    ------------------------------------------------------------------------- */
 
 export const DAY_BLOCKS = [
@@ -114,6 +119,18 @@ export const DAY_BLOCKS = [
       { name: 'Bloqueio de horários', sub: 'Evita sobreposição e marcação indesejada' },
       { name: 'Telemedicina', sub: 'Videochamada de onde estiver, com assinatura digital' },
     ],
+    screen: {
+      kind: 'agenda',
+      title: 'Agenda do dia',
+      caption: 'Seg | 27/07',
+      rows: [
+        { time: '09:00', status: 'Em atendimento', tone: 'live', name: 'João Silva', tag: 'Particular · Consulta' },
+        { time: '09:30', status: 'Não confirmado', tone: 'pending', name: 'Gustavo Freitas', tag: 'Amil · Consulta' },
+        { time: '09:30', status: 'Em espera', tone: 'waiting', name: 'Carlos Gomes', tag: 'Particular · Consulta' },
+        { time: '10:00', status: 'Livre', tone: 'free' },
+        { time: '10:00', status: 'Não confirmado', tone: 'pending', name: 'Eliana Gonçalves', tag: 'Bradesco · Cirurgia' },
+      ],
+    },
   },
   {
     hour: '10h',
@@ -127,6 +144,18 @@ export const DAY_BLOCKS = [
       { name: 'Laudos e exames', sub: 'Resultados e anexos vinculados ao paciente' },
       { name: 'Assinatura digital', sub: 'Receitas e documentos com validade legal' },
     ],
+    screen: {
+      kind: 'prontuario',
+      title: 'Prontuário do paciente',
+      caption: '24 de junho de 2026',
+      fields: [
+        { label: 'Profissional', value: 'Dr. Luiz Gustavo' },
+        { label: 'Especialidade', value: 'Cardiologia' },
+        { label: 'Queixa principal', value: 'Dores leves no peito' },
+      ],
+      groupTitle: 'Detalhes do histórico',
+      group: ['Anamnese', 'Prescrição', 'Pedidos de exames'],
+    },
   },
   {
     hour: '17h',
@@ -140,6 +169,20 @@ export const DAY_BLOCKS = [
       { name: 'Repasse por profissional', sub: 'Quanto cabe a cada um, calculado automaticamente' },
       { name: 'Faturamento TISS', sub: 'Guias às operadoras e controle de glosas' },
     ],
+    screen: {
+      kind: 'boleto',
+      title: 'Adicionar novo boleto',
+      caption: 'Cobrança inteligente',
+      fields: [
+        { label: 'Cobrança', value: 'Maria dos Santos' },
+        { label: 'Descrição', value: 'Consulta' },
+      ],
+      pair: [
+        { label: 'Data', value: '12/06/2026' },
+        { label: 'Valor', value: 'R$ 290,00' },
+      ],
+      actions: ['Cancelar', 'Gerar boleto'],
+    },
   },
 ];
 
@@ -175,6 +218,14 @@ export const TESTIMONIALS = [
     initials: 'RG',
     name: 'Rafael Gualberto',
     role: 'Ortopedia e traumatologia',
+    rating: 5,
+  },
+  {
+    quote:
+      'O Conclínica deu mais agilidade e controle nas marcações, atendimento e nas descrições clínicas, abolindo as fichas e papéis, facilitando o trabalho do médico e das secretárias.',
+    initials: 'LD',
+    name: 'Leonardo Daumas',
+    role: 'Pediatra, endocrino e pneumologista',
     rating: 5,
   },
   {

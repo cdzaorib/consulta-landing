@@ -23,6 +23,12 @@ footer {
   gap: var(--space-5) var(--space-6);
 }
 
+/* sem isto a coluna não encolhe abaixo do conteúdo e o e-mail, que é uma
+   palavra só, empurra a página para fora em telas estreitas */
+.foot-col {
+  min-width: 0;
+}
+
 .foot-col h4 {
   font-family: var(--font-sans);
   font-size: var(--t-micro);
@@ -68,6 +74,7 @@ footer {
 .foot-contact-value {
   font-size: var(--t-sm);
   color: var(--ink-2);
+  overflow-wrap: anywhere;
   transition: color var(--dur) var(--ease);
 }
 

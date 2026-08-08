@@ -73,7 +73,10 @@ export default function Testimonials() {
             </motion.figure>
           ))}
 
-          <motion.div className="trust-card" variants={card}>
+        </motion.div>
+
+        <motion.div className="trust-band" {...reveal(reduceMotion, fadeUp)}>
+          <div className="trust-head">
             <span className="trust-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none">
                 <path
@@ -91,14 +94,17 @@ export default function Testimonials() {
                 />
               </svg>
             </span>
-            <h3>{TRUST_CARD.title}</h3>
-            <p className="trust-intro">{TRUST_CARD.intro}</p>
-            <ul>
-              {TRUST_CARD.items.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
-            </ul>
-          </motion.div>
+            <div>
+              <h3>{TRUST_CARD.title}</h3>
+              <p className="trust-intro">{TRUST_CARD.intro}</p>
+            </div>
+          </div>
+
+          <ul className="trust-items">
+            {TRUST_CARD.items.map((line) => (
+              <li key={line}>{line}</li>
+            ))}
+          </ul>
         </motion.div>
       </div>
     </section>

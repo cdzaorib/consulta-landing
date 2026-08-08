@@ -1,0 +1,276 @@
+/* Janela que envolve o recorte de tela. Marcada como aria-hidden: é
+   ilustração, e o conteúdo já está descrito nos cards de funcionalidade. */
+
+.day-screen {
+  margin-top: var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.scr-chrome {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 10px var(--space-4);
+  background: var(--sage-50);
+  border-bottom: 1px solid var(--line);
+}
+
+.scr-dots {
+  display: flex;
+  gap: 4px;
+  flex: none;
+}
+
+.scr-dots i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+
+.scr-title {
+  font-size: var(--t-xs);
+  font-weight: 500;
+  color: var(--ink-2);
+  margin-right: auto;
+}
+
+.scr-caption {
+  font-size: var(--t-micro);
+  color: var(--ink-3);
+  flex: none;
+}
+
+.scr-body {
+  padding: var(--space-4);
+}
+
+/* ---------- Agenda do dia ---------- */
+
+.scr-agenda {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.scr-row {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 2px var(--space-3);
+  align-items: baseline;
+  padding: 9px 11px;
+  border-radius: var(--r-sm);
+  border-left: 3px solid transparent;
+  background: var(--sage-50);
+}
+
+.scr-row .scr-time {
+  grid-row: span 2;
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+}
+
+.scr-status {
+  font-size: var(--t-micro);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.scr-who {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px var(--space-2);
+  align-items: baseline;
+  min-width: 0;
+}
+
+.scr-name {
+  font-size: var(--t-xs);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.scr-tag {
+  font-size: var(--t-micro);
+  color: var(--ink-3);
+}
+
+.scr-free {
+  font-size: var(--t-micro);
+  font-style: italic;
+  color: var(--ink-3);
+}
+
+/* Estados com o vocabulário da tela real */
+.scr-row.tone-live {
+  border-left-color: var(--sage-600);
+  background: var(--sage-100);
+}
+.scr-row.tone-live .scr-status {
+  color: var(--sage-700);
+}
+
+.scr-row.tone-pending {
+  border-left-color: var(--amber-500);
+  background: var(--amber-50);
+}
+.scr-row.tone-pending .scr-status {
+  color: var(--amber-700);
+}
+
+.scr-row.tone-waiting {
+  border-left-color: var(--sage-400);
+}
+.scr-row.tone-waiting .scr-status {
+  color: var(--ink-3);
+}
+
+.scr-row.tone-free {
+  background: transparent;
+  border: 1px dashed var(--line-strong);
+  border-left: 1px dashed var(--line-strong);
+}
+.scr-row.tone-free .scr-status {
+  color: var(--ink-3);
+}
+
+/* ---------- Prontuário ---------- */
+
+.scr-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--line);
+}
+
+.scr-field {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px var(--space-3);
+}
+
+.scr-field dt {
+  flex: none;
+  min-width: 116px;
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+}
+
+.scr-field dd {
+  font-size: var(--t-xs);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.scr-group-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--t-xs);
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: var(--space-3);
+}
+
+.scr-caret {
+  color: var(--ink-3);
+  line-height: 1;
+}
+
+.scr-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: var(--space-4);
+}
+
+.scr-group li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 7px 10px;
+  border-radius: var(--r-sm);
+  background: var(--sage-50);
+  font-size: var(--t-xs);
+  color: var(--ink-2);
+}
+
+.scr-chevron {
+  color: var(--sage-500);
+  line-height: 1;
+}
+
+/* ---------- Formulário de boleto ---------- */
+
+.scr-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.scr-input {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.scr-label {
+  font-size: var(--t-micro);
+  color: var(--ink-3);
+}
+
+.scr-value {
+  font-size: var(--t-xs);
+  color: var(--ink);
+  padding: 9px 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+}
+
+.scr-pair {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.scr-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.scr-btn {
+  font-size: var(--t-xs);
+  font-weight: 500;
+  padding: 9px 16px;
+  border-radius: var(--r-sm);
+}
+
+.scr-btn.ghost {
+  border: 1px solid var(--line-strong);
+  color: var(--ink-2);
+}
+
+.scr-btn.solid {
+  background: var(--sage-800);
+  color: #ffffff;
+}
+
+@media (max-width: 420px) {
+  .scr-row {
+    grid-template-columns: 40px 1fr;
+  }
+
+  .scr-field dt {
+    min-width: 100%;
+  }
+}

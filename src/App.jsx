@@ -8,6 +8,7 @@ import Metrics from './components/Metrics.jsx';
 import Testimonials from './components/Testimonials.jsx';
 import Plans from './components/Plans.jsx';
 import FinalCta from './components/FinalCta.jsx';
+import Blog from './components/Blog.jsx';
 import Footer from './components/Footer.jsx';
 import usePrefersReducedMotion from './hooks/usePrefersReducedMotion.js';
 import { fadeUp, reveal } from './lib/motion.js';
@@ -46,6 +47,7 @@ export default function App() {
         <Testimonials />
         <Plans />
         <FinalCta />
+        <Blog />
       </main>
 
       <Footer />

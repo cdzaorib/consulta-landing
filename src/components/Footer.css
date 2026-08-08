@@ -3,45 +3,56 @@ footer {
   padding-block: var(--space-7) var(--space-6);
 }
 
-.foot-grid {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-  margin-bottom: var(--space-6);
-}
-
-.foot-brand p {
-  margin-top: var(--space-3);
-  font-size: var(--t-sm);
-  color: var(--ink-3);
-  max-width: 30ch;
-}
+/* ---------- Colunas de links ---------- */
 
 .foot-cols {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: var(--space-5) var(--space-6);
+  grid-template-columns: 1fr;
 }
 
-/* sem isto a coluna não encolhe abaixo do conteúdo e o e-mail, que é uma
-   palavra só, empurra a página para fora em telas estreitas */
 .foot-col {
   min-width: 0;
+  border-bottom: 1px solid var(--line);
 }
 
 .foot-col h4 {
   font-family: var(--font-sans);
-  font-size: var(--t-micro);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0;
+}
+
+.foot-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: var(--tap);
+  padding-block: var(--space-3);
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.chevron {
+  flex: none;
+  width: 18px;
+  height: 18px;
   color: var(--ink-3);
-  margin-bottom: var(--space-3);
-  font-weight: 500;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.chevron.is-open {
+  transform: rotate(180deg);
 }
 
 .foot-col ul {
   display: flex;
   flex-direction: column;
+  padding-bottom: var(--space-3);
 }
 
 .foot-col a {
@@ -57,13 +68,33 @@ footer {
   color: var(--ink);
 }
 
-/* Contatos: rótulo pequeno em cima, valor legível embaixo */
-.foot-col a.foot-contact {
+/* ---------- Marca e contatos ---------- */
+
+.foot-brand {
+  display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  gap: var(--space-5);
+  padding-block: var(--space-6);
+}
+
+.foot-tagline {
+  margin-top: var(--space-3);
+  font-size: var(--t-sm);
+  color: var(--ink-3);
+  max-width: 34ch;
+}
+
+.foot-contacts {
+  display: grid;
+  gap: var(--space-3) var(--space-6);
+}
+
+.foot-contact {
+  display: inline-flex;
+  flex-direction: column;
   gap: 1px;
-  padding-block: 4px;
+  min-height: var(--tap);
+  justify-content: center;
 }
 
 .foot-contact-label {
@@ -78,9 +109,11 @@ footer {
   transition: color var(--dur) var(--ease);
 }
 
-.foot-col a.foot-contact:hover .foot-contact-value {
+.foot-contact:hover .foot-contact-value {
   color: var(--ink);
 }
+
+/* ---------- Linha final ---------- */
 
 .foot-bottom {
   display: flex;
@@ -94,16 +127,51 @@ footer {
   gap: var(--space-3);
 }
 
+@media (min-width: 620px) {
+  .foot-contacts {
+    grid-template-columns: repeat(3, auto);
+    justify-content: start;
+  }
+}
+
 @media (min-width: 860px) {
-  .foot-grid {
-    flex-direction: row;
-    justify-content: space-between;
-    gap: var(--space-8);
+  .foot-cols {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-6);
+    padding-bottom: var(--space-7);
   }
 
-  .foot-cols {
-    grid-template-columns: repeat(4, minmax(140px, auto));
+  .foot-col {
+    border-bottom: none;
+  }
+
+  .foot-col h4 {
+    font-size: var(--t-micro);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-3);
+    font-weight: 500;
+    margin-bottom: var(--space-2);
+  }
+
+  .foot-col ul {
+    padding-bottom: 0;
+  }
+
+  .foot-col a {
+    min-height: 34px;
+  }
+
+  .foot-brand {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
     gap: var(--space-7);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--line);
+  }
+
+  .foot-contacts {
     flex: none;
   }
 }

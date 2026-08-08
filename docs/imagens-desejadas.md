@@ -111,7 +111,41 @@ texto ("Clínica geral", "Odontologia"...). Logos reais de clínicas clientes
 seriam prova social de verdade no lugar de uma lista genérica — e o site já
 tem esse carrossel pronto.
 
-## 6. URLs das redes sociais
+## 6. URLs de 13 links do rodapé
+
+**Onde:** rodapé de https://conclinica.com.br/ — basta abrir cada acordeão e
+copiar o endereço de cada link.
+
+**O que falta:** os rótulos e a estrutura das quatro colunas já estão
+corretos, mas 13 endereços não foram capturados. Eles estão marcados com
+`pending: true` em `src/content.js` e apontam para a home até serem
+preenchidos:
+
+| Coluna | Links pendentes |
+| --- | --- |
+| Soluções | Cobrança inteligente, Controle de estoque, Faturamento, Relatórios gerenciais |
+| Suporte | Quem somos, Termos de uso, Mapa do site, Mapa do blog |
+| Conteúdo | Materiais gratuitos, Casos de sucesso, CID 10, Vídeos |
+| Contato | Contato |
+
+Os outros nove já apontam para a página certa (agenda médica, controle
+financeiro, laudos e exames, prontuário eletrônico, planos, demonstração,
+blog, área do cliente e central de ajuda).
+
+## 7. Posts reais da seção "Fique por dentro"
+
+**Onde:** https://conclinica.com.br/blog/
+
+**O que pegar:** título, resumo, categoria, imagem de capa e URL dos três
+posts que o carrossel exibe.
+
+**Por que importa:** a seção já está na página. O primeiro card é o post real
+do carrossel (telemedicina), com o resumo e a categoria do site. Os outros
+dois têm título e URL reais colhidos do próprio site, mas **o resumo e a
+categoria deles foram escritos aqui** a partir do tema. As capas são um
+degradê da paleta, já que as fotos dos artigos não estão no repositório.
+
+## 8. URLs das redes sociais
 
 **Onde:** rodapé de https://conclinica.com.br/ — há ícones de Instagram,
 Facebook, YouTube e TikTok.
@@ -122,7 +156,7 @@ Facebook, YouTube e TikTok.
 telefone e e-mail comercial), mas ficou sem as redes porque eu não tinha as
 URLs e não faria sentido chutar o @ de cada perfil.
 
-## 7. Imagem de compartilhamento (Open Graph)
+## 9. Imagem de compartilhamento (Open Graph)
 
 **O que fazer:** gerar uma imagem 1200×630 com o logo oficial e a headline.
 

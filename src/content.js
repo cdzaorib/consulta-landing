@@ -340,37 +340,99 @@ export const FINAL_CTA = {
    Rodapé
    ------------------------------------------------------------------------- */
 
-/* As colunas seguem a arquitetura do rodapé oficial (Soluções, Conteúdo,
-   Suporte e Contato). */
+/* Colunas e rótulos são os do rodapé oficial, conferidos em screenshot com
+   cada acordeão aberto.
+
+   `pending: true` marca o link cujo endereço exato não foi capturado — ele
+   aponta para a home até alguém preencher. A lista completa está em
+   docs/imagens-desejadas.md. */
+
+const HOME = 'https://conclinica.com.br/';
 
 export const FOOTER_COLUMNS = [
   {
     title: 'Soluções',
     links: [
       { label: 'Agenda médica', href: 'https://conclinica.com.br/agenda-medica/' },
-      { label: 'Prontuário eletrônico', href: 'https://conclinica.com.br/software-medico-clinica/' },
-      { label: 'Laudos e exames', href: 'https://conclinica.com.br/laudos-e-exames/' },
+      { label: 'Cobrança inteligente', href: HOME, pending: true },
       { label: 'Controle financeiro', href: 'https://conclinica.com.br/gestao-clinicas/controle-financeiro/' },
-    ],
-  },
-  {
-    title: 'Conteúdo',
-    links: [
-      { label: 'Gestão de clínicas', href: 'https://conclinica.com.br/gestao-clinicas/' },
-      { label: 'Planos', href: 'https://conclinica.com.br/planos/' },
-      { label: 'Blog', href: 'https://conclinica.com.br/blog/' },
-      { label: 'Demonstração', href: 'https://conclinica.com.br/demonstracao-software-medico/' },
+      { label: 'Controle de estoque', href: HOME, pending: true },
+      { label: 'Laudos e exames', href: 'https://conclinica.com.br/laudos-e-exames/' },
+      { label: 'Faturamento', href: HOME, pending: true },
+      { label: 'Prontuário eletrônico', href: 'https://conclinica.com.br/software-medico-clinica/' },
+      { label: 'Relatórios gerenciais', href: HOME, pending: true },
     ],
   },
   {
     title: 'Suporte',
     links: [
-      { label: 'Central de ajuda', href: 'https://help.conclinica.com.br/pt-BR' },
+      { label: 'Planos', href: 'https://conclinica.com.br/planos/' },
+      { label: 'Quem somos', href: HOME, pending: true },
+      { label: 'Termos de uso', href: HOME, pending: true },
+      { label: 'Mapa do site', href: HOME, pending: true },
+      { label: 'Mapa do blog', href: HOME, pending: true },
+    ],
+  },
+  {
+    title: 'Conteúdo',
+    links: [
+      { label: 'Demonstração', href: 'https://conclinica.com.br/demonstracao-software-medico/' },
+      { label: 'Blog para médicos', href: 'https://conclinica.com.br/blog/' },
+      { label: 'Materiais gratuitos', href: HOME, pending: true },
+      { label: 'Casos de sucesso', href: HOME, pending: true },
+      { label: 'CID 10', href: HOME, pending: true },
+      { label: 'Vídeos', href: HOME, pending: true },
+    ],
+  },
+  {
+    title: 'Contato',
+    links: [
       { label: 'Área do cliente', href: 'https://app.conclinica.com.br/' },
-      { label: 'Teste grátis', href: 'https://conclinica.com.br/ativar-teste-gratuito/' },
+      { label: 'Contato', href: HOME, pending: true },
+      { label: 'Central de ajuda', href: 'https://help.conclinica.com.br/pt-BR' },
     ],
   },
 ];
+
+/* -------------------------------------------------------------------------
+   Fique por dentro
+   Cabeçalho, descrição e o primeiro post (título, resumo e categoria) são os
+   da seção "Fique por dentro" da home. Os outros dois posts têm título e URL
+   reais, colhidos do próprio site; os resumos e as categorias deles foram
+   escritos aqui a partir do tema — trocar pelos originais quando puder.
+   ------------------------------------------------------------------------- */
+
+export const BLOG = {
+  eyebrow: 'Conteúdo',
+  title: 'Fique por dentro',
+  lead:
+    'Conteúdos e materiais exclusivos sobre sistema de gestão para clínicas, atendimento de pacientes e muito mais.',
+  allLabel: 'Ver todos',
+  allHref: 'https://conclinica.com.br/blog/',
+  posts: [
+    {
+      tag: 'Gestão, marketing médico',
+      title: 'Plataforma de telemedicina: qual a melhor plataforma para consultas online?',
+      excerpt:
+        'Se você está procurando a melhor plataforma de telemedicina para a sua clínica ou consultório…',
+      href: 'https://conclinica.com.br/blog/',
+    },
+    {
+      tag: 'Agenda',
+      title: 'Agendamento online: como ele pode beneficiar a sua clínica',
+      excerpt:
+        'O paciente marca sozinho, fora do horário da recepção — e a agenda do dia continua cheia.',
+      href: 'https://conclinica.com.br/blog/agendamento-online/',
+    },
+    {
+      tag: 'Financeiro',
+      title: 'Fluxo de caixa em clínicas médicas: guia prático de gestão',
+      excerpt:
+        'Como acompanhar entradas, saídas e repasses sem depender de planilha no fim do mês.',
+      href: 'https://conclinica.com.br/fluxo-de-caixa-clinica-medica/',
+    },
+  ],
+};
 
 /* Contatos conferidos no rodapé do site. */
 

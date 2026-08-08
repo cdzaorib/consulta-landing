@@ -52,6 +52,13 @@ ul {
   list-style: none;
 }
 
+/* Qualquer `display` declarado depois vence o `display: none` que o
+   navegador aplica a [hidden]. Sem isto, um painel de acordeão marcado como
+   escondido continua na tela. */
+[hidden] {
+  display: none !important;
+}
+
 /* =========================================================================
    Tipografia
    ========================================================================= */

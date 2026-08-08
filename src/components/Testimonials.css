@@ -79,12 +79,11 @@
   border-top: 1px solid var(--line);
 }
 
-/* Monograma no lugar da foto.
-   As fotos dos clientes ainda não estão no repositório (ver
-   docs/imagens-desejadas.md). Em vez de um quadrado cinza com cara de
-   imagem quebrada, as iniciais viram um selo: degradê da paleta, anel
-   interno branco e letra em serifa. Quando as fotos chegarem, basta trocar
-   o conteúdo por um <img> e manter as mesmas medidas. */
+/* Avatar: recebe a foto do cliente quando ela existe e cai para um
+   monograma quando não existe. Hoje só o Leonardo Daumas tem foto — as
+   outras duas ainda não foram capturadas (ver docs/imagens-desejadas.md).
+   O monograma é um selo, não um quadrado cinza: degradê da paleta, anel
+   interno branco e letra em serifa. */
 .testi .avatar {
   width: 42px;
   height: 42px;
@@ -108,6 +107,18 @@
 .testi .avatar svg {
   width: 18px;
   height: 18px;
+}
+
+.testi .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Com foto o anel interno some atrás da imagem — o contorno vira externo. */
+.testi .avatar:has(img) {
+  background: var(--sage-100);
+  box-shadow: 0 0 0 1px var(--sage-300);
 }
 
 .testi .name,

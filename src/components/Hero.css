@@ -69,15 +69,54 @@
 }
 
 .hero-visual {
+  position: relative;
   /* No mobile o card não pode encostar nas bordas do wrap */
   max-width: 520px;
   width: 100%;
   justify-self: center;
 }
 
+/* Foto do médico: entra só quando há largura para ela conviver com o card.
+   Abaixo disso o card sozinho comunica melhor e o mobile fica mais leve. */
+.hero-photo {
+  display: none;
+}
+
 @media (min-width: 940px) {
   .hero-visual {
     justify-self: end;
     max-width: none;
+    /* espaço à direita para a foto, que fica parcialmente atrás do card */
+    padding-right: 128px;
+  }
+
+  .hero-photo {
+    display: block;
+    position: absolute;
+    right: -52px;
+    bottom: 0;
+    width: 330px;
+    height: auto;
+    z-index: 0;
+    /* recorta as telas flutuantes da imagem original, que ficariam
+       escondidas atrás do card — sobra só a pessoa */
+    object-fit: cover;
+    object-position: right bottom;
+    aspect-ratio: 0.72;
+    /* a sombra segue o contorno da pessoa, não uma caixa */
+    filter: drop-shadow(0 18px 34px rgba(13, 24, 17, 0.14));
+    pointer-events: none;
+  }
+
+  .hero-visual .agenda-card {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@media (min-width: 1140px) {
+  .hero-photo {
+    width: 366px;
+    right: -68px;
   }
 }

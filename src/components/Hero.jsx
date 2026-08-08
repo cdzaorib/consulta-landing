@@ -78,6 +78,17 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: DUR.entrance, delay: 0.2, ease: EASE_OUT }}
         >
+          {/* Foto oficial do site, recortada sobre fundo transparente.
+              Fica atrás do card, que continua sendo o objeto principal. */}
+          <img
+            className="hero-photo"
+            src="/images/hero-medico.webp"
+            alt=""
+            width="760"
+            height="613"
+            decoding="async"
+            fetchPriority="high"
+          />
           <AgendaWidget />
         </motion.div>
       </div>

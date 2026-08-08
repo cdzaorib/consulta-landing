@@ -1,34 +1,74 @@
-.specialties {
+.clients {
   padding-block: var(--space-6);
   border-top: 1px solid var(--line);
 }
 
-.specialties .wrap {
+.clients .wrap {
   display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
   align-items: center;
-  gap: var(--space-3) var(--space-6);
-  flex-wrap: wrap;
+  text-align: center;
 }
 
-.specialties .label {
+.clients .label {
   font-size: var(--t-micro);
   color: var(--ink-3);
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  flex: none;
 }
 
-.specialties .items {
+.client-logos {
   display: flex;
-  gap: var(--space-3) var(--space-5);
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
+  gap: var(--space-5) clamp(28px, 5vw, 56px);
 }
 
-.specialties .items li {
-  font-family: var(--font-serif);
-  font-size: 1.0625rem;
-  font-variation-settings: 'SOFT' 30, 'WONK' 1;
-  color: var(--ink-2);
-  white-space: nowrap;
+/* Os quatro logos têm cores e proporções muito diferentes entre si.
+   Uma dessaturação leve os junta numa faixa só, sem apagar a marca de
+   ninguém; no hover cada um volta à cor cheia. */
+.client-logos img {
+  height: auto;
+  max-height: 38px;
+  width: auto;
+  max-width: 148px;
+  object-fit: contain;
+  filter: grayscale(0.55);
+  opacity: 0.78;
+  transition:
+    filter var(--dur) var(--ease),
+    opacity var(--dur) var(--ease);
+}
+
+.client-logos li:hover img {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+/* MedNil e Itacibá têm assinatura embaixo do símbolo e ficam ilegíveis
+   na mesma altura dos outros. */
+.client-logos li:first-child img,
+.client-logos li:nth-child(3) img {
+  max-height: 48px;
+}
+
+@media (min-width: 720px) {
+  .clients .wrap {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    gap: var(--space-6);
+  }
+
+  .clients .label {
+    flex: none;
+    max-width: 28ch;
+    line-height: 1.6;
+  }
+
+  .client-logos {
+    justify-content: flex-end;
+  }
 }

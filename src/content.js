@@ -83,17 +83,20 @@ export const SHIFTS = [
 ];
 
 /* -------------------------------------------------------------------------
-   Especialidades
+   Prova social
+   Logos extraídos do carrossel "Clínicas e consultórios que confiam em
+   nossos serviços" da home. O título é o do próprio site.
    ------------------------------------------------------------------------- */
 
-export const SPECIALTIES = [
-  'Clínica geral',
-  'Odontologia',
-  'Fisioterapia',
-  'Psicologia',
-  'Dermatologia',
-  'Nutrição',
-];
+export const CLIENTS = {
+  title: 'Clínicas e consultórios que confiam em nossos serviços',
+  logos: [
+    { name: 'MedNil — Centro de Especialidades Integradas de Nilópolis', src: '/images/clientes/mednil.webp', w: 440, h: 203 },
+    { name: 'NitMed Centro Médico', src: '/images/clientes/nitmed.webp', w: 384, h: 96 },
+    { name: 'Clínica Médica Itacibá', src: '/images/clientes/itaciba.webp', w: 276, h: 160 },
+    { name: 'Clínica Icaraí', src: '/images/clientes/icarai.webp', w: 220, h: 85 },
+  ],
+};
 
 /* -------------------------------------------------------------------------
    Um dia na clínica
@@ -188,9 +191,13 @@ export const DAY_BLOCKS = [
 
 /* -------------------------------------------------------------------------
    Números
-   Fonte: faixa de estatísticas da home da Conclínica (conferida em
-   screenshot do site): 12M+ marcações agendadas, 3M+ pacientes atendidos,
-   10K+ médicos cadastrados e 500+ clientes ativos.
+   Fonte: faixa de estatísticas da home, lida num screenshot do site em que
+   os contadores já haviam terminado de animar: 12M+ marcações agendadas,
+   3M+ pacientes atendidos, 10K+ médicos cadastrados e 500+ clientes ativos.
+
+   ATENÇÃO: no PDF de referência esses mesmos contadores aparecem como
+   "0M+ / 0K+ / 0+", porque a captura pegou o estado inicial da animação.
+   Os zeros do PDF não são os valores reais — não substituir por eles.
 
    As demais promessas (até 40% menos faltas, agenda aberta 24h) ficam nos
    chips da seção "antes x depois", onde têm mais contexto.
@@ -223,6 +230,7 @@ export const TESTIMONIALS = [
   {
     quote:
       'O Conclínica deu mais agilidade e controle nas marcações, atendimento e nas descrições clínicas, abolindo as fichas e papéis, facilitando o trabalho do médico e das secretárias.',
+    photo: '/images/depoimentos/leonardo-daumas.jpg',
     initials: 'LD',
     name: 'Leonardo Daumas',
     role: 'Pediatra, endocrino e pneumologista',
@@ -356,11 +364,11 @@ export const FOOTER_COLUMNS = [
       { label: 'Agenda médica', href: 'https://conclinica.com.br/agenda-medica/' },
       { label: 'Cobrança inteligente', href: HOME, pending: true },
       { label: 'Controle financeiro', href: 'https://conclinica.com.br/gestao-clinicas/controle-financeiro/' },
-      { label: 'Controle de estoque', href: HOME, pending: true },
+      { label: 'Controle de estoque', href: 'https://conclinica.com.br/estoque/' },
       { label: 'Laudos e exames', href: 'https://conclinica.com.br/laudos-e-exames/' },
       { label: 'Faturamento', href: HOME, pending: true },
       { label: 'Prontuário eletrônico', href: 'https://conclinica.com.br/software-medico-clinica/' },
-      { label: 'Relatórios gerenciais', href: HOME, pending: true },
+      { label: 'Relatórios gerenciais', href: 'https://conclinica.com.br/relatorios-gerenciais/' },
     ],
   },
   {
@@ -414,17 +422,18 @@ export const BLOG = {
       tag: 'Gestão, marketing médico',
       title: 'Plataforma de telemedicina: qual a melhor plataforma para consultas online?',
       excerpt:
-        'Se você está procurando a melhor plataforma de telemedicina para a sua clínica ou consultório…',
-      href: 'https://conclinica.com.br/blog/',
+        'Se você está procurando a melhor plataforma de telemedicina para a sua clínica ou…',
+      href: 'https://conclinica.com.br/plataforma-de-telemedicina-qual-a-melhor-plataforma-para-consultas-online/',
     },
     {
-      tag: 'Agenda',
-      title: 'Agendamento online: como ele pode beneficiar a sua clínica',
+      tag: 'Marketing médico',
+      title: 'Como organizar campanhas preventivas sem aumentar a carga operacional',
       excerpt:
-        'O paciente marca sozinho, fora do horário da recepção — e a agenda do dia continua cheia.',
-      href: 'https://conclinica.com.br/blog/agendamento-online/',
+        'Organizar campanhas preventivas faz parte da estratégia de muitas clínicas que desejam fortalecer o…',
+      href: 'https://conclinica.com.br/campanhas-preventivas-em-clinicas/',
     },
     {
+      // título e URL são reais; o resumo e a categoria foram escritos aqui
       tag: 'Financeiro',
       title: 'Fluxo de caixa em clínicas médicas: guia prático de gestão',
       excerpt:
@@ -434,7 +443,14 @@ export const BLOG = {
   ],
 };
 
-/* Contatos conferidos no rodapé do site. */
+/* Redes sociais e contatos, conferidos no rodapé do site. */
+
+export const SOCIAL = [
+  { name: 'Instagram', href: 'https://www.instagram.com/conclinica/', icon: 'instagram' },
+  { name: 'Facebook', href: 'https://www.facebook.com/conclinica/', icon: 'facebook' },
+  { name: 'YouTube', href: 'https://www.youtube.com/channel/UCNVNLStDqTT_OUBNM7fCfGw', icon: 'youtube' },
+  { name: 'TikTok', href: 'https://www.tiktok.com/@conclinica', icon: 'tiktok' },
+];
 
 export const CONTACT = {
   title: 'Contato',

@@ -1,14 +1,23 @@
-import { SPECIALTIES } from '../content.js';
+import { CLIENTS } from '../content.js';
 import './LogosStrip.css';
 
 export default function LogosStrip() {
   return (
-    <div className="specialties">
+    <div className="clients">
       <div className="wrap">
-        <p className="label mono">Feito para clínicas e consultórios de</p>
-        <ul className="items">
-          {SPECIALTIES.map((item) => (
-            <li key={item}>{item}</li>
+        <p className="label mono">{CLIENTS.title}</p>
+        <ul className="client-logos">
+          {CLIENTS.logos.map((logo) => (
+            <li key={logo.name}>
+              <img
+                src={logo.src}
+                alt={logo.name}
+                width={logo.w}
+                height={logo.h}
+                loading="lazy"
+                decoding="async"
+              />
+            </li>
           ))}
         </ul>
       </div>

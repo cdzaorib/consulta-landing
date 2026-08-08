@@ -47,16 +47,27 @@ export default function Testimonials() {
 
               <figcaption className="who">
                 <span className="avatar" aria-hidden="true">
-                  {testi.initials ?? (
-                    <svg viewBox="0 0 20 20" fill="none">
-                      <path
-                        d="M3 17V8.2l4.5-3 4.5 3V17M12 17v-5.4l3-2 2 1.4V17M3 17h14"
-                        stroke="currentColor"
-                        strokeWidth="1.4"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                  {testi.photo ? (
+                    <img
+                      src={testi.photo}
+                      alt=""
+                      width="42"
+                      height="42"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    testi.initials ?? (
+                      <svg viewBox="0 0 20 20" fill="none">
+                        <path
+                          d="M3 17V8.2l4.5-3 4.5 3V17M12 17v-5.4l3-2 2 1.4V17M3 17h14"
+                          stroke="currentColor"
+                          strokeWidth="1.4"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    )
                   )}
                 </span>
                 <span>

@@ -32,8 +32,8 @@ export default function App() {
               <p className="eyebrow">Como funciona</p>
               <h2>Um sistema, o dia inteiro da clínica</h2>
               <p>
-                Em vez de módulos soltos, o Conclínica acompanha o fluxo real de um dia de
-                atendimento — da chegada do primeiro paciente ao fechamento do caixa.
+                O Conclínica acompanha o fluxo de um dia inteiro de atendimento, da
+                chegada do primeiro paciente ao fechamento do caixa.
               </p>
             </motion.div>
 

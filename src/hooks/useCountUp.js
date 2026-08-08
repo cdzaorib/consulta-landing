@@ -1,34 +1,68 @@
 import { useEffect, useRef, useState } from 'react';
 
-function easeOutCubic(t) {
-  return 1 - Math.pow(1 - t, 3);
+/**
+ * Desaceleração forte no fim: o número dispara, perde velocidade e "assenta"
+ * no valor final, em vez de subir em ritmo constante e parar de repente.
+ */
+function easeOutQuart(t) {
+  return 1 - Math.pow(1 - t, 4);
 }
 
-export default function useCountUp(target, { isInView, duration = 1200, reduceMotion = false } = {}) {
-  const [value, setValue] = useState(0);
+/**
+ * Conta de 0 até `target` quando o elemento entra na tela.
+ *
+ * - `delay` escalona o início entre cards vizinhos, para que não contem todos
+ *   no mesmo instante.
+ * - Com `reduceMotion` o valor final aparece direto. A checagem vem antes da
+ *   de `isInView` de propósito: sem isso, quem tem a preferência ligada veria
+ *   zero até rolar até a seção.
+ * - Quem chama passa `isInView` de um `useInView({ once: true })`, então a
+ *   contagem acontece uma vez só e não se repete a cada scroll.
+ */
+export default function useCountUp(
+  target,
+  { isInView, duration = 1500, delay = 0, reduceMotion = false } = {}
+) {
+  const [value, setValue] = useState(reduceMotion ? target : 0);
   const rafRef = useRef(null);
+  const timerRef = useRef(null);
 
   useEffect(() => {
-    if (!isInView) return undefined;
-
     if (reduceMotion) {
       setValue(target);
       return undefined;
     }
 
-    const start = performance.now();
+    if (!isInView) return undefined;
 
-    function tick(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      setValue(target * easeOutCubic(progress));
-      if (progress < 1) {
-        rafRef.current = requestAnimationFrame(tick);
+    function start() {
+      const t0 = performance.now();
+
+      function tick(now) {
+        const progress = Math.min((now - t0) / duration, 1);
+        if (progress < 1) {
+          setValue(target * easeOutQuart(progress));
+          rafRef.current = requestAnimationFrame(tick);
+        } else {
+          // fecha no valor exato, sem depender do arredondamento
+          setValue(target);
+        }
       }
+
+      rafRef.current = requestAnimationFrame(tick);
     }
 
-    rafRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [isInView, target, duration, reduceMotion]);
+    if (delay > 0) {
+      timerRef.current = setTimeout(start, delay);
+    } else {
+      start();
+    }
+
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+      clearTimeout(timerRef.current);
+    };
+  }, [isInView, target, duration, delay, reduceMotion]);
 
   return value;
 }

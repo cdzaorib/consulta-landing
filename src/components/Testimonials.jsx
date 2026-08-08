@@ -14,8 +14,8 @@ export default function Testimonials() {
           <p className="eyebrow">Quem usa</p>
           <h2>Clínica pequena não tem margem para retrabalho</h2>
           <p>
-            Consultórios de um profissional e clínicas com poucas salas — o mesmo sistema,
-            sem precisar de um time de TI para manter de pé.
+            Consultórios de um profissional e clínicas com poucas salas usam o mesmo
+            sistema, sem precisar de um time de TI para manter de pé.
           </p>
         </motion.div>
 

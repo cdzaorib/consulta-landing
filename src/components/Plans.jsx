@@ -89,7 +89,7 @@ export default function Plans() {
         </motion.div>
 
         <p className="plans-note">
-          O valor é por profissional de saúde — um consultório de uma pessoa paga por uma.
+          O valor é por profissional de saúde: um consultório de uma pessoa paga por uma.
           Condições completas na <a href={SITE.plansUrl}>página de planos</a>.
         </p>
       </div>

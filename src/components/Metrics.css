@@ -46,6 +46,15 @@
   flex-wrap: wrap;
 }
 
+/* Caixa de largura fixa para o número: com figuras tabulares, 1ch é a
+   largura de um dígito, então `min-width: Nch` reserva o espaço do valor
+   final desde o começo e o sufixo ao lado nunca se mexe. */
+.metric .value {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
 .metric .prefix {
   font-family: var(--font-sans);
   font-size: 0.95rem;

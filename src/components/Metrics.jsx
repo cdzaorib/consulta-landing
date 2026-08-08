@@ -6,15 +6,25 @@ import { DUR, EASE_OUT } from '../lib/motion.js';
 import { METRICS } from '../content.js';
 import './Metrics.css';
 
+/** Escalonamento entre um card e o seguinte, em ms. */
+const COUNT_STAGGER = 130;
+
 function MetricItem({ prefix, target, suffix, staticValue, caption, index }) {
   const ref = useRef(null);
+  // once: true — conta uma vez ao entrar na tela e não repete no scroll
   const isInView = useInView(ref, { once: true, amount: 0.4 });
   const reduceMotion = usePrefersReducedMotion();
 
   const value = useCountUp(target ?? 0, {
     isInView: isInView && target !== undefined,
+    delay: index * COUNT_STAGGER,
     reduceMotion,
   });
+
+  /* O sufixo ("M+", "K+") fica parado enquanto o número cresce: a caixa do
+     número já nasce com a largura do valor final, medida em `ch` sobre
+     figuras tabulares. Sem isso o sufixo escorregaria a cada dígito novo. */
+  const digits = target === undefined ? 0 : String(Math.round(target)).length;
 
   return (
     <motion.li
@@ -26,7 +36,9 @@ function MetricItem({ prefix, target, suffix, staticValue, caption, index }) {
     >
       <p className="num">
         {prefix && <span className="prefix">{prefix}</span>}
-        {staticValue ?? Math.round(value)}
+        <span className="value" style={digits ? { minWidth: `${digits}ch` } : undefined}>
+          {staticValue ?? Math.round(value)}
+        </span>
         {suffix && <span className="suffix">{suffix}</span>}
       </p>
       <p className="cap">{caption}</p>

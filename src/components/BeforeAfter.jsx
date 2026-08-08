@@ -14,7 +14,7 @@ export default function BeforeAfter() {
           <p className="eyebrow">Antes × depois</p>
           <h2>O que muda numa clínica pequena logo na primeira semana</h2>
           <p>
-            Menos papel, menos horário vazio, menos domingo fechando planilha — e o dinheiro
+            Menos papel, menos horário vazio, menos domingo fechando planilha. E o dinheiro
             da clínica visível sem precisar somar recibo.
           </p>
         </motion.div>

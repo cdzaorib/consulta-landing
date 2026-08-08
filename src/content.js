@@ -61,7 +61,7 @@ export const SHIFTS = [
     theme: 'Faltas',
     before: 'O paciente esquece a consulta, ninguém avisa, e o horário vazio vira prejuízo do dia.',
     after:
-      'Confirmação automática por WhatsApp, SMS ou e-mail — e fila de espera para encaixar quem estava aguardando.',
+      'Confirmação automática por WhatsApp, SMS ou e-mail, com fila de espera para encaixar quem estava aguardando.',
     chip: 'até 40% menos faltas',
   },
   {
@@ -115,7 +115,7 @@ export const DAY_BLOCKS = [
     label: 'Abertura',
     title: 'O paciente chega e o sistema já sabe quem é',
     description:
-      'A recepção confirma as consultas do dia automaticamente, remaneja quem cancelou usando a fila de espera e mantém a agenda cheia — sem ficha de papel e sem planilha de horários.',
+      'A recepção confirma as consultas do dia automaticamente, remaneja quem cancelou usando a fila de espera e mantém a agenda cheia, sem ficha de papel e sem planilha de horários.',
     features: [
       { name: 'Agenda online', sub: 'Confirmação automática por WhatsApp, SMS ou e-mail' },
       { name: 'Fila de espera', sub: 'Encaixe rápido quando alguém cancela' },
@@ -140,7 +140,7 @@ export const DAY_BLOCKS = [
     label: 'Consulta',
     title: 'O prontuário se escreve enquanto o profissional atende',
     description:
-      'O prontuário com IA transcreve a conversa da consulta e organiza um registro fiel ao atendimento. O profissional olha para o paciente, não para o teclado.',
+      'O prontuário com IA transcreve a conversa da consulta e organiza um registro fiel ao atendimento. A digitação sai do meio da consulta.',
     features: [
       { name: 'Assistente IA', sub: 'Anotações completas em segundos, sem digitar' },
       { name: 'Prontuário configurável', sub: 'Anamnese, prescrição e pedidos do seu jeito' },
@@ -241,7 +241,7 @@ export const TESTIMONIALS = [
       'O Conclínica me ajudou muito ao permitir uma integração completa das minhas 5 clínicas. Posso cuidar da gestão de todas remotamente, com muita facilidade e transparência.',
     initials: 'PB',
     name: 'Dr. Pedro Baches',
-    role: 'Ortopedia e traumatologia — 5 unidades',
+    role: 'Ortopedia e traumatologia · 5 unidades',
     rating: 5,
   },
 ];

@@ -369,6 +369,8 @@ section {
    Eyebrow (rótulo acima dos títulos)
    ========================================================================= */
 
+/* Sem traço decorativo antes do texto: a mono em caixa alta, com
+   entreletra aberta e na cor de acento, já se separa do título sozinha. */
 .eyebrow {
   font-family: var(--font-mono);
   font-size: var(--t-micro);
@@ -376,19 +378,8 @@ section {
   color: var(--accent-deep);
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
+  display: block;
   margin-bottom: var(--space-4);
-}
-
-.eyebrow::before {
-  content: '';
-  width: 18px;
-  height: 1px;
-  flex: none;
-  background: currentColor;
-  opacity: 0.5;
 }
 
 .eyebrow.on-dark {
@@ -407,10 +398,6 @@ section {
 .section-head.center {
   text-align: center;
   margin-inline: auto;
-}
-
-.section-head.center .eyebrow::before {
-  display: none;
 }
 
 /* Ritmo vertical do cabeçalho de seção, repetido em todas elas:

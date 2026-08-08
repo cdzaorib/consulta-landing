@@ -26,7 +26,7 @@ export default function BeforeAfter() {
 
         <motion.ol
           className="shift-list"
-          variants={stagger(0.1)}
+          variants={stagger()}
           initial={reduceMotion ? false : 'hidden'}
           whileInView="visible"
           viewport={VIEWPORT_SOFT}

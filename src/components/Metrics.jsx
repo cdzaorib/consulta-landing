@@ -2,12 +2,16 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import useCountUp from '../hooks/useCountUp.js';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
-import { DUR, EASE_OUT } from '../lib/motion.js';
+import { DUR, EASE_OUT, STAGGER } from '../lib/motion.js';
 import { METRICS } from '../content.js';
 import './Metrics.css';
 
-/** Escalonamento entre um card e o seguinte, em ms. */
-const COUNT_STAGGER = 130;
+/**
+ * Escalonamento entre o início de uma contagem e a seguinte, em ms.
+ * Fica acima do stagger de entrada porque a contagem dura bem mais: se os
+ * quatro começassem juntos, a faixa viraria um borrão de dígitos.
+ */
+const COUNT_STAGGER = 90;
 
 function MetricItem({ prefix, target, suffix, staticValue, caption, index }) {
   const ref = useRef(null);
@@ -17,6 +21,7 @@ function MetricItem({ prefix, target, suffix, staticValue, caption, index }) {
 
   const value = useCountUp(target ?? 0, {
     isInView: isInView && target !== undefined,
+    duration: DUR.count * 1000,
     delay: index * COUNT_STAGGER,
     reduceMotion,
   });
@@ -32,7 +37,7 @@ function MetricItem({ prefix, target, suffix, staticValue, caption, index }) {
       ref={ref}
       initial={reduceMotion ? false : { opacity: 0, y: 16 }}
       animate={isInView || reduceMotion ? { opacity: 1, y: 0 } : undefined}
-      transition={{ duration: DUR.base, delay: index * 0.08, ease: EASE_OUT }}
+      transition={{ duration: DUR.base, delay: index * STAGGER, ease: EASE_OUT }}
     >
       <p className="num">
         {prefix && <span className="prefix">{prefix}</span>}

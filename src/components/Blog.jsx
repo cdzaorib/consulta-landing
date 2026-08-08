@@ -27,7 +27,7 @@ export default function Blog() {
 
         <motion.ul
           className="blog-grid"
-          variants={stagger(0.09)}
+          variants={stagger()}
           initial={reduceMotion ? false : 'hidden'}
           whileInView="visible"
           viewport={VIEWPORT_SOFT}

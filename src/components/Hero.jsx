@@ -20,7 +20,7 @@ export default function Hero() {
       <div className="wrap hero-grid">
         <motion.div
           className="hero-copy"
-          variants={stagger(0.1, 0.05)}
+          variants={stagger(undefined, 0.05)}
           initial={reduceMotion ? false : 'hidden'}
           animate="visible"
         >

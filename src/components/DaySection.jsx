@@ -21,7 +21,7 @@ export default function DaySection({ hour, label, title, description, features, 
         <div className="day-split">
           <motion.ul
             className="feature-row"
-            variants={stagger(0.07, 0.1)}
+            variants={stagger(undefined, 0.1)}
             initial={reduceMotion ? false : 'hidden'}
             whileInView="visible"
             viewport={VIEWPORT}

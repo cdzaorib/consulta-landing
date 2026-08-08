@@ -3,6 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 /**
  * Desaceleração forte no fim: o número dispara, perde velocidade e "assenta"
  * no valor final, em vez de subir em ritmo constante e parar de repente.
+ *
+ * A referência de motion sugere curvas de mola para dar naturalidade, mas
+ * mola passa do alvo e volta — num contador isso mostraria "512" antes de
+ * fechar em 500. Para número, ease-out polinomial é o certo.
  */
 function easeOutQuart(t) {
   return 1 - Math.pow(1 - t, 4);
@@ -21,7 +25,7 @@ function easeOutQuart(t) {
  */
 export default function useCountUp(
   target,
-  { isInView, duration = 1500, delay = 0, reduceMotion = false } = {}
+  { isInView, duration = 1100, delay = 0, reduceMotion = false } = {}
 ) {
   const [value, setValue] = useState(reduceMotion ? target : 0);
   const rafRef = useRef(null);

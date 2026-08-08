@@ -20,9 +20,20 @@ export const DUR = {
   micro: 0.24,
   /** revelação padrão de qualquer bloco ou card */
   base: 0.5,
-  /** entrada do hero — única coisa que pode respirar mais */
+  /** entrada do hero, única coisa que pode respirar mais */
   entrance: 0.62,
+  /** contagem das métricas: é leitura de dado, não transição de UI */
+  count: 1.1,
 };
+
+/**
+ * Atraso entre itens vizinhos de uma grade.
+ *
+ * A referência de motion do design system pede 30–50ms por item e avisa que
+ * acima de 100ms a revelação inteira começa a arrastar. As seções usavam de
+ * 70 a 120ms, cada uma com o seu valor.
+ */
+export const STAGGER = 0.045;
 
 /** Viewport padrão: revela uma vez só — reanimar a cada scroll cansa. */
 export const VIEWPORT = { once: true, amount: 0.25 };
@@ -53,7 +64,7 @@ export const fadeIn = {
 };
 
 /** Container que escalona os filhos. */
-export function stagger(children = 0.08, delay = 0.04) {
+export function stagger(children = STAGGER, delay = 0.04) {
   return {
     hidden: {},
     visible: { transition: { staggerChildren: children, delayChildren: delay } },

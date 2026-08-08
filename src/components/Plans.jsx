@@ -21,7 +21,7 @@ export default function Plans() {
 
         <motion.ul
           className="plans-grid"
-          variants={stagger(0.1)}
+          variants={stagger()}
           initial={reduceMotion ? false : 'hidden'}
           whileInView="visible"
           viewport={VIEWPORT_SOFT}

@@ -12,7 +12,7 @@ export default function FinalCta() {
       <div className="wrap">
         <motion.div
           className="final-cta surface-dark"
-          variants={stagger(0.1)}
+          variants={stagger()}
           initial={reduceMotion ? false : 'hidden'}
           whileInView="visible"
           viewport={VIEWPORT_SOFT}

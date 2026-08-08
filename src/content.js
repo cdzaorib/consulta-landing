@@ -112,7 +112,7 @@ export const DAY_BLOCKS = [
       { name: 'Agenda online', sub: 'Confirmação automática por WhatsApp, SMS ou e-mail' },
       { name: 'Fila de espera', sub: 'Encaixe rápido quando alguém cancela' },
       { name: 'Bloqueio de horários', sub: 'Evita sobreposição e marcação indesejada' },
-      { name: 'Telemedicina', sub: 'Link do Google Meet gerado e enviado ao paciente' },
+      { name: 'Telemedicina', sub: 'Videochamada de onde estiver, com assinatura digital' },
     ],
   },
   {
@@ -163,12 +163,9 @@ export const METRICS = [
 /* -------------------------------------------------------------------------
    Depoimentos
 
-   O primeiro está conferido contra o carrossel de depoimentos da home:
-   citação, nome, especialidade e as cinco estrelas são os do site.
-
-   O segundo tem a citação real, mas o autor NÃO pôde ser conferido — o
-   carrossel tem três slides e só o primeiro foi capturado. Por isso vai sem
-   nome, atribuído apenas ao perfil. Ver docs/imagens-desejadas.md.
+   Os dois estão conferidos contra o carrossel "O que os gestores e médicos
+   dizem sobre nosso sistema" da home: citação integral, nome, especialidade
+   e as cinco estrelas são os do site.
    ------------------------------------------------------------------------- */
 
 export const TESTIMONIALS = [
@@ -182,10 +179,10 @@ export const TESTIMONIALS = [
   },
   {
     quote:
-      'O Conclínica me ajudou muito ao permitir uma integração completa das minhas 5 clínicas.',
-    // sem `initials`: o autor não foi conferido, então não inventamos uma pessoa
-    name: 'Gestor de rede',
-    role: 'Clínica geral — 5 unidades',
+      'O Conclínica me ajudou muito ao permitir uma integração completa das minhas 5 clínicas. Posso cuidar da gestão de todas remotamente, com muita facilidade e transparência.',
+    initials: 'PB',
+    name: 'Dr. Pedro Baches',
+    role: 'Ortopedia e traumatologia — 5 unidades',
     rating: 5,
   },
 ];
@@ -243,8 +240,8 @@ export const PLANS = [
     features: [
       'Tudo do plano Gestão',
       'Financeiro completo, repasses e glosas',
-      'Controle de estoque de materiais',
-      'Campanhas de e-mail e SMS marketing',
+      'Emissão de NFSe integrada com a prefeitura',
+      'Controle de estoque e campanhas de marketing',
     ],
     cta: 'Começar teste grátis',
     variant: 'ghost',
@@ -275,6 +272,9 @@ export const FINAL_CTA = {
    Rodapé
    ------------------------------------------------------------------------- */
 
+/* As colunas seguem a arquitetura do rodapé oficial (Soluções, Conteúdo,
+   Suporte e Contato). */
+
 export const FOOTER_COLUMNS = [
   {
     title: 'Soluções',
@@ -286,7 +286,7 @@ export const FOOTER_COLUMNS = [
     ],
   },
   {
-    title: 'Empresa',
+    title: 'Conteúdo',
     links: [
       { label: 'Gestão de clínicas', href: 'https://conclinica.com.br/gestao-clinicas/' },
       { label: 'Planos', href: 'https://conclinica.com.br/planos/' },
@@ -303,3 +303,26 @@ export const FOOTER_COLUMNS = [
     ],
   },
 ];
+
+/* Contatos conferidos no rodapé do site. */
+
+export const CONTACT = {
+  title: 'Contato',
+  items: [
+    {
+      label: 'WhatsApp',
+      value: '(21) 98578-0169',
+      href: 'https://wa.me/5521985780169',
+    },
+    {
+      label: 'Telefone',
+      value: '(21) 2292-8539',
+      href: 'tel:+552122928539',
+    },
+    {
+      label: 'E-mail',
+      value: 'comercial@conclinica.com.br',
+      href: 'mailto:comercial@conclinica.com.br',
+    },
+  ],
+};

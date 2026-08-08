@@ -68,28 +68,25 @@ captura por bloco transforma a seção em demonstração.
 Vale também a tela de laudos, se a seção crescer:
 https://conclinica.com.br/laudos-e-exames/
 
-## 4. Slides 2 e 3 do carrossel de depoimentos — e as fotos
+## 4. Fotos dos clientes dos depoimentos
 
 **Onde:** seção "O que os gestores e médicos dizem sobre nosso sistema" da
 home, https://conclinica.com.br/
 
-**O que pegar:** um screenshot dos slides 2 e 3 (o carrossel tem três
-bolinhas) e a foto de cada pessoa citada.
+**O que pegar:** a foto de rosto de **Rafael Gualberto** e de
+**Dr. Pedro Baches**.
 
-**Por que importa:** o slide 1 está conferido e corrigido na página —
-**Rafael Gualberto, ortopedia e traumatologia**, com as cinco estrelas. A
-versão anterior deste projeto atribuía essa mesma citação a uma "Dra. Marina
-Costa", que não existe no site; já foi removida.
+**Por que importa:** os dois depoimentos já estão conferidos e com a citação
+integral — só os avatares seguem como iniciais em círculo (`RG`, `PB`). Foto
+real aumenta bastante a credibilidade da seção.
 
-Ainda falta resolver o segundo depoimento: a citação sobre integrar cinco
-clínicas é real, mas **o autor não foi conferido** (está nos slides 2 ou 3,
-que não foram capturados). Por isso ela aparece sem nome, atribuída apenas a
-"Gestor de rede — clínica geral, 5 unidades", com um avatar genérico em vez
-de iniciais inventadas. Com o slide certo em mãos é uma linha em
-`src/content.js`.
+Vale também capturar o slide 2 do carrossel (são três), que ainda não
+apareceu, caso queira um terceiro depoimento.
 
-As fotos de rosto substituiriam os avatares de iniciais e aumentariam bastante
-a credibilidade da seção.
+**Histórico:** a versão anterior deste projeto atribuía a citação do Rafael
+Gualberto a uma "Dra. Marina Costa", que não existe no site — já foi
+corrigido. O "Dr. Pedro Baches", que eu havia removido por não conseguir
+conferir, é real: está no slide 3, em ortopedia e traumatologia.
 
 ## 5. Logos de clínicas clientes
 
@@ -101,7 +98,18 @@ a credibilidade da seção.
 geral", "Odontologia"...). Logos reais de clínicas clientes seriam prova
 social de verdade no lugar de uma lista genérica.
 
-## 6. Imagem de compartilhamento (Open Graph)
+## 6. URLs das redes sociais
+
+**Onde:** rodapé de https://conclinica.com.br/ — há ícones de Instagram,
+Facebook, YouTube e TikTok.
+
+**O que pegar:** o link de cada perfil.
+
+**Por que importa:** o rodapé da página já traz os contatos reais (WhatsApp,
+telefone e e-mail comercial), mas ficou sem as redes porque eu não tinha as
+URLs e não faria sentido chutar o @ de cada perfil.
+
+## 7. Imagem de compartilhamento (Open Graph)
 
 **O que fazer:** gerar uma imagem 1200×630 com o logo oficial e a headline.
 

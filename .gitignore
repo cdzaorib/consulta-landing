@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# artefatos de build do Python (skills)
+__pycache__/
+*.pyc

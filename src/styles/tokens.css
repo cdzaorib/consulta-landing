@@ -19,15 +19,19 @@
   --sage-900: #15251c;
   --sage-950: #0d1811;
 
-  /* ---------- Rampa terracota (acento) ---------- */
-  --clay-50: #fbf3ef;
-  --clay-100: #f5e3d9;
-  --clay-200: #e9c4b3;
-  --clay-300: #d89c84;
-  --clay-400: #c4735a;
-  --clay-500: #ac5238;
-  --clay-600: #8f402a;
-  --clay-700: #703222;
+  /* ---------- Rampa âmbar (acento — cor oficial da Conclínica) ----------
+     O âmbar da marca (#FAAB1C) é o 400 da rampa. Ele é lindo como
+     grafismo mas rende 1,9:1 no branco, então nunca é usado para texto:
+     os tons 600/700 cobrem esse papel mantendo a mesma família. */
+  --amber-50: #fef6e6;
+  --amber-100: #fdeac4;
+  --amber-200: #fbd48c;
+  --amber-300: #fac155;
+  --amber-400: #faab1c;
+  --amber-500: #d98e0c;
+  --amber-600: #a96c08;
+  --amber-700: #7e5007;
+  --amber-800: #573807;
 
   /* ---------- Neutros quentes ---------- */
   --sand-50: #faf8f4;
@@ -63,9 +67,14 @@
   --brand: var(--sage-700);
   --brand-deep: var(--sage-800);
   --brand-soft: var(--sage-100);
-  --accent: var(--clay-500);
-  --accent-deep: var(--clay-600);
-  --accent-soft: var(--clay-100);
+  /* `accent` carrega sentido (ícones, marcadores) e precisa de 3:1;
+     `accent-deep` é texto e precisa de 4,5:1; `accent-bright` é o âmbar
+     oficial, só em elemento decorativo ou sobre fundo escuro. */
+  --accent: var(--amber-600);
+  --accent-deep: var(--amber-700);
+  --accent-bright: var(--amber-400);
+  --accent-soft: var(--amber-100);
+  --accent-on-dark: var(--amber-300);
 
   /* ---------- Tipografia ---------- */
   --font-serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;

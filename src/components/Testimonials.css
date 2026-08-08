@@ -55,7 +55,7 @@
 .stars svg {
   width: 15px;
   height: 15px;
-  fill: var(--brand-amber);
+  fill: var(--accent-bright);
 }
 
 .testi .who {
@@ -116,7 +116,7 @@
 .trust-icon {
   width: 30px;
   height: 30px;
-  color: var(--clay-300);
+  color: var(--accent-on-dark);
 }
 
 .trust-card h3 {
@@ -152,7 +152,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--clay-400);
+  background: var(--accent-on-dark);
 }
 
 @media (min-width: 760px) {

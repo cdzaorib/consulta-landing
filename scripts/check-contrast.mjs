@@ -17,14 +17,16 @@ const C = {
   sage900: '#15251C',
   sage950: '#0D1811',
 
-  clay50: '#FBF3EF',
-  clay100: '#F5E3D9',
-  clay200: '#E9C4B3',
-  clay300: '#D89C84',
-  clay400: '#C4735A',
-  clay500: '#AC5238',
-  clay600: '#8F402A',
-  clay700: '#703222',
+  amber100: '#FDEAC4',
+  amber200: '#FBD48C',
+  amber300: '#FAC155',
+  amber400: '#FAAB1C',
+  amber600: '#A96C08',
+  amber700: '#7E5007',
+  amber800: '#573807',
+
+  brandMark: '#008872',
+  brandInk: '#1E282E',
 
   sand50: '#FAF8F4',
   sand100: '#F2EDE4',
@@ -65,28 +67,42 @@ const PAIRS = [
   ['texto suave / fundo sálvia', C.ink3, C.sage50, 4.5],
   ['texto suave / superfície branca', C.ink3, C.white, 4.5],
   ['texto suave / fundo areia', C.ink3, C.sand50, 4.5],
-  ['eyebrow terracota / fundo sálvia', C.clay600, C.sage50, 4.5],
-  ['eyebrow terracota / superfície branca', C.clay600, C.white, 4.5],
-  ['eyebrow terracota / fundo areia', C.clay600, C.sand50, 4.5],
+  ['eyebrow âmbar / fundo sálvia', C.amber700, C.sage50, 4.5],
+  ['eyebrow âmbar / superfície branca', C.amber700, C.white, 4.5],
+  ['eyebrow âmbar / fundo areia', C.amber700, C.sand50, 4.5],
   ['link sálvia / superfície branca', C.sage700, C.white, 4.5],
   ['botão primário (texto sobre sálvia 800)', C.white, C.sage800, 4.5],
   ['botão primário hover (texto sobre sálvia 700)', C.white, C.sage700, 4.5],
-  ['botão terracota (texto sobre clay 600)', C.white, C.clay600, 4.5],
   ['faixa escura: número', C.sage50, C.sage950, 4.5],
   ['faixa escura: legenda', C.sage200, C.sage950, 4.5],
-  ['faixa escura: acento terracota', C.clay300, C.sage950, 4.5],
+  ['faixa escura: sufixo âmbar', C.amber300, C.sage950, 4.5],
   ['faixa escura: eyebrow', C.sage300, C.sage950, 4.5],
   ['agenda: rótulo sobre bloco sálvia', C.white, C.sage600, 4.5],
-  ['agenda: rótulo sobre bloco terracota', C.white, C.clay600, 4.5],
+  ['agenda: rótulo sobre bloco âmbar', C.amber800, C.amber200, 4.5],
   ['chip "antes" (texto sobre areia 100)', C.ink2, C.sand100, 4.5],
   ['chip "depois" (texto sobre sálvia 100)', C.sage800, C.sage100, 4.5],
+  ['chip âmbar (texto sobre âmbar 100)', C.amber800, C.amber100, 4.5],
+  ['marcador "antes" (âmbar sobre areia 200)', C.amber700, C.sand200, 4.5],
   ['badge plano em destaque', C.white, C.sage800, 4.5],
+  ['card de confiança: marcador âmbar', C.amber300, C.sage900, 4.5],
+
   // Elementos não textuais (bordas, ícones, indicadores): mínimo 3:1
   ['borda forte / fundo sálvia', C.lineStrong, C.sage50, 1.2],
   ['anel de foco / fundo sálvia', C.sage700, C.sage50, 3],
   ['anel de foco / faixa escura', C.sage200, C.sage950, 3],
-  ['ícone terracota / superfície branca', C.clay500, C.white, 3],
+  ['ícone âmbar / superfície branca', C.amber600, C.white, 3],
+  ['ícone âmbar / fundo sálvia', C.amber600, C.sage50, 3],
   ['divisor / superfície branca', C.line, C.white, 1.1],
+
+  // O âmbar oficial (#FAAB1C) só entra como grafismo decorativo: as
+  // estrelas repetem uma nota que já está no aria-label, então não
+  // precisam atingir 3:1. Fica registrado para ninguém promovê-lo a texto.
+  ['estrelas âmbar oficial / superfície branca (decorativo)', C.amber400, C.white, 1.1],
+
+  // Logotipo: a 1.4.3 isenta nome de marca de contraste mínimo. Medido
+  // mesmo assim para acompanhar.
+  ['logo "con" verde / fundo sálvia (logotipo, isento)', C.brandMark, C.sage50, 3],
+  ['logo "clínica" ardósia / fundo sálvia', C.brandInk, C.sage50, 4.5],
 ];
 
 let failed = 0;

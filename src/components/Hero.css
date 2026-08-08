@@ -13,7 +13,7 @@
   pointer-events: none;
   background:
     radial-gradient(46% 42% at 22% 34%, rgba(78, 113, 89, 0.16), transparent 68%),
-    radial-gradient(34% 34% at 82% 20%, rgba(196, 115, 90, 0.13), transparent 70%);
+    radial-gradient(34% 34% at 82% 20%, rgba(250, 171, 28, 0.16), transparent 70%);
   filter: blur(6px);
 }
 

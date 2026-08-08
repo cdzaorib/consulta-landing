@@ -10,26 +10,34 @@ resto somado.
 > imagem está publicada — confirmadas como reais — e não o caminho direto do
 > arquivo. Para pegar o link do arquivo: abrir a página, clicar com o botão
 > direito na imagem e escolher "Copiar endereço da imagem".
+>
+> Parte da lista original já foi resolvida com os screenshots do site que
+> você mandou. O que estava pendente e **foi resolvido**: cores da marca,
+> desenho do logo, números reais da home e a autoria do primeiro depoimento.
 
 ---
 
-## 1. Logo oficial e cor da marca — bloqueador
+## 1. Arquivo vetorial do logo
 
-**Onde:** cabeçalho e rodapé de qualquer página, ex.: https://conclinica.com.br/
+**Onde:** cabeçalho de qualquer página, ex.: https://conclinica.com.br/
 
-**O que pegar:** o arquivo do logo (SVG de preferência, ou PNG em alta) e o
-favicon oficial.
+**O que pegar:** o SVG do logo (ou PNG em alta) e o favicon oficial.
 
-**Por que importa:** o `Logo.jsx` e o `public/favicon.svg` usam hoje uma marca
-desenhada por mim — um "C" aberto com um ponto terracota. Ela é um
-substituto, não a marca real.
+**Por que importa:** as **cores** já estão certas — amostradas dos seus
+screenshots e registradas em `src/styles/tokens.css`:
 
-**Atenção:** o pedido era trocar o favicon pela cor real da Conclínica. Sem
-acesso ao site não deu para ler o hexadecimal da marca, então o favicon está
-no verde sálvia do próprio design (`#1E3327`) com o ponto terracota
-(`#C4735A`). Isso resolve o problema do roxo `#863bff` que não combinava com
-nada, mas **não é a cor oficial**. Com o SVG do logo em mãos, é uma troca de
-dois valores em `public/favicon.svg` e `src/components/Logo.jsx`.
+| Papel | Hex | Onde aparece |
+| --- | --- | --- |
+| Verde da marca | `#008872` | símbolo, "con", textos e links do site |
+| Verde claro do símbolo | `#01A98E` | versão sobre fundo escuro |
+| Ardósia do wordmark | `#1E282E` | o "clínica" |
+| Âmbar dos CTAs | `#FAAB1C` | botão "Testar grátis", estrelas, ícones |
+
+O que ainda é aproximação é o **desenho** do símbolo: o `Logo.jsx` e o
+`public/favicon.svg` reconstroem o laço de infinito à mão, a partir do
+screenshot. Fica bem parecido em tamanho pequeno, mas o traço interno e os
+dois pontinhos do original não estão fiéis. Trocar pelo arquivo oficial é
+substituir um `<svg>` em `src/components/Logo.jsx`.
 
 ## 2. Captura de tela da agenda real
 
@@ -60,20 +68,28 @@ captura por bloco transforma a seção em demonstração.
 Vale também a tela de laudos, se a seção crescer:
 https://conclinica.com.br/laudos-e-exames/
 
-## 4. Fotos dos clientes dos depoimentos
+## 4. Slides 2 e 3 do carrossel de depoimentos — e as fotos
 
-**Onde:** seção de depoimentos da home, https://conclinica.com.br/
+**Onde:** seção "O que os gestores e médicos dizem sobre nosso sistema" da
+home, https://conclinica.com.br/
 
-**O que pegar:** a foto de cada pessoa citada e a confirmação do nome e do
-cargo.
+**O que pegar:** um screenshot dos slides 2 e 3 (o carrossel tem três
+bolinhas) e a foto de cada pessoa citada.
 
-**Por que importa:** os avatares são iniciais dentro de um círculo
-(`PB`, `MC`). Foto real de rosto aumenta muito a credibilidade de depoimento.
+**Por que importa:** o slide 1 está conferido e corrigido na página —
+**Rafael Gualberto, ortopedia e traumatologia**, com as cinco estrelas. A
+versão anterior deste projeto atribuía essa mesma citação a uma "Dra. Marina
+Costa", que não existe no site; já foi removida.
 
-**Atenção:** as duas citações em `src/content.js` vêm do material público da
-Conclínica, mas os **nomes** ("Dr. Pedro Baches", "Dra. Marina Costa") vieram
-da versão anterior deste projeto e não deu para conferir contra o site.
-Confirmar antes da apresentação.
+Ainda falta resolver o segundo depoimento: a citação sobre integrar cinco
+clínicas é real, mas **o autor não foi conferido** (está nos slides 2 ou 3,
+que não foram capturados). Por isso ela aparece sem nome, atribuída apenas a
+"Gestor de rede — clínica geral, 5 unidades", com um avatar genérico em vez
+de iniciais inventadas. Com o slide certo em mãos é uma linha em
+`src/content.js`.
+
+As fotos de rosto substituiriam os avatares de iniciais e aumentariam bastante
+a credibilidade da seção.
 
 ## 5. Logos de clínicas clientes
 
@@ -102,8 +118,9 @@ Coisas que ficaram de fora por não estarem publicadas:
   Performance, Enterprise) mas não publica valores. A seção de planos está
   sem preço, com um link para a página oficial. Se a Conclínica quiser os
   valores na página, é só preencher.
-- **Tempo de mercado e número de clínicas atendidas.** Números desse tipo dão
-  peso à faixa escura de métricas, mas não foram encontrados publicamente.
+- **Tempo de mercado.** Não aparece no site. Os demais números da faixa
+  escura já são os oficiais da home (12M+ marcações agendadas, 3M+ pacientes
+  atendidos, 10K+ médicos cadastrados, 500+ clientes ativos).
 - **Se o teste grátis é de 7 ou 14 dias.** A página usa **7 dias**, que é o
   que aparece no material público da Conclínica (a versão anterior deste
   projeto dizia 14, o que estava errado).

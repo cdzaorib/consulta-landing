@@ -20,7 +20,7 @@ const SLOTS = [
   { time: '08:00', name: 'Larissa M.', kind: 'Retorno', tone: 'sage', confirmedAt: 0 },
   { time: '08:40', name: 'Rafael T.', kind: '1ª consulta', tone: 'sage', confirmedAt: 1 },
   { time: '09:20', name: null, kind: 'Vaga livre', tone: 'empty', filledAt: 2 },
-  { time: '10:00', name: 'Telemedicina', kind: 'Google Meet', tone: 'clay', confirmedAt: 0 },
+  { time: '10:00', name: 'Telemedicina', kind: 'Google Meet', tone: 'amber', confirmedAt: 0 },
   { time: '10:40', name: 'Bloco de exames', kind: 'Coleta', tone: 'sage', confirmedAt: 0 },
 ];
 
@@ -73,7 +73,7 @@ export default function AgendaWidget() {
       filled,
       name: filled && slot.filledAt !== undefined ? 'Dona Iracema' : slot.name,
       kind: filled && slot.filledAt !== undefined ? 'Encaixe' : slot.kind,
-      tone: filled && slot.filledAt !== undefined ? 'clay' : slot.tone,
+      tone: filled && slot.filledAt !== undefined ? 'amber' : slot.tone,
       confirmed: slot.confirmedAt !== undefined && step >= slot.confirmedAt,
     };
   });

@@ -394,8 +394,8 @@ section {
 }
 
 .chip-clay {
-  background: var(--clay-100);
-  color: var(--clay-700);
+  background: var(--accent-soft);
+  color: var(--amber-800);
 }
 
 .chip-sand {

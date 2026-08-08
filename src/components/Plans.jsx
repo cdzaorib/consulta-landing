@@ -38,9 +38,19 @@ export default function Plans() {
               variants={card}
               whileHover={reduceMotion ? undefined : lift}
             >
-              <p className={`badge${plan.featured ? ' badge-featured' : ''}`}>{plan.badge}</p>
+              {plan.badge && <p className="badge badge-featured">{plan.badge}</p>}
               <h3>{plan.name}</h3>
+
+              <p className="price">
+                <span className="amount">{plan.price}</span>
+                <span className="unit">{plan.unit}</span>
+              </p>
+
               <p className="pitch">{plan.pitch}</p>
+
+              {plan.inherits && (
+                <p className="inherits">Todos os recursos do plano {plan.inherits} +</p>
+              )}
 
               <ul className="plan-features">
                 {plan.features.map((feature) => (
@@ -85,9 +95,8 @@ export default function Plans() {
         </motion.div>
 
         <p className="plans-note">
-          Os valores de cada plano são apresentados na{' '}
-          <a href={SITE.plansUrl}>página de planos</a>, de acordo com o número de profissionais
-          da clínica.
+          O valor é por profissional de saúde — um consultório de uma pessoa paga por uma.
+          Condições completas na <a href={SITE.plansUrl}>página de planos</a>.
         </p>
       </div>
     </section>

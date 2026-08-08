@@ -100,13 +100,16 @@ conferir, é real: está no slide 3.
 
 ## 5. Logos de clínicas clientes
 
-**Onde:** home, https://conclinica.com.br/ — se houver uma faixa de clientes
+**Onde:** home, https://conclinica.com.br/ — carrossel "Clínicas e
+consultórios que confiam em nossos serviços" (aparece logo depois da grade de
+recursos; um dos clientes visíveis é a Clínica Otto Sinus).
 
 **O que pegar:** os logos, com autorização de uso.
 
-**Por que importa:** a faixa hoje lista especialidades em texto ("Clínica
-geral", "Odontologia"...). Logos reais de clínicas clientes seriam prova
-social de verdade no lugar de uma lista genérica.
+**Por que importa:** a faixa da nossa página hoje lista especialidades em
+texto ("Clínica geral", "Odontologia"...). Logos reais de clínicas clientes
+seriam prova social de verdade no lugar de uma lista genérica — e o site já
+tem esse carrossel pronto.
 
 ## 6. URLs das redes sociais
 
@@ -132,10 +135,14 @@ colado no WhatsApp ou no Slack durante a apresentação, aparece sem prévia.
 
 Coisas que ficaram de fora por não estarem publicadas:
 
-- **Preços dos planos.** O site lista os quatro planos (Essencial, Gestão,
-  Performance, Enterprise) mas não publica valores. A seção de planos está
-  sem preço, com um link para a página oficial. Se a Conclínica quiser os
-  valores na página, é só preencher.
+- **Preço do plano Enterprise.** Os outros três já estão na página com o
+  valor oficial (Essencial R$ 89, Gestão R$ 119, Performance R$ 169, sempre
+  por profissional de saúde). O Enterprise aparece na página de planos mas o
+  screenshot cortou antes do valor — hoje ele entra como faixa "Falar com a
+  equipe".
+- **Periodicidade do preço.** A página de planos diz "por profissional de
+  saúde" sem dizer se é mensal ou anual. A nossa página repete exatamente o
+  mesmo texto, sem inventar "/mês".
 - **Tempo de mercado.** Não aparece no site. Os demais números da faixa
   escura já são os oficiais da home (12M+ marcações agendadas, 3M+ pacientes
   atendidos, 10K+ médicos cadastrados, 500+ clientes ativos).

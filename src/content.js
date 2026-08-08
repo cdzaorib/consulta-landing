@@ -251,50 +251,67 @@ export const TRUST_CARD = {
 
 /* -------------------------------------------------------------------------
    Planos
-   Fonte: conclinica.com.br/planos — quatro planos (Essencial, Gestão,
-   Performance e Enterprise) com as descrições da própria empresa.
-   Os valores não estão publicados no site e por isso não aparecem aqui.
+   Fonte: conclinica.com.br/planos — preços, descrições, listas de recursos,
+   o selo "Mais vendido" e o CTA são os do site, conferidos em screenshot.
+   O preço é por profissional de saúde, não por clínica.
    ------------------------------------------------------------------------- */
 
 export const PLANS = [
   {
     name: 'Essencial',
-    pitch: 'Para quem está começando a organizar o consultório com mais praticidade e controle.',
-    badge: 'Consultório',
+    price: 'R$ 89',
+    unit: 'por profissional de saúde',
+    pitch:
+      'Organize sua agenda e comece a digitalizar sua clínica. Reúne as funcionalidades básicas para quem está iniciando a gestão do consultório com mais praticidade e controle.',
     features: [
-      'Agenda online e agendamento pelo paciente',
+      'Agenda inteligente',
+      'Cadastro de pacientes',
       'Prontuário eletrônico',
-      'Cadastro e histórico de pacientes',
-      'Relatórios básicos de atendimento',
+      'Prescrição digital',
+      'Telemedicina',
+      'Caixa (emissão de recibo)',
+      'Relatórios simples',
+      'Suporte via chat',
     ],
-    cta: 'Começar teste grátis',
+    cta: 'Testar agora',
     variant: 'ghost',
   },
   {
     name: 'Gestão',
-    pitch: 'Assinatura digital, faturamento TISS e comunicação com o paciente para destravar a rotina.',
-    badge: 'Mais escolhido por clínicas pequenas',
+    price: 'R$ 119',
+    unit: 'por profissional de saúde',
+    badge: 'Mais vendido',
+    pitch:
+      'Automatize processos e ganhe eficiência no dia a dia. Reúne assinatura digital, faturamento TISS e comunicação com o paciente para otimizar a rotina da clínica.',
+    inherits: 'Essencial',
     features: [
-      'Tudo do plano Essencial',
-      'Faturamento TISS e envio de guias',
-      'Assinatura digital de documentos',
-      'Confirmação automática por WhatsApp, SMS e e-mail',
+      'Agendamento online',
+      'Assinatura digital',
+      'Faturamento TISS',
+      'Emissão de nota fiscal (NFS-e)',
+      'Confirmação via WhatsApp (Zenvia)',
+      'Suporte via chat e telefone',
     ],
-    cta: 'Começar teste grátis',
+    cta: 'Testar agora',
     variant: 'primary',
     featured: true,
   },
   {
     name: 'Performance',
-    pitch: 'Gestão financeira completa, estoque e marketing para clínicas que querem crescer com estrutura.',
-    badge: 'Clínica',
+    price: 'R$ 169',
+    unit: 'por profissional de saúde',
+    pitch:
+      'Tenha controle da operação e decida com mais estratégia. Reúne gestão financeira completa, estoque e marketing para clínicas que buscam crescimento com estrutura.',
+    inherits: 'Gestão',
     features: [
-      'Tudo do plano Gestão',
-      'Financeiro completo, repasses e glosas',
-      'Emissão de NFSe integrada com a prefeitura',
-      'Controle de estoque e campanhas de marketing',
+      'Financeiro completo (contas a pagar e receber)',
+      'Cobrança inteligente',
+      'Repasse médico',
+      'Gestão de estoque',
+      'Campanhas (e-mail/SMS)',
+      'Suporte prioritário 24/7',
     ],
-    cta: 'Começar teste grátis',
+    cta: 'Testar agora',
     variant: 'ghost',
   },
 ];

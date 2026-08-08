@@ -33,8 +33,16 @@ footer {
   padding-block: var(--space-3);
   font: inherit;
   color: inherit;
-  cursor: pointer;
   text-align: left;
+  transition: color var(--dur) var(--ease);
+}
+
+.foot-toggle:hover {
+  color: var(--sage-700);
+}
+
+.foot-toggle:hover .chevron {
+  color: var(--sage-600);
 }
 
 .chevron {
@@ -42,7 +50,9 @@ footer {
   width: 18px;
   height: 18px;
   color: var(--ink-3);
-  transition: transform var(--dur) var(--ease-out);
+  transition:
+    transform var(--dur) var(--ease-out),
+    color var(--dur) var(--ease);
 }
 
 .chevron.is-open {

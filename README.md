@@ -13,6 +13,8 @@ npm run dev      # servidor de desenvolvimento
 npm run build    # build de produção
 npm run preview  # preview do build
 npm run lint     # oxlint
+npm run check    # valida o contraste dos pares de cor (WCAG AA)
+npm run og       # regenera public/og.png (1200×630) a partir dos tokens
 ```
 
 ## Estrutura

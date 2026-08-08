@@ -1,13 +1,8 @@
 import { motion } from 'framer-motion';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
-import { EASE_OUT, VIEWPORT_SOFT, stagger } from '../lib/motion.js';
+import { VIEWPORT_SOFT, fadeUp, stagger } from '../lib/motion.js';
 import { FINAL_CTA, SITE } from '../content.js';
 import './FinalCta.css';
-
-const item = {
-  hidden: { opacity: 0, y: 18 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE_OUT } },
-};
 
 export default function FinalCta() {
   const reduceMotion = usePrefersReducedMotion();
@@ -24,15 +19,15 @@ export default function FinalCta() {
         >
           <div className="final-glow" aria-hidden="true" />
 
-          <motion.p className="eyebrow on-dark" variants={item}>
+          <motion.p className="eyebrow on-dark" variants={fadeUp}>
             {FINAL_CTA.eyebrow}
           </motion.p>
-          <motion.h2 variants={item}>{FINAL_CTA.title}</motion.h2>
-          <motion.p className="final-lead" variants={item}>
+          <motion.h2 variants={fadeUp}>{FINAL_CTA.title}</motion.h2>
+          <motion.p className="final-lead" variants={fadeUp}>
             {FINAL_CTA.lead}
           </motion.p>
 
-          <motion.div className="actions" variants={item}>
+          <motion.div className="actions" variants={fadeUp}>
             <a href={SITE.trialUrl} className="btn btn-on-dark">
               {FINAL_CTA.primaryCta}
               <span className="arrow" aria-hidden="true">
@@ -44,7 +39,7 @@ export default function FinalCta() {
             </a>
           </motion.div>
 
-          <motion.p className="final-note" variants={item}>
+          <motion.p className="final-note" variants={fadeUp}>
             {FINAL_CTA.note}
           </motion.p>
         </motion.div>

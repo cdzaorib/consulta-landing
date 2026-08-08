@@ -158,10 +158,18 @@ URLs e não faria sentido chutar o @ de cada perfil.
 
 ## 9. Imagem de compartilhamento (Open Graph)
 
-**O que fazer:** gerar uma imagem 1200×630 com o logo oficial e a headline.
+**Estado atual:** já existe. `public/og.png` (1200×630) é gerado por
+`npm run og`, a partir dos mesmos tokens do design system — fundo sálvia
+escuro com os halos, o lockup, a headline em Fraunces e os três números
+oficiais. As meta tags `og:` e `twitter:card` estão no `index.html`.
 
-**Por que importa:** a página ainda não tem `og:image`. Quando o link for
-colado no WhatsApp ou no Slack durante a apresentação, aparece sem prévia.
+**O que ainda falta:**
+
+1. Trocar o laço reconstruído pelo logo oficial no
+   `scripts/make-og.mjs` e rodar `npm run og` de novo.
+2. **Na hora de publicar**, apontar `og:image` para a URL absoluta do
+   domínio final. WhatsApp e Facebook não montam o card com caminho
+   relativo. Está sinalizado num comentário no `index.html`.
 
 ---
 

@@ -1,13 +1,8 @@
 import { motion } from 'framer-motion';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
-import { VIEWPORT_SOFT, fadeUp, lift, reveal, stagger } from '../lib/motion.js';
+import { VIEWPORT_SOFT, cardUp, fadeUp, reveal, stagger } from '../lib/motion.js';
 import { TESTIMONIALS, TRUST_CARD } from '../content.js';
 import './Testimonials.css';
-
-const card = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 export default function Testimonials() {
   const reduceMotion = usePrefersReducedMotion();
@@ -35,8 +30,7 @@ export default function Testimonials() {
             <motion.figure
               className="testi"
               key={testi.name}
-              variants={card}
-              whileHover={reduceMotion ? undefined : lift}
+              variants={cardUp}
             >
               <span className="quote-mark" aria-hidden="true">
                 &ldquo;

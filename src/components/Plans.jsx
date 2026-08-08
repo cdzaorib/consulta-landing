@@ -1,13 +1,8 @@
 import { motion } from 'framer-motion';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
-import { VIEWPORT_SOFT, fadeUp, lift, reveal, stagger } from '../lib/motion.js';
+import { VIEWPORT_SOFT, cardUp, fadeUp, reveal, stagger } from '../lib/motion.js';
 import { ENTERPRISE, PLANS, SITE } from '../content.js';
 import './Plans.css';
-
-const card = {
-  hidden: { opacity: 0, y: 22 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 export default function Plans() {
   const reduceMotion = usePrefersReducedMotion();
@@ -35,8 +30,7 @@ export default function Plans() {
             <motion.li
               className={`plan${plan.featured ? ' featured' : ''}`}
               key={plan.name}
-              variants={card}
-              whileHover={reduceMotion ? undefined : lift}
+              variants={cardUp}
             >
               {plan.badge && <p className="badge badge-featured">{plan.badge}</p>}
               <h3>{plan.name}</h3>

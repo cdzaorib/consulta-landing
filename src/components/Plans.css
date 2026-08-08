@@ -13,19 +13,33 @@
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-sm);
+  /* Elevação e sombra na mesma transição: o card sobe e a sombra abre
+     junto, em vez de uma coisa acontecer antes da outra.
+
+     `translate` e não `transform`: o Framer Motion deixa
+     `transform: none` inline nestes cards ao terminar a revelação, e
+     estilo inline vence :hover. `translate` é propriedade independente e
+     compõe com o transform em vez de brigar com ele. */
   transition:
+    translate var(--dur) var(--ease-out),
     border-color var(--dur) var(--ease),
     box-shadow var(--dur) var(--ease);
 }
 
 .plan:hover {
-  border-color: var(--line-strong);
-  box-shadow: var(--shadow-md);
+  translate: 0 -4px;
+  border-color: var(--sage-400);
+  box-shadow: var(--shadow-lg);
 }
 
 .plan.featured {
   border-color: var(--sage-600);
   box-shadow: var(--shadow-lg);
+}
+
+.plan.featured:hover {
+  border-color: var(--sage-700);
+  box-shadow: var(--shadow-xl);
 }
 
 .plan .badge {
@@ -171,7 +185,16 @@
 .plans-note a {
   color: var(--sage-700);
   text-decoration: underline;
+  text-decoration-thickness: 1px;
   text-underline-offset: 3px;
+  transition:
+    color var(--dur) var(--ease),
+    text-decoration-color var(--dur) var(--ease);
+}
+
+.plans-note a:hover {
+  color: var(--sage-800);
+  text-decoration-color: var(--sage-400);
 }
 
 @media (min-width: 900px) {

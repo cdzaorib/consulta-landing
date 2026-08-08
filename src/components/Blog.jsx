@@ -1,13 +1,8 @@
 import { motion } from 'framer-motion';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
-import { VIEWPORT_SOFT, fadeUp, lift, reveal, stagger } from '../lib/motion.js';
+import { VIEWPORT_SOFT, cardUp, fadeUp, reveal, stagger } from '../lib/motion.js';
 import { BLOG } from '../content.js';
 import './Blog.css';
-
-const card = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 export default function Blog() {
   const reduceMotion = usePrefersReducedMotion();
@@ -40,8 +35,7 @@ export default function Blog() {
           {BLOG.posts.map((post) => (
             <motion.li
               key={post.title}
-              variants={card}
-              whileHover={reduceMotion ? undefined : lift}
+              variants={cardUp}
             >
               <a className="post" href={post.href}>
                 {/* Sem as fotos do blog, a "capa" é um degradê da paleta. */}

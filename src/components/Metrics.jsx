@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import useCountUp from '../hooks/useCountUp.js';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
-import { EASE_OUT } from '../lib/motion.js';
+import { DUR, EASE_OUT } from '../lib/motion.js';
 import { METRICS } from '../content.js';
 import './Metrics.css';
 
@@ -22,7 +22,7 @@ function MetricItem({ prefix, target, suffix, staticValue, caption, index }) {
       ref={ref}
       initial={reduceMotion ? false : { opacity: 0, y: 16 }}
       animate={isInView || reduceMotion ? { opacity: 1, y: 0 } : undefined}
-      transition={{ duration: 0.5, delay: index * 0.08, ease: EASE_OUT }}
+      transition={{ duration: DUR.base, delay: index * 0.08, ease: EASE_OUT }}
     >
       <p className="num">
         {prefix && <span className="prefix">{prefix}</span>}

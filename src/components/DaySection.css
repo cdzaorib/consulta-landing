@@ -65,9 +65,10 @@
   border-radius: var(--r-md);
   padding: var(--space-4) var(--space-4);
   position: relative;
+  /* mesma razão do .plan: estes cards são animados pelo Framer */
   transition:
     border-color var(--dur) var(--ease),
-    transform var(--dur) var(--ease-out),
+    translate var(--dur) var(--ease-out),
     box-shadow var(--dur) var(--ease);
 }
 
@@ -88,7 +89,7 @@
 
 .feature-item:hover {
   border-color: var(--line-strong);
-  transform: translateY(-2px);
+  translate: 0 -2px;
   box-shadow: var(--shadow-md);
 }
 

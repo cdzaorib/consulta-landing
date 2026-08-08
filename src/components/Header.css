@@ -19,6 +19,12 @@ header {
   align-items: center;
   min-height: var(--tap);
   margin-right: auto;
+  transition: opacity var(--dur) var(--ease);
+}
+
+/* Logo não muda de cor no hover — só reconhece o ponteiro. */
+.nav-logo:hover {
+  opacity: 0.78;
 }
 
 .nav-links {

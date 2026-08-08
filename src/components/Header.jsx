@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
 import Logo from './Logo.jsx';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
+import { DUR, EASE_OUT } from '../lib/motion.js';
 import { NAV, SITE } from '../content.js';
 import './Header.css';
 
@@ -99,7 +100,7 @@ export default function Header() {
             initial={reduceMotion ? false : { opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
-            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: DUR.micro, ease: EASE_OUT }}
           >
             <ul>
               {NAV.map((link) => (

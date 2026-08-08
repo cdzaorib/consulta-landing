@@ -1,13 +1,13 @@
 import { motion } from 'framer-motion';
 import AgendaWidget from './AgendaWidget.jsx';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
-import { EASE_OUT, stagger } from '../lib/motion.js';
+import { DUR, EASE_OUT, stagger } from '../lib/motion.js';
 import { HERO, SITE } from '../content.js';
 import './Hero.css';
 
 const item = {
   hidden: { opacity: 0, y: 22 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE_OUT } },
+  visible: { opacity: 1, y: 0, transition: { duration: DUR.entrance, ease: EASE_OUT } },
 };
 
 export default function Hero() {
@@ -76,7 +76,7 @@ export default function Hero() {
           className="hero-visual"
           initial={reduceMotion ? false : { opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: EASE_OUT }}
+          transition={{ duration: DUR.entrance, delay: 0.2, ease: EASE_OUT }}
         >
           <AgendaWidget />
         </motion.div>

@@ -1,13 +1,8 @@
 import { motion } from 'framer-motion';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
-import { EASE_OUT, VIEWPORT_SOFT, fadeUp, reveal, stagger } from '../lib/motion.js';
+import { VIEWPORT_SOFT, cardUp, fadeUp, reveal, stagger } from '../lib/motion.js';
 import { SHIFTS } from '../content.js';
 import './BeforeAfter.css';
-
-const row = {
-  hidden: { opacity: 0, y: 18 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE_OUT } },
-};
 
 export default function BeforeAfter() {
   const reduceMotion = usePrefersReducedMotion();
@@ -37,7 +32,7 @@ export default function BeforeAfter() {
           viewport={VIEWPORT_SOFT}
         >
           {SHIFTS.map((shift) => (
-            <motion.li className="shift" key={shift.id} variants={row}>
+            <motion.li className="shift" key={shift.id} variants={cardUp}>
               <p className="shift-theme mono">{shift.theme}</p>
 
               <div className="shift-before">

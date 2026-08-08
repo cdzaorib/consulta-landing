@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
-import { EASE_OUT } from '../lib/motion.js';
+import { DUR, EASE_OUT } from '../lib/motion.js';
 import './AgendaWidget.css';
 
 /**
@@ -112,7 +112,7 @@ export default function AgendaWidget() {
                   initial={reduceMotion ? false : { opacity: 0, x: -8 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 8 }}
-                  transition={{ duration: 0.34, ease: EASE_OUT }}
+                  transition={{ duration: DUR.micro * 1.4, ease: EASE_OUT }}
                 >
                   {slot.filled ? (
                     <>
@@ -158,7 +158,7 @@ export default function AgendaWidget() {
               initial={reduceMotion ? false : { opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -6 }}
-              transition={{ duration: 0.3, ease: EASE_OUT }}
+              transition={{ duration: DUR.micro, ease: EASE_OUT }}
             >
               <span className="event-icon" aria-hidden="true">
                 <EventIcon name={event.icon} />

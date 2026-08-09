@@ -1,13 +1,15 @@
 .clients {
-  padding-block: var(--space-6);
+  padding-block: var(--space-7);
   border-top: 1px solid var(--line);
 }
 
+/* Doze clientes é conteúdo demais para a faixa lado a lado que havia aqui:
+   empilhado e centralizado, cada parte tem a largura inteira. */
 .clients .wrap {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
   align-items: center;
+  gap: var(--space-5);
   text-align: center;
 }
 
@@ -16,6 +18,7 @@
   color: var(--ink-3);
   text-transform: uppercase;
   letter-spacing: 0.12em;
+  line-height: 1.6;
 }
 
 .client-logos {
@@ -54,21 +57,12 @@
   max-height: 48px;
 }
 
-@media (min-width: 720px) {
-  .clients .wrap {
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
-    gap: var(--space-6);
-  }
-
-  .clients .label {
-    flex: none;
-    max-width: 28ch;
-    line-height: 1.6;
-  }
-
-  .client-logos {
-    justify-content: flex-end;
-  }
+/* Clientes sem arquivo de logo: entram por extenso, discretos, para não
+   competir com as marcas que têm imagem. */
+.client-others {
+  font-size: var(--t-xs);
+  line-height: 1.65;
+  color: var(--ink-3);
+  max-width: none;
+  text-wrap: pretty;
 }

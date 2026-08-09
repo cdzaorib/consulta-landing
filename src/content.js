@@ -84,8 +84,14 @@ export const SHIFTS = [
 
 /* -------------------------------------------------------------------------
    Prova social
-   Logos extraídos do carrossel "Clínicas e consultórios que confiam em
-   nossos serviços" da home. O título é o do próprio site.
+   Título e lista de clientes vêm do carrossel "Clínicas e consultórios que
+   confiam em nossos serviços" da home.
+
+   São doze clientes. Os quatro cujo arquivo de logo foi extraído do PDF de
+   referência aparecem como imagem; os outros oito entram como texto, porque
+   desenhar um logo de memória seria inventar a marca de outra empresa. Basta
+   salvar o arquivo em public/images/clientes/ e mover o nome de `others`
+   para `logos`.
    ------------------------------------------------------------------------- */
 
 export const CLIENTS = {
@@ -95,6 +101,16 @@ export const CLIENTS = {
     { name: 'NitMed Centro Médico', src: '/images/clientes/nitmed.webp', w: 384, h: 96 },
     { name: 'Clínica Médica Itacibá', src: '/images/clientes/itaciba.webp', w: 276, h: 160 },
     { name: 'Clínica Icaraí', src: '/images/clientes/icarai.webp', w: 220, h: 85 },
+  ],
+  others: [
+    'Clínica SOU',
+    'Oftalmologia SEO',
+    'Otto Sinus',
+    'Genutarso',
+    'DoutorTem',
+    'De Luca',
+    'Conit',
+    'Clínica do Sono',
   ],
 };
 

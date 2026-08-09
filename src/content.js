@@ -260,15 +260,16 @@ export const TRUST_CARD = {
 /* -------------------------------------------------------------------------
    Planos
    Fonte: conclinica.com.br/planos — preços, descrições, listas de recursos,
-   o selo "Mais vendido" e o CTA são os do site, conferidos em screenshot.
-   O preço é por profissional de saúde, não por clínica.
+   o selo "Mais vendido" e o CTA são os do site.
+   O preço é por profissional de saúde e por mês, não por clínica.
+   O Enterprise tem preço fixo publicado (R$ 299); não é "sob consulta".
    ------------------------------------------------------------------------- */
 
 export const PLANS = [
   {
     name: 'Essencial',
     price: 'R$ 89',
-    unit: 'por profissional de saúde',
+    unit: 'por mês, por profissional de saúde',
     pitch:
       'Organize sua agenda e comece a digitalizar sua clínica. Reúne as funcionalidades básicas para quem está iniciando a gestão do consultório com mais praticidade e controle.',
     features: [
@@ -287,7 +288,7 @@ export const PLANS = [
   {
     name: 'Gestão',
     price: 'R$ 119',
-    unit: 'por profissional de saúde',
+    unit: 'por mês, por profissional de saúde',
     badge: 'Mais vendido',
     pitch:
       'Automatize processos e ganhe eficiência no dia a dia. Reúne assinatura digital, faturamento TISS e comunicação com o paciente para otimizar a rotina da clínica.',
@@ -307,7 +308,7 @@ export const PLANS = [
   {
     name: 'Performance',
     price: 'R$ 169',
-    unit: 'por profissional de saúde',
+    unit: 'por mês, por profissional de saúde',
     pitch:
       'Tenha controle da operação e decida com mais estratégia. Reúne gestão financeira completa, estoque e marketing para clínicas que buscam crescimento com estrutura.',
     inherits: 'Gestão',
@@ -322,12 +323,28 @@ export const PLANS = [
     cta: 'Testar agora',
     variant: 'ghost',
   },
+  {
+    name: 'Enterprise',
+    price: 'R$ 299',
+    unit: 'por mês, por profissional de saúde',
+    pitch: 'Escale sua clínica com tecnologia e integração avançada.',
+    inherits: 'Performance',
+    features: [
+      'API de integração',
+      'Suporte com gestor de conta',
+      'Módulo de laboratório (grátis)',
+      'Módulo de laudos de imagem (grátis)',
+      'NFSe (grátis)',
+    ],
+    cta: 'Testar agora',
+    variant: 'ghost',
+  },
 ];
 
-export const ENTERPRISE = {
-  name: 'Enterprise',
-  pitch: 'Integração via API e gestão multiunidades para redes que estão em expansão.',
-  cta: 'Falar com a equipe',
+/** Linha discreta abaixo da grade de planos. */
+export const PLANS_NOTE = {
+  unit: 'Todos os preços são por profissional de saúde, por mês.',
+  custom: 'Clínicas com mais de 10 profissionais têm planos exclusivos sob cotação.',
 };
 
 /* -------------------------------------------------------------------------

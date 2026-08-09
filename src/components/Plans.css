@@ -151,34 +151,13 @@
   margin-top: auto;
 }
 
-/* ---------- Faixa Enterprise ---------- */
-
-.plan-enterprise {
-  margin-top: var(--space-4);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  padding: var(--space-5);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.plan-enterprise h3 {
-  font-size: 1.15rem;
-  margin-bottom: 4px;
-}
-
-.plan-enterprise p {
-  font-size: var(--t-sm);
-  color: var(--ink-2);
-  max-width: 52ch;
-}
-
 .plans-note {
   margin-top: var(--space-5);
+  margin-inline: auto;
+  max-width: 62ch;
   text-align: center;
   font-size: var(--t-xs);
+  line-height: 1.6;
   color: var(--ink-3);
 }
 
@@ -197,18 +176,29 @@
   text-decoration-color: var(--sage-400);
 }
 
-@media (min-width: 900px) {
+@media (min-width: 700px) {
   .plans-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Quatro planos numa fileira só: os cards ficam estreitos, então o
+   preenchimento e a escala do preço encolhem junto. */
+@media (min-width: 1080px) {
+  .plans-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-3);
   }
 
-  .plan-enterprise {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  .plan {
+    padding: var(--space-4);
   }
 
-  .plan-enterprise .btn {
-    flex: none;
+  .plan .amount {
+    font-size: 1.9rem;
+  }
+
+  .plan .unit {
+    max-width: 100%;
   }
 }

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
 import { VIEWPORT_SOFT, cardUp, fadeUp, reveal, stagger } from '../lib/motion.js';
-import { ENTERPRISE, PLANS, SITE } from '../content.js';
+import { PLANS, PLANS_NOTE, SITE } from '../content.js';
 import './Plans.css';
 
 export default function Plans() {
@@ -75,23 +75,11 @@ export default function Plans() {
           ))}
         </motion.ul>
 
-        <motion.div className="plan-enterprise" {...reveal(reduceMotion, fadeUp)}>
-          <div>
-            <h3>{ENTERPRISE.name}</h3>
-            <p>{ENTERPRISE.pitch}</p>
-          </div>
-          <a href={SITE.demoUrl} className="btn btn-ghost">
-            {ENTERPRISE.cta}
-            <span className="arrow" aria-hidden="true">
-              →
-            </span>
-          </a>
-        </motion.div>
+        <motion.p className="plans-note" {...reveal(reduceMotion, fadeUp)}>
+          {PLANS_NOTE.unit} {PLANS_NOTE.custom}{' '}
+          <a href={SITE.plansUrl}>Ver a página de planos</a>.
+        </motion.p>
 
-        <p className="plans-note">
-          O valor é por profissional de saúde: um consultório de uma pessoa paga por uma.
-          Condições completas na <a href={SITE.plansUrl}>página de planos</a>.
-        </p>
       </div>
     </section>
   );

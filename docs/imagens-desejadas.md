@@ -1,5 +1,34 @@
 # Assets reais: o que já entrou e o que ainda falta
 
+## Para subir manualmente (a rede desta sessão não alcança o site)
+
+O domínio `conclinica.com.br` é recusado pela política de saída (403 no
+CONNECT), então os arquivos abaixo precisam ser baixados por fora e salvos
+nestes caminhos exatos. O código já espera por eles.
+
+| Baixar de | Salvar como |
+| --- | --- |
+| `/wp-content/uploads/2024/05/Dark.svg` | `public/images/logo-conclinica.svg` |
+| `/wp-content/uploads/2025/10/conclinica-1.png` | `public/images/logo-conclinica.png` |
+| `/wp-content/uploads/2024/07/Rafael-Gualberto.webp` | `public/images/depoimentos/rafael-gualberto.webp` |
+| `/wp-content/uploads/2024/07/leonardo-daumas.webp` | `public/images/depoimentos/leonardo-daumas.webp` |
+| `/wp-content/uploads/2024/07/pedro-baches.png` | `public/images/depoimentos/pedro-baches.png` |
+
+Todos com o prefixo `https://conclinica.com.br`.
+
+Assim que os arquivos existirem, o que falta é mecânico:
+
+1. Ler a cor primária do `Dark.svg` (atributo `fill`/`stop-color` do símbolo)
+   e trocar `--brand-mark` em `src/styles/tokens.css`, mais o `fill` do
+   `public/favicon.svg` e o `stroke` em `src/components/Logo.jsx`.
+2. Rodar `npm run check` para reconferir os 35 pares de contraste com a cor
+   nova e ajustar a rampa sálvia se algum par cair abaixo de 4,5:1.
+3. Acrescentar o campo `photo` aos três depoimentos em `src/content.js` —
+   o componente já troca monograma por foto sozinho quando o campo existe.
+4. Rodar `npm run og` para regerar a prévia de compartilhamento com o logo
+   oficial.
+
+
 Boa parte desta lista foi resolvida com o PDF de captura do site. As imagens
 foram extraídas com PyMuPDF, tratadas (recorte da moldura vazia, branco de
 fundo dos logos convertido em transparência) e salvas em `public/images/`.

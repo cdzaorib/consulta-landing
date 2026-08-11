@@ -22,14 +22,23 @@ function easeOutQuart(t) {
  *   zero até rolar até a seção.
  * - Quem chama passa `isInView` de um `useInView({ once: true })`, então a
  *   contagem acontece uma vez só e não se repete a cada scroll.
+ * - `continuous` serve para número que muda em resposta a um controle: em vez
+ *   de voltar a zero a cada alvo novo, a contagem parte de onde o número
+ *   estava. Sem isso, arrastar um slider faria o valor despencar para zero e
+ *   correr de volta a cada passo. Como o valor inicial já é zero, a primeira
+ *   contagem continua saindo do zero.
  */
 export default function useCountUp(
   target,
-  { isInView, duration = 1100, delay = 0, reduceMotion = false } = {}
+  { isInView, duration = 1100, delay = 0, reduceMotion = false, continuous = false } = {}
 ) {
   const [value, setValue] = useState(reduceMotion ? target : 0);
   const rafRef = useRef(null);
   const timerRef = useRef(null);
+  // Espelha o valor exibido para que a contagem seguinte saiba de onde partir
+  // sem que o efeito dependa dele (dependência remontaria a animação).
+  const valueRef = useRef(value);
+  valueRef.current = value;
 
   useEffect(() => {
     if (reduceMotion) {
@@ -41,11 +50,12 @@ export default function useCountUp(
 
     function start() {
       const t0 = performance.now();
+      const from = continuous ? valueRef.current : 0;
 
       function tick(now) {
         const progress = Math.min((now - t0) / duration, 1);
         if (progress < 1) {
-          setValue(target * easeOutQuart(progress));
+          setValue(from + (target - from) * easeOutQuart(progress));
           rafRef.current = requestAnimationFrame(tick);
         } else {
           // fecha no valor exato, sem depender do arredondamento
@@ -66,7 +76,7 @@ export default function useCountUp(
       cancelAnimationFrame(rafRef.current);
       clearTimeout(timerRef.current);
     };
-  }, [isInView, target, duration, delay, reduceMotion]);
+  }, [isInView, target, duration, delay, reduceMotion, continuous]);
 
   return value;
 }

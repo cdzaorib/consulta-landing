@@ -452,6 +452,32 @@ export const PLANS_NOTE = {
 };
 
 /* -------------------------------------------------------------------------
+   Calculadora de custo
+   Só textos: os preços saem de PLANS e o total é profissionais × preço.
+   Não há desconto por volume, plano anual nem economia estimada porque a
+   Conclínica não publica nenhum dos três.
+   ------------------------------------------------------------------------- */
+
+export const CALCULATOR = {
+  title: 'Quanto fica na sua clínica',
+  lead:
+    'O preço é por profissional de saúde, então o valor do mês depende do tamanho da equipe. Ajuste os dois campos e veja a conta.',
+  professionalsLabel: 'Profissionais de saúde',
+  planLabel: 'Plano',
+  /* Acima de 10 profissionais o cálculo não vale mais: o atendimento passa a
+     ser por cotação, conforme PLANS_NOTE. */
+  maxTeam: 10,
+  quote: {
+    title: 'Sua equipe entra em cotação exclusiva',
+    text: 'Clínicas com mais de 10 profissionais têm planos exclusivos sob cotação. A equipe monta o valor a partir do número de profissionais e dos módulos que você usa.',
+    cta: 'Falar com um consultor',
+  },
+  totalCaption: 'por mês, para a clínica inteira',
+  cta: 'Testar grátis por 7 dias',
+  note: 'A cobrança é mensal. Dá para trocar de plano depois, sem trocar de sistema.',
+};
+
+/* -------------------------------------------------------------------------
    Perguntas frequentes
    Cada resposta se apoia em algo que já está neste arquivo: nuvem e
    segurança vêm do TRUST_CARD, a confirmação por WhatsApp e a cotação

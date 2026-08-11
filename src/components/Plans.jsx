@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import PlanCalculator from './PlanCalculator.jsx';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
 import { VIEWPORT_SOFT, cardUp, fadeUp, reveal, stagger } from '../lib/motion.js';
 import { PLANS, PLANS_NOTE, SITE } from '../content.js';
@@ -83,6 +84,9 @@ export default function Plans() {
           <a href={SITE.plansUrl}>Ver a página de planos</a>.
         </motion.p>
 
+        {/* A calculadora responde a pergunta que a tabela acima deixa aberta,
+            então fica dentro da própria seção de planos. */}
+        <PlanCalculator />
       </div>
     </section>
   );

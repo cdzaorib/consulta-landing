@@ -92,6 +92,14 @@ const PAIRS = [
   ['pergunta do FAQ / superfície branca', C.ink, C.white, 4.5],
   ['resposta do FAQ / superfície branca', C.ink2, C.white, 4.5],
 
+  // Calculadora. O total é o verde da marca em corpo grande (≥ 40px), onde
+  // a 1.4.3 pede 3:1; o resto do painel é texto normal sobre sálvia 50.
+  ['total da calculadora / painel sálvia (texto grande)', C.brandMark, C.sage50, 3],
+  ['conta explícita / painel sálvia', C.ink2, C.sage50, 4.5],
+  ['legenda do total / painel sálvia', C.ink3, C.sage50, 4.5],
+  ['preço do plano escolhido / cartão sálvia', C.sage700, C.sage50, 4.5],
+  ['escala do slider / superfície branca', C.ink3, C.white, 4.5],
+
   // Elementos não textuais (bordas, ícones, indicadores): mínimo 3:1
   ['borda forte / fundo sálvia', C.lineStrong, C.sage50, 1.2],
   ['anel de foco / fundo sálvia', C.sage700, C.sage50, 3],
@@ -100,6 +108,9 @@ const PAIRS = [
   ['ícone âmbar / fundo sálvia', C.amber600, C.sage50, 3],
   ['divisor / superfície branca', C.line, C.white, 1.1],
   ['barra da aba ativa / fundo areia', C.brandMark, C.sand50, 3],
+  ['trilha preenchida do slider / superfície branca', C.brandMark, C.white, 3],
+  ['trilha vazia do slider / superfície branca', C.lineStrong, C.white, 1.2],
+  ['borda do plano escolhido / superfície branca', C.brandMark, C.white, 3],
   ['chevron do FAQ (sálvia 700 sobre sálvia 100)', C.sage700, C.sage100, 3],
   // Glifo do WhatsApp no botão flutuante: elemento gráfico, 1.4.11 pede 3:1.
   ['ícone branco / botão flutuante verde da marca', C.white, C.brandMark, 3],

@@ -1,0 +1,100 @@
+.faq-list {
+  max-width: 46rem;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sm);
+  /* `translate` e não `transform`: o Framer Motion deixa `transform: none`
+     inline nestes itens ao terminar a revelação, e estilo inline vence
+     :hover. */
+  transition:
+    translate var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+
+.faq-item:hover {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.faq-item.is-open {
+  border-color: var(--sage-300);
+  box-shadow: var(--shadow-md);
+}
+
+.faq-trigger {
+  width: 100%;
+  min-height: var(--tap);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  text-align: left;
+  border-radius: var(--r-md);
+}
+
+.faq-q {
+  font-family: var(--font-sans);
+  font-size: var(--t-body);
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+
+.faq-chevron {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--sage-100);
+  color: var(--sage-700);
+  transition:
+    rotate var(--dur) var(--ease-out),
+    background var(--dur) var(--ease);
+}
+
+.faq-chevron svg {
+  width: 16px;
+  height: 16px;
+}
+
+.faq-trigger[aria-expanded='true'] .faq-chevron {
+  rotate: 180deg;
+  background: var(--sage-200);
+}
+
+/* O contêiner que anima a altura não pode ter padding próprio: o padding
+   entraria na medida do `height: auto` e o fecho terminaria com um salto. */
+.faq-panel {
+  overflow: hidden;
+}
+
+.faq-panel p {
+  padding: 0 var(--space-5) var(--space-5);
+  color: var(--ink-2);
+  font-size: var(--t-sm);
+  line-height: 1.65;
+  max-width: 58ch;
+}
+
+@media (min-width: 640px) {
+  .faq-q {
+    font-size: var(--t-lead);
+  }
+
+  .faq-panel p {
+    font-size: var(--t-body);
+  }
+}

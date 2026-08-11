@@ -86,6 +86,12 @@ const PAIRS = [
   ['badge plano em destaque', C.white, C.sage800, 4.5],
   ['card de confiança: marcador âmbar', C.amber300, C.sage900, 4.5],
 
+  // Abas de funcionalidades e FAQ
+  ['aba ativa / fundo areia', C.sage800, C.sand50, 4.5],
+  ['aba em hover (texto sobre sálvia 100)', C.ink, C.sage100, 4.5],
+  ['pergunta do FAQ / superfície branca', C.ink, C.white, 4.5],
+  ['resposta do FAQ / superfície branca', C.ink2, C.white, 4.5],
+
   // Elementos não textuais (bordas, ícones, indicadores): mínimo 3:1
   ['borda forte / fundo sálvia', C.lineStrong, C.sage50, 1.2],
   ['anel de foco / fundo sálvia', C.sage700, C.sage50, 3],
@@ -93,6 +99,10 @@ const PAIRS = [
   ['ícone âmbar / superfície branca', C.amber600, C.white, 3],
   ['ícone âmbar / fundo sálvia', C.amber600, C.sage50, 3],
   ['divisor / superfície branca', C.line, C.white, 1.1],
+  ['barra da aba ativa / fundo areia', C.brandMark, C.sand50, 3],
+  ['chevron do FAQ (sálvia 700 sobre sálvia 100)', C.sage700, C.sage100, 3],
+  // Glifo do WhatsApp no botão flutuante: elemento gráfico, 1.4.11 pede 3:1.
+  ['ícone branco / botão flutuante verde da marca', C.white, C.brandMark, 3],
 
   // O âmbar oficial (#FAAB1C) só entra como grafismo decorativo: as
   // estrelas repetem uma nota que já está no aria-label, então não

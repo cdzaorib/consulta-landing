@@ -6,10 +6,13 @@ import LogosStrip from './components/LogosStrip.jsx';
 import DaySection from './components/DaySection.jsx';
 import Metrics from './components/Metrics.jsx';
 import Testimonials from './components/Testimonials.jsx';
+import FeatureTabs from './components/FeatureTabs.jsx';
 import Plans from './components/Plans.jsx';
+import Faq from './components/Faq.jsx';
 import FinalCta from './components/FinalCta.jsx';
 import Blog from './components/Blog.jsx';
 import Footer from './components/Footer.jsx';
+import WhatsAppFab from './components/WhatsAppFab.jsx';
 import usePrefersReducedMotion from './hooks/usePrefersReducedMotion.js';
 import { fadeUp, reveal } from './lib/motion.js';
 import { DAY_BLOCKS } from './content.js';
@@ -45,12 +48,21 @@ export default function App() {
 
         <Metrics />
         <Testimonials />
+
+        {/* As abas repetem as telas de "um dia na clínica", então ficam longe
+            dela: aqui elas funcionam como retomada das funcionalidades logo
+            antes da tabela de preços, que é onde a pessoa precisa comparar o
+            que cada plano entrega. */}
+        <FeatureTabs />
+
         <Plans />
+        <Faq />
         <FinalCta />
         <Blog />
       </main>
 
       <Footer />
+      <WhatsAppFab />
     </>
   );
 }

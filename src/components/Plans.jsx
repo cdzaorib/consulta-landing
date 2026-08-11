@@ -7,8 +7,11 @@ import './Plans.css';
 export default function Plans() {
   const reduceMotion = usePrefersReducedMotion();
 
+  /* Fundo frio: a faixa quente que ficava aqui passou para as abas de
+     funcionalidades, logo acima, para as seções continuarem alternando
+     temperatura de uma para a outra. */
   return (
-    <section id="planos" className="band-warm">
+    <section id="planos">
       <div className="wrap">
         <motion.div className="section-head center" {...reveal(reduceMotion, fadeUp)}>
           <p className="eyebrow">Planos</p>

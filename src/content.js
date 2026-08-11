@@ -206,6 +206,94 @@ export const DAY_BLOCKS = [
 ];
 
 /* -------------------------------------------------------------------------
+   Abas de funcionalidades
+   Fonte: mesmas funcionalidades já listadas nos blocos acima e nas listas de
+   recursos dos planos. Nenhum recurso novo entra aqui.
+
+   As telas são as mesmas de DAY_BLOCKS, por referência: uma reconstrução só
+   precisa existir num lugar, e assim as duas seções nunca divergem.
+   ------------------------------------------------------------------------- */
+
+export const FEATURE_TABS = {
+  eyebrow: 'Funcionalidades',
+  title: 'Três frentes, o mesmo sistema',
+  lead:
+    'Escolha a frente que mais pesa na sua rotina e veja o que muda na tela e no fluxo de trabalho.',
+  tabs: [
+    {
+      id: 'atendimento',
+      label: 'Atendimento & WhatsApp',
+      title: 'A agenda chega ao dia seguinte já confirmada',
+      description:
+        'A recepção para de ligar paciente por paciente. O sistema avisa, recebe a resposta e mostra na agenda quem confirmou.',
+      items: [
+        {
+          name: 'Confirmação automática',
+          sub: 'Mensagem de confirmação por WhatsApp, SMS ou e-mail antes da consulta.',
+        },
+        {
+          name: 'Fila de espera',
+          sub: 'Quando alguém cancela, o encaixe do próximo paciente é imediato.',
+        },
+        {
+          name: 'Agendamento online 24h',
+          sub: 'O paciente marca pelo site fora do horário de funcionamento da recepção.',
+        },
+      ],
+      screen: DAY_BLOCKS[0].screen,
+    },
+    {
+      id: 'prontuario',
+      label: 'Prontuário & IA',
+      title: 'O registro da consulta sai pronto do atendimento',
+      description:
+        'O assistente de IA escuta a consulta e devolve um prontuário organizado. A digitação sai do meio do atendimento.',
+      items: [
+        {
+          name: 'Prontuário com assistente de IA',
+          sub: 'A conversa da consulta vira documentação estruturada em segundos.',
+        },
+        {
+          name: 'Prescrição digital',
+          sub: 'Receitas e documentos assinados digitalmente, com validade legal.',
+        },
+        {
+          name: 'Laudos e exames',
+          sub: 'Resultados e anexos ficam vinculados ao histórico do paciente.',
+        },
+      ],
+      screen: DAY_BLOCKS[1].screen,
+    },
+    {
+      id: 'financeiro',
+      label: 'Financeiro & TISS',
+      title: 'O que entrou e o que falta receber, no mesmo lugar',
+      description:
+        'Cobranças, guias e notas nascem junto com o atendimento, então o fechamento do mês não vira uma segunda apuração.',
+      items: [
+        {
+          name: 'Faturamento de convênios',
+          sub: 'Guias TISS para as operadoras e acompanhamento das glosas.',
+        },
+        {
+          name: 'Emissão de NFS-e',
+          sub: 'A nota fiscal de serviço sai junto com a cobrança.',
+        },
+        {
+          name: 'Cobrança recorrente',
+          sub: 'Cartão, boleto ou pix, com repetição automática a cada ciclo.',
+        },
+        {
+          name: 'Controle de caixa',
+          sub: 'Contas a pagar e a receber com o fluxo do dia em tempo real.',
+        },
+      ],
+      screen: DAY_BLOCKS[2].screen,
+    },
+  ],
+};
+
+/* -------------------------------------------------------------------------
    Números
    Fonte: faixa de estatísticas da home, lida num screenshot do site em que
    os contadores já haviam terminado de animar: 12M+ marcações agendadas,
@@ -361,6 +449,47 @@ export const PLANS = [
 export const PLANS_NOTE = {
   unit: 'Todos os preços são por profissional de saúde, por mês.',
   custom: 'Clínicas com mais de 10 profissionais têm planos exclusivos sob cotação.',
+};
+
+/* -------------------------------------------------------------------------
+   Perguntas frequentes
+   Cada resposta se apoia em algo que já está neste arquivo: nuvem e
+   segurança vêm do TRUST_CARD, a confirmação por WhatsApp e a cotação
+   acima de 10 profissionais vêm de PLANS e PLANS_NOTE, e os 7 dias de
+   teste vêm do HERO. Nada aqui foi estimado.
+   ------------------------------------------------------------------------- */
+
+export const FAQ = {
+  eyebrow: 'Dúvidas frequentes',
+  title: 'O que perguntam antes de começar',
+  lead: 'Se ficar alguma dúvida de fora, a equipe responde pelo WhatsApp ou pelo chat.',
+  items: [
+    {
+      id: 'instalacao',
+      q: 'Preciso instalar algo no computador?',
+      a: 'Não. O Conclínica roda inteiro na nuvem, pelo navegador. A recepção usa o computador que já está na mesa e o profissional entra pelo celular ou pelo notebook, sem servidor dentro da clínica e sem depender de um técnico para atualizar versão.',
+    },
+    {
+      id: 'conformidade',
+      q: 'O sistema atende aos requisitos do CFM e da LGPD?',
+      a: 'Sim. O prontuário segue as normas do CFM e a LGPD, com criptografia e controle de acesso por níveis, e o backup é diário e automático em servidor AWS. A telemedicina também acompanha as normas vigentes.',
+    },
+    {
+      id: 'whatsapp',
+      q: 'Como funciona a confirmação de consultas por WhatsApp?',
+      a: 'O envio é automático: antes da consulta o paciente recebe a mensagem e a agenda passa a mostrar quem já confirmou e quem segue como não confirmado. A confirmação por WhatsApp (Zenvia) entra a partir do plano Gestão; a confirmação por SMS e e-mail acompanha a agenda online.',
+    },
+    {
+      id: 'teste',
+      q: 'Existe período de teste?',
+      a: 'Sim, são 7 dias de teste grátis. O cadastro é feito online e o sistema já abre com a agenda, o prontuário e o financeiro disponíveis para você experimentar com a rotina da sua clínica.',
+    },
+    {
+      id: 'equipe',
+      q: 'Atende clínicas com muitos profissionais?',
+      a: 'Atende. O preço é por profissional de saúde e por mês, então a conta acompanha o tamanho da equipe. Clínicas com mais de 10 profissionais têm planos exclusivos sob cotação.',
+    },
+  ],
 };
 
 /* -------------------------------------------------------------------------

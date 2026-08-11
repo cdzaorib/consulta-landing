@@ -1,0 +1,162 @@
+/* -------------------------------------------------------------------------
+   Lista de abas
+   ------------------------------------------------------------------------- */
+
+/* A 375px os três rótulos não cabem lado a lado, então a lista rola na
+   horizontal. O contêiner de rolagem é separado da tablist para que o
+   `padding` do foco não seja cortado pelo `overflow`. */
+.tab-list-scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-padding-inline: var(--space-4);
+  margin-bottom: clamp(28px, 3.5vw, 44px);
+  /* A linha de base contra a qual a barrinha ativa desliza. */
+  border-bottom: 1px solid var(--line);
+}
+
+.tab-list {
+  display: flex;
+  gap: var(--space-2);
+  width: max-content;
+  min-width: 100%;
+  padding-inline: 2px;
+}
+
+.tab {
+  position: relative;
+  flex: none;
+  min-height: var(--tap);
+  padding: 12px var(--space-4) 14px;
+  font-size: var(--t-sm);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--ink-3);
+  white-space: nowrap;
+  border-radius: var(--r-sm) var(--r-sm) 0 0;
+  transition:
+    color var(--dur) var(--ease),
+    background var(--dur) var(--ease);
+}
+
+.tab:hover {
+  color: var(--ink);
+  background: var(--surface-sunken);
+}
+
+.tab.is-active {
+  color: var(--brand-deep);
+}
+
+.tab-underline {
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: -1px;
+  height: 2px;
+  border-radius: var(--r-pill);
+  background: var(--brand-mark);
+}
+
+/* -------------------------------------------------------------------------
+   Painéis
+   ------------------------------------------------------------------------- */
+
+/* Os três painéis dividem a mesma célula do grid: a seção fica com a altura
+   do mais alto e trocar de aba não muda o comprimento da página. */
+.tab-stack {
+  display: grid;
+}
+
+.tab-panel {
+  grid-area: 1 / 1;
+}
+
+/* `visibility` e não `display`: mantém a altura reservada e ainda assim tira
+   o painel inativo do foco e da árvore de acessibilidade. */
+.tab-panel:not(.is-active) {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.tab-panel:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 6px;
+  border-radius: var(--r-md);
+}
+
+.tab-panel-inner {
+  display: grid;
+  gap: clamp(28px, 4vw, 48px);
+  align-items: start;
+}
+
+.tab-copy h3 {
+  max-width: 22ch;
+}
+
+.tab-desc {
+  margin-top: var(--space-3);
+  color: var(--ink-2);
+  font-size: var(--t-lead);
+  line-height: 1.55;
+  max-width: 40ch;
+}
+
+.tab-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.tab-items li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.tab-items .tick {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--sage-100);
+  color: var(--sage-700);
+}
+
+.tab-items .tick svg {
+  width: 12px;
+  height: 12px;
+}
+
+.tab-items .name {
+  display: block;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.tab-items .sub {
+  display: block;
+  margin-top: 2px;
+  font-size: var(--t-sm);
+  color: var(--ink-3);
+  line-height: 1.5;
+}
+
+.tab-screen {
+  min-width: 0;
+}
+
+@media (min-width: 900px) {
+  .tab-panel-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  }
+
+  .tab-list {
+    justify-content: center;
+  }
+}

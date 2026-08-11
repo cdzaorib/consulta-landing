@@ -1,0 +1,58 @@
+/* Verde da marca, não o verde do WhatsApp: o botão é da Conclínica, e o
+   glifo já identifica o canal. Branco sobre #008872 rende 4,4:1, acima dos
+   3:1 que a WCAG 1.4.11 pede para um elemento gráfico. */
+.wa-fab {
+  position: fixed;
+  right: clamp(16px, 4vw, 28px);
+  bottom: clamp(16px, 4vw, 28px);
+  /* Abaixo do cabeçalho (60) e do link de pular para o conteúdo (200). */
+  z-index: 40;
+
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--brand-mark);
+  color: #ffffff;
+  box-shadow: var(--shadow-lg);
+  transition:
+    background var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease),
+    translate var(--dur) var(--ease-out);
+}
+
+.wa-fab svg {
+  width: 28px;
+  height: 28px;
+}
+
+.wa-fab:hover {
+  background: var(--brand-mark-light);
+  box-shadow: var(--shadow-xl);
+  translate: 0 -2px;
+}
+
+.wa-fab:active {
+  translate: 0 0;
+  transition-duration: var(--dur-press);
+}
+
+.wa-fab:focus-visible {
+  outline: 2px solid var(--brand-deep);
+  outline-offset: 3px;
+}
+
+/* Em telas curtas o botão sobe um pouco menos para não brigar com a barra
+   de navegação do navegador móvel. */
+@media (max-width: 480px) {
+  .wa-fab {
+    width: 52px;
+    height: 52px;
+  }
+
+  .wa-fab svg {
+    width: 26px;
+    height: 26px;
+  }
+}

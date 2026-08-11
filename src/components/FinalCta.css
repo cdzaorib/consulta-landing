@@ -20,7 +20,7 @@
   height: 560px;
   pointer-events: none;
   background:
-    radial-gradient(50% 50% at 30% 55%, rgba(78, 113, 89, 0.5), transparent 70%),
+    radial-gradient(50% 50% at 30% 55%, rgba(0, 136, 114, 0.55), transparent 70%),
     radial-gradient(40% 42% at 74% 72%, rgba(250, 171, 28, 0.26), transparent 72%);
 }
 
@@ -45,12 +45,12 @@
 }
 
 .btn-outline-dark {
-  border-color: rgba(226, 234, 227, 0.28);
+  border-color: rgba(255, 255, 255, 0.24);
   color: var(--on-dark);
   background: transparent;
 }
 
 .btn-outline-dark:hover {
-  border-color: rgba(226, 234, 227, 0.55);
-  background: rgba(226, 234, 227, 0.08);
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.08);
 }

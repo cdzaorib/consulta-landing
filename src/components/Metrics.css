@@ -1,22 +1,117 @@
 .metrics {
   position: relative;
   overflow: hidden;
-  background: var(--surface-dark);
+  /* Quase-preto neutro: o verde da marca só aparece no movimento por cima. */
+  background: #0c1013;
   color: var(--on-dark);
   border-radius: var(--r-xl);
   padding: clamp(32px, 5vw, 60px) clamp(24px, 4vw, 52px);
+  isolation: isolate;
 }
 
-/* Brilho sálvia/terracota no canto — evita o retângulo escuro chapado */
-.metrics-glow {
+/* ---------------------------------------------------------------------------
+   Fundo animado
+
+   Três manchas de verde-água à deriva sobre o quase-preto. Só `transform` e
+   `opacity` entram na animação — nada de filtro ou sombra, que forçariam
+   repintura a cada quadro. O borrão fica no próprio degradê radial (as
+   bordas já saem suaves), então não há `filter: blur` nenhum.
+
+   Os ciclos são longos e de durações primas entre si (38s, 47s, 61s), de
+   modo que as três manchas nunca voltam à mesma posição — o movimento não
+   ganha um "compasso" que o olho consiga prever e cansar de seguir.
+   --------------------------------------------------------------------------- */
+
+.metrics-bg {
   position: absolute;
-  inset: -40% -20% auto auto;
-  width: 620px;
-  height: 620px;
+  inset: 0;
+  z-index: -1;
   pointer-events: none;
-  background:
-    radial-gradient(50% 50% at 70% 30%, rgba(78, 113, 89, 0.55), transparent 70%),
-    radial-gradient(40% 40% at 95% 10%, rgba(250, 171, 28, 0.28), transparent 72%);
+  overflow: hidden;
+}
+
+.metrics-blob {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.metrics-blob.one {
+  width: 46rem;
+  height: 46rem;
+  top: -60%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(0, 136, 114, 0.55), transparent 66%);
+  animation: metrics-drift-1 38s ease-in-out infinite alternate;
+}
+
+.metrics-blob.two {
+  width: 38rem;
+  height: 38rem;
+  bottom: -55%;
+  left: -8%;
+  background: radial-gradient(circle, rgba(1, 169, 142, 0.34), transparent 68%);
+  animation: metrics-drift-2 47s ease-in-out infinite alternate;
+}
+
+/* A terceira é âmbar e bem mais fraca: quebra o verde chapado sem virar
+   uma segunda cor de fundo. */
+.metrics-blob.three {
+  width: 30rem;
+  height: 30rem;
+  top: 10%;
+  left: 42%;
+  background: radial-gradient(circle, rgba(250, 171, 28, 0.16), transparent 70%);
+  animation: metrics-drift-3 61s ease-in-out infinite alternate;
+}
+
+@keyframes metrics-drift-1 {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-14%, 18%, 0) scale(1.16);
+  }
+}
+
+@keyframes metrics-drift-2 {
+  from {
+    transform: translate3d(0, 0, 0) scale(1.1);
+  }
+  to {
+    transform: translate3d(20%, -14%, 0) scale(0.92);
+  }
+}
+
+@keyframes metrics-drift-3 {
+  from {
+    transform: translate3d(0, 0, 0) scale(0.95);
+  }
+  to {
+    transform: translate3d(-18%, -10%, 0) scale(1.2);
+  }
+}
+
+/* Sem movimento: as manchas ficam onde nasceram. A regra global zera a
+   duração de qualquer animação, o que congelaria as três no primeiro quadro
+   e daria uma composição desequilibrada — então aqui elas param já
+   distribuídas. */
+@media (prefers-reduced-motion: reduce) {
+  .metrics-blob {
+    animation: none !important;
+  }
+
+  .metrics-blob.one {
+    transform: translate3d(-7%, 9%, 0) scale(1.08);
+  }
+
+  .metrics-blob.two {
+    transform: translate3d(10%, -7%, 0) scale(1);
+  }
+
+  .metrics-blob.three {
+    transform: translate3d(-9%, -5%, 0) scale(1.07);
+  }
 }
 
 .metrics .eyebrow {
@@ -59,7 +154,7 @@
   font-family: var(--font-sans);
   font-size: 0.95rem;
   font-weight: 400;
-  color: var(--on-dark-3);
+  color: var(--on-dark-2);
   letter-spacing: 0;
   margin-right: 4px;
 }

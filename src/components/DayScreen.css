@@ -15,7 +15,7 @@
   align-items: center;
   gap: var(--space-3);
   padding: 10px var(--space-4);
-  background: var(--sage-50);
+  background: var(--n-100);
   border-bottom: 1px solid var(--line);
 }
 
@@ -65,7 +65,7 @@
   padding: 9px 11px;
   border-radius: var(--r-sm);
   border-left: 3px solid transparent;
-  background: var(--sage-50);
+  background: var(--n-100);
 }
 
 .scr-row .scr-time {
@@ -107,11 +107,11 @@
 
 /* Estados com o vocabulário da tela real */
 .scr-row.tone-live {
-  border-left-color: var(--sage-600);
-  background: var(--sage-100);
+  border-left-color: var(--brand-mark);
+  background: var(--n-100);
 }
 .scr-row.tone-live .scr-status {
-  color: var(--sage-700);
+  color: var(--brand-deep);
 }
 
 .scr-row.tone-pending {
@@ -123,7 +123,7 @@
 }
 
 .scr-row.tone-waiting {
-  border-left-color: var(--sage-400);
+  border-left-color: var(--n-400);
 }
 .scr-row.tone-waiting .scr-status {
   color: var(--ink-3);
@@ -196,13 +196,13 @@
   gap: var(--space-2);
   padding: 7px 10px;
   border-radius: var(--r-sm);
-  background: var(--sage-50);
+  background: var(--n-100);
   font-size: var(--t-xs);
   color: var(--ink-2);
 }
 
 .scr-chevron {
-  color: var(--sage-500);
+  color: var(--brand-mark);
   line-height: 1;
 }
 
@@ -261,7 +261,7 @@
 }
 
 .scr-btn.solid {
-  background: var(--sage-800);
+  background: var(--brand-strong);
   color: #ffffff;
 }
 

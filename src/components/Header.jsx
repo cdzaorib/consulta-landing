@@ -16,12 +16,12 @@ export default function Header() {
   const background = useTransform(
     scrollY,
     [0, 72],
-    ['rgba(241, 245, 241, 0.72)', 'rgba(241, 245, 241, 0.94)']
+    ['rgba(255, 255, 255, 0.72)', 'rgba(255, 255, 255, 0.94)']
   );
   const borderColor = useTransform(
     scrollY,
     [0, 72],
-    ['rgba(220, 229, 221, 0)', 'rgba(220, 229, 221, 1)']
+    ['rgba(230, 230, 230, 0)', 'rgba(230, 230, 230, 1)']
   );
 
   // Escape fecha o menu e devolve o foco ao botão que o abriu.

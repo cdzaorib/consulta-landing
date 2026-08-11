@@ -83,7 +83,7 @@ header {
 }
 
 .nav-toggle:hover {
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--n-100);
 }
 
 .bars {

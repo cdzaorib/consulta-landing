@@ -15,8 +15,6 @@ export default function Hero() {
 
   return (
     <section className="hero" id="topo">
-      <div className="hero-glow" aria-hidden="true" />
-
       <div className="wrap hero-grid">
         <motion.div
           className="hero-copy"
@@ -84,7 +82,7 @@ export default function Hero() {
             className="hero-photo"
             src="/images/hero-medico.webp"
             alt=""
-            width="760"
+            width="528"
             height="613"
             decoding="async"
             fetchPriority="high"

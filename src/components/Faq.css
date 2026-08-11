@@ -26,7 +26,7 @@
 }
 
 .faq-item.is-open {
-  border-color: var(--sage-300);
+  border-color: var(--n-300);
   box-shadow: var(--shadow-md);
 }
 
@@ -58,8 +58,8 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: var(--sage-100);
-  color: var(--sage-700);
+  background: var(--n-100);
+  color: var(--brand-deep);
   transition:
     rotate var(--dur) var(--ease-out),
     background var(--dur) var(--ease);
@@ -72,7 +72,7 @@
 
 .faq-trigger[aria-expanded='true'] .faq-chevron {
   rotate: 180deg;
-  background: var(--sage-200);
+  background: var(--n-200);
 }
 
 /* O contêiner que anima a altura não pode ter padding próprio: o padding

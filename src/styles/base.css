@@ -138,13 +138,13 @@ section {
    No lugar de uma linha de 1px separando frio de quente, as bordas
    dissolvem num degradê de 72px — a troca de temperatura acontece sem
    costura visível. */
-.band-warm {
+.band-alt {
   position: relative;
-  background: var(--bg-warm);
+  background: var(--bg-alt);
 }
 
-.band-warm::before,
-.band-warm::after {
+.band-alt::before,
+.band-alt::after {
   content: '';
   position: absolute;
   left: 0;
@@ -153,18 +153,18 @@ section {
   pointer-events: none;
 }
 
-.band-warm::before {
+.band-alt::before {
   top: 0;
   background: linear-gradient(to bottom, var(--bg), transparent);
 }
 
-.band-warm::after {
+.band-alt::after {
   bottom: 0;
   background: linear-gradient(to top, var(--bg), transparent);
 }
 
 /* O conteúdo da faixa fica acima do degradê */
-.band-warm > * {
+.band-alt > * {
   position: relative;
   z-index: 1;
 }
@@ -327,7 +327,7 @@ section {
 }
 
 .btn-primary:hover {
-  background: var(--sage-700);
+  background: var(--brand-strong);
   box-shadow: var(--shadow-md);
 }
 
@@ -338,8 +338,8 @@ section {
 }
 
 .btn-ghost:hover {
-  border-color: var(--sage-400);
-  background: rgba(255, 255, 255, 0.6);
+  border-color: var(--brand);
+  background: var(--n-50);
 }
 
 .btn-quiet {
@@ -349,12 +349,12 @@ section {
 
 .btn-quiet:hover {
   color: var(--ink);
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--n-100);
 }
 
 .btn-on-dark {
-  background: var(--sage-50);
-  color: var(--sage-950);
+  background: var(--n-100);
+  color: var(--slate-950);
 }
 
 .btn-on-dark:hover {
@@ -383,7 +383,7 @@ section {
 }
 
 .eyebrow.on-dark {
-  color: var(--on-dark-3);
+  color: var(--on-dark-2);
 }
 
 /* =========================================================================
@@ -435,8 +435,8 @@ section {
 }
 
 .chip-sage {
-  background: var(--sage-100);
-  color: var(--sage-800);
+  background: var(--brand-soft);
+  color: var(--brand-strong);
 }
 
 .chip-clay {
@@ -445,7 +445,7 @@ section {
 }
 
 .chip-sand {
-  background: var(--sand-100);
+  background: var(--n-200);
   color: var(--ink-2);
 }
 

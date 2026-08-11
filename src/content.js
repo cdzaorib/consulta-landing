@@ -459,7 +459,7 @@ export const PLANS_NOTE = {
    ------------------------------------------------------------------------- */
 
 export const CALCULATOR = {
-  title: 'Quanto fica na sua clínica',
+  title: 'Quanto fica na sua clínica?',
   lead:
     'O preço é por profissional de saúde, então o valor do mês depende do tamanho da equipe. Ajuste os dois campos e veja a conta.',
   professionalsLabel: 'Profissionais de saúde',

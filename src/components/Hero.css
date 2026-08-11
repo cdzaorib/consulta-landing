@@ -4,19 +4,6 @@
   overflow: hidden;
 }
 
-/* Halo sálvia/terracota bem diluído atrás do conteúdo — dá profundidade
-   sem depender de imagem. */
-.hero-glow {
-  position: absolute;
-  inset: -30% -10% auto -10%;
-  height: 720px;
-  pointer-events: none;
-  background:
-    radial-gradient(46% 42% at 22% 34%, rgba(78, 113, 89, 0.16), transparent 68%),
-    radial-gradient(34% 34% at 82% 20%, rgba(250, 171, 28, 0.16), transparent 70%);
-  filter: blur(6px);
-}
-
 .hero-grid {
   position: relative;
   display: grid;
@@ -25,10 +12,19 @@
   align-items: center;
 }
 
+/* `min-width: 0` nos dois filhos: sem isso as trilhas `fr` não encolhem
+   abaixo do conteúdo mínimo da coluna visual, a grade estoura o container e
+   o texto da esquerda sai cortado na borda da viewport. Era a causa do
+   corte. */
+.hero-copy,
+.hero-visual {
+  min-width: 0;
+}
+
 @media (min-width: 940px) {
   .hero-grid {
-    grid-template-columns: 1.02fr 0.98fr;
-    gap: clamp(48px, 5vw, 80px);
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: clamp(40px, 4vw, 72px);
   }
 }
 
@@ -38,7 +34,7 @@
 }
 
 .hero-copy h1 em {
-  color: var(--sage-600);
+  color: var(--brand-mark);
 }
 
 .hero .lead {
@@ -76,8 +72,9 @@
   justify-self: center;
 }
 
-/* Foto do médico: entra só quando há largura para ela conviver com o card.
-   Abaixo disso o card sozinho comunica melhor e o mobile fica mais leve. */
+/* A foto entra só quando sobra largura para ela e o card conviverem lado a
+   lado sem um cobrir o outro. Entre 940px e 1140px o card ocupa a coluna
+   inteira: é mais honesto que espremer os dois. */
 .hero-photo {
   display: none;
 }
@@ -85,38 +82,34 @@
 @media (min-width: 940px) {
   .hero-visual {
     justify-self: end;
-    max-width: none;
-    /* espaço à direita para a foto, que fica parcialmente atrás do card */
-    padding-right: 128px;
-  }
-
-  .hero-photo {
-    display: block;
-    position: absolute;
-    right: -52px;
-    bottom: 0;
-    width: 330px;
-    height: auto;
-    z-index: 0;
-    /* recorta as telas flutuantes da imagem original, que ficariam
-       escondidas atrás do card — sobra só a pessoa */
-    object-fit: cover;
-    object-position: right bottom;
-    aspect-ratio: 0.72;
-    /* a sombra segue o contorno da pessoa, não uma caixa */
-    filter: drop-shadow(0 18px 34px rgba(13, 24, 17, 0.14));
-    pointer-events: none;
-  }
-
-  .hero-visual .agenda-card {
-    position: relative;
-    z-index: 1;
+    max-width: 600px;
   }
 }
 
 @media (min-width: 1140px) {
   .hero-photo {
-    width: 366px;
-    right: -68px;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 45%;
+    max-width: 268px;
+    height: auto;
+    z-index: 0;
+    /* O arquivo já vem recortado na pessoa com o tablet (as telas flutuantes
+       da arte original foram removidas do próprio asset), então aqui não há
+       mais recorte por CSS: a imagem entra inteira, na proporção dela. */
+    aspect-ratio: 528 / 613;
+    object-fit: contain;
+    /* a sombra segue o contorno da pessoa, não uma caixa */
+    filter: drop-shadow(0 18px 34px rgba(17, 20, 22, 0.16));
+    pointer-events: none;
+  }
+
+  /* O card começa onde a foto termina: os dois aparecem inteiros. */
+  .hero-visual .agenda-card {
+    position: relative;
+    z-index: 1;
+    margin-left: 46%;
   }
 }

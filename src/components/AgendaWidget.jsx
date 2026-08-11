@@ -20,7 +20,7 @@ const SLOTS = [
   { time: '08:00', name: 'Larissa M.', kind: 'Retorno', tone: 'sage', confirmedAt: 0 },
   { time: '08:40', name: 'Rafael T.', kind: '1ª consulta', tone: 'sage', confirmedAt: 1 },
   { time: '09:20', name: null, kind: 'Vaga livre', tone: 'empty', filledAt: 2 },
-  { time: '10:00', name: 'Telemedicina', kind: 'Google Meet', tone: 'amber', confirmedAt: 0 },
+  { time: '10:00', name: 'Telemedicina', kind: 'Videochamada com assinatura', tone: 'amber', confirmedAt: 0 },
   { time: '10:40', name: 'Bloco de exames', kind: 'Coleta', tone: 'sage', confirmedAt: 0 },
 ];
 
@@ -171,9 +171,9 @@ export default function AgendaWidget() {
         <div className="agenda-counts mono">
           <span>{booked} confirmadas</span>
           <span aria-hidden="true">·</span>
-          <span>
-            {free} {free === 1 ? 'vaga' : 'vagas'}
-          </span>
+          {/* "0 vagas" lia como agenda vazia; cheia é justamente o bom
+              resultado, então o texto muda de forma junto com o número. */}
+          <span>{free === 0 ? 'agenda cheia' : `${free} livre${free === 1 ? '' : 's'}`}</span>
         </div>
       </div>
     </figure>

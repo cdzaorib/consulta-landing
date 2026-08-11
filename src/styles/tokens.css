@@ -1,23 +1,43 @@
 /* =========================================================================
    Design tokens — Conclínica
-   Paleta sálvia (marca) + terracota (acento) sobre neutros quentes.
+   Superfícies em cinza puro (branco + #F3F3F3), verde-água da marca só em
+   destaque e âmbar oficial como acento. Nenhum degrau de superfície carrega
+   tinta verde: o fundo do site é #FFFFFF.
    Todos os pares de texto/fundo usados na página são validados em
    scripts/check-contrast.mjs (WCAG AA).
    ========================================================================= */
 
 :root {
-  /* ---------- Rampa sálvia (marca) ---------- */
-  --sage-50: #f1f5f1;
-  --sage-100: #e2eae3;
-  --sage-200: #c6d6c9;
-  --sage-300: #a0b8a6;
-  --sage-400: #74947d;
-  --sage-500: #4e7159;
-  --sage-600: #395a44;
-  --sage-700: #2b4634;
-  --sage-800: #1e3327;
-  --sage-900: #15251c;
-  --sage-950: #0d1811;
+  /* ---------- Neutros (todas as superfícies) ----------
+     Cinza puro, sem hue. O 100 é o #F3F3F3 que o site oficial usa como
+     superfície secundária. */
+  --n-0: #ffffff;
+  --n-50: #fafafa;
+  --n-100: #f3f3f3;
+  --n-200: #e9e9e9;
+  --n-300: #dcdcdc;
+  --n-400: #b4b4b4;
+  --n-500: #8a8a8a;
+
+  /* ---------- Ardósia (blocos escuros) ----------
+     Neutra fria, da família do #1E282E que o site usa no "clínica" do
+     logotipo. Substitui o quase-preto esverdeado que havia aqui. */
+  --slate-900: #1e282e;
+  --slate-950: #12171a;
+
+  /* ---------- Rampa verde-água (marca) ----------
+     Construída em volta do #008872 oficial (o 500) e do #01A98E (o 400).
+     Só entra em destaque: botão, ícone, link, marcador, borda de estado.
+     Nunca em superfície de fundo. */
+  --teal-50: #e6f4f1;
+  --teal-100: #c9e7e1;
+  --teal-200: #92d0c5;
+  --teal-300: #4fb5a3;
+  --teal-400: #01a98e;
+  --teal-500: #008872;
+  --teal-600: #00705d;
+  --teal-700: #005a4b;
+  --teal-800: #00463a;
 
   /* ---------- Rampa âmbar (acento — cor oficial da Conclínica) ----------
      O âmbar da marca (#FAAB1C) é o 400 da rampa. Ele é lindo como
@@ -33,40 +53,41 @@
   --amber-700: #7e5007;
   --amber-800: #573807;
 
-  /* ---------- Neutros quentes ---------- */
-  --sand-50: #faf8f4;
-  --sand-100: #f2ede4;
-  --sand-200: #e4dcce;
-
   /* ---------- Papéis semânticos ---------- */
-  --bg: var(--sage-50);
-  --bg-warm: var(--sand-50);
-  --surface: #ffffff;
-  --surface-sunken: var(--sage-100);
-  --surface-dark: var(--sage-950);
+  --bg: var(--n-0);
+  --bg-alt: var(--n-100);
+  --surface: var(--n-0);
+  --surface-sunken: var(--n-100);
+  --surface-dark: var(--slate-950);
 
-  --ink: #0d1811;
-  --ink-2: #3a4a40;
-  --ink-3: #59695f;
-  --on-dark: var(--sage-50);
-  --on-dark-2: var(--sage-200);
-  --on-dark-3: var(--sage-300);
+  /* Tintas de texto neutras: o quase-preto anterior (#0D1811) era um preto
+     esverdeado e, sobre branco puro, o verde aparecia. */
+  --ink: #1a1d1f;
+  --ink-2: #4d5356;
+  --ink-3: #64696c;
+  --on-dark: var(--n-100);
+  --on-dark-2: #c9cfd2;
+  --on-dark-3: #a3abaf;
 
-  --line: #dce5dd;
-  --line-strong: #c3d2c6;
-  --line-dark: rgba(226, 234, 227, 0.16);
+  --line: #e6e6e6;
+  --line-strong: #d4d4d4;
+  --line-dark: rgba(255, 255, 255, 0.14);
 
   /* ---------- Cores oficiais da Conclínica ----------
      Amostradas dos screenshots do site: verde do wordmark e do símbolo,
      verde dos textos/links, ardósia do "clínica" e âmbar dos CTAs. */
-  --brand-mark: #008872;
-  --brand-mark-light: #01a98e;
-  --brand-ink: #1e282e;
+  --brand-mark: var(--teal-500);
+  --brand-mark-light: var(--teal-400);
+  --brand-ink: var(--slate-900);
   --brand-amber: #faab1c;
 
-  --brand: var(--sage-700);
-  --brand-deep: var(--sage-800);
-  --brand-soft: var(--sage-100);
+  /* `brand` é acento e borda de estado (3:1 basta); `brand-deep` é texto e
+     fundo de botão, onde o branco por cima precisa de 4,5:1 — o #008872
+     rende 4,41:1 e ficaria um fio abaixo. */
+  --brand: var(--teal-500);
+  --brand-deep: var(--teal-600);
+  --brand-strong: var(--teal-700);
+  --brand-soft: var(--teal-50);
   /* `accent` carrega sentido (ícones, marcadores) e precisa de 3:1;
      `accent-deep` é texto e precisa de 4,5:1; `accent-bright` é o âmbar
      oficial, só em elemento decorativo ou sobre fundo escuro. */
@@ -114,11 +135,11 @@
   --r-xl: 26px;
   --r-pill: 999px;
 
-  /* ---------- Sombras (tingidas de sálvia, nunca cinza puro) ---------- */
-  --shadow-sm: 0 1px 2px rgba(13, 24, 17, 0.04), 0 1px 1px rgba(13, 24, 17, 0.03);
-  --shadow-md: 0 2px 4px rgba(13, 24, 17, 0.03), 0 10px 28px -10px rgba(13, 24, 17, 0.12);
-  --shadow-lg: 0 4px 8px rgba(13, 24, 17, 0.04), 0 28px 60px -18px rgba(13, 24, 17, 0.18);
-  --shadow-xl: 0 6px 12px rgba(13, 24, 17, 0.05), 0 40px 80px -20px rgba(13, 24, 17, 0.22);
+  /* ---------- Sombras (neutras: qualquer tinta aqui volta como fundo) ---------- */
+  --shadow-sm: 0 1px 2px rgba(17, 20, 22, 0.04), 0 1px 1px rgba(17, 20, 22, 0.03);
+  --shadow-md: 0 2px 4px rgba(17, 20, 22, 0.03), 0 10px 28px -10px rgba(17, 20, 22, 0.12);
+  --shadow-lg: 0 4px 8px rgba(17, 20, 22, 0.04), 0 28px 60px -18px rgba(17, 20, 22, 0.18);
+  --shadow-xl: 0 6px 12px rgba(17, 20, 22, 0.05), 0 40px 80px -20px rgba(17, 20, 22, 0.22);
 
   /* ---------- Movimento ---------- */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);

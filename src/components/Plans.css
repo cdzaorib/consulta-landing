@@ -28,17 +28,17 @@
 
 .plan:hover {
   translate: 0 -4px;
-  border-color: var(--sage-400);
+  border-color: var(--n-400);
   box-shadow: var(--shadow-lg);
 }
 
 .plan.featured {
-  border-color: var(--sage-600);
+  border-color: var(--brand-mark);
   box-shadow: var(--shadow-lg);
 }
 
 .plan.featured:hover {
-  border-color: var(--sage-700);
+  border-color: var(--brand-deep);
   box-shadow: var(--shadow-xl);
 }
 
@@ -109,7 +109,7 @@
 .inherits {
   font-size: var(--t-xs);
   font-weight: 500;
-  color: var(--sage-700);
+  color: var(--brand-deep);
   padding-top: var(--space-4);
   border-top: 1px solid var(--line);
 }
@@ -138,8 +138,8 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: var(--sage-100);
-  color: var(--sage-700);
+  background: var(--n-100);
+  color: var(--brand-deep);
 }
 
 .plan-features .tick svg {
@@ -162,7 +162,7 @@
 }
 
 .plans-note a {
-  color: var(--sage-700);
+  color: var(--brand-deep);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
@@ -172,8 +172,8 @@
 }
 
 .plans-note a:hover {
-  color: var(--sage-800);
-  text-decoration-color: var(--sage-400);
+  color: var(--brand-strong);
+  text-decoration-color: var(--n-400);
 }
 
 @media (min-width: 700px) {

@@ -56,7 +56,11 @@ export default function Metrics() {
     <section id="numeros" className="metrics-section">
       <div className="wrap">
         <div className="metrics surface-dark">
-          <div className="metrics-glow" aria-hidden="true" />
+          <div className="metrics-bg" aria-hidden="true">
+            <span className="metrics-blob one" />
+            <span className="metrics-blob two" />
+            <span className="metrics-blob three" />
+          </div>
           <p className="eyebrow on-dark">Números do Conclínica</p>
           <ul className="metrics-grid">
             {METRICS.map((metric, index) => (

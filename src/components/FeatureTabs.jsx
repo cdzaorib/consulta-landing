@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import DayScreen from './DayScreen.jsx';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion.js';
@@ -7,21 +7,33 @@ import { FEATURE_TABS } from '../content.js';
 import './FeatureTabs.css';
 
 /**
- * Abas de funcionalidades no padrão WAI-ARIA (ativação automática: a seleção
- * segue o foco, que é o recomendado quando trocar de painel é barato).
+ * Carrossel de funcionalidades no padrão WAI-ARIA de abas (ativação
+ * automática: a seleção segue o foco, o recomendado quando trocar de painel
+ * é barato).
  *
  * Os três painéis ficam sempre montados, empilhados na mesma célula do grid:
- * a seção assume a altura do painel mais alto e a troca de aba não empurra o
- * resto da página. Os inativos saem com `visibility: hidden`, que também os
+ * a seção assume a altura do painel mais alto e a troca de slide não empurra
+ * o resto da página. Os inativos saem com `visibility: hidden`, que também os
  * tira da árvore de acessibilidade e da ordem de tabulação.
+ *
+ * O avanço automático não usa timer: quem manda é a barrinha de progresso da
+ * aba ativa, uma animação CSS de 4s cujo `animationend` chama o próximo
+ * slide. Pausar vira então uma linha de CSS (`animation-play-state`), e a
+ * barra na tela nunca sai de sincronia com o avanço — coisa que um
+ * `setInterval` em paralelo não garante.
  */
 export default function FeatureTabs() {
   const reduceMotion = usePrefersReducedMotion();
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
   const tabRefs = useRef([]);
 
   const { tabs } = FEATURE_TABS;
   const last = tabs.length - 1;
+
+  const goNext = useCallback(() => {
+    setActive((current) => (current === tabs.length - 1 ? 0 : current + 1));
+  }, [tabs.length]);
 
   function focusTab(index) {
     setActive(index);
@@ -52,7 +64,7 @@ export default function FeatureTabs() {
   }
 
   return (
-    <section id="funcionalidades" className="feature-tabs band-warm">
+    <section id="funcionalidades" className="feature-tabs band-alt">
       <div className="wrap">
         <motion.div className="section-head center" {...reveal(reduceMotion, fadeUp)}>
           <p className="eyebrow">{FEATURE_TABS.eyebrow}</p>
@@ -60,12 +72,21 @@ export default function FeatureTabs() {
           <p>{FEATURE_TABS.lead}</p>
         </motion.div>
 
-        <motion.div className="tabs" {...reveal(reduceMotion, fadeUp, VIEWPORT_SOFT)}>
+        {/* A pausa cobre mouse e teclado: `focus`/`blur` sobem porque os
+            eventos nativos de foco fazem bubbling em React. */}
+        <motion.div
+          className={`tabs${paused ? ' is-paused' : ''}`}
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocus={() => setPaused(true)}
+          onBlur={() => setPaused(false)}
+          {...reveal(reduceMotion, fadeUp, VIEWPORT_SOFT)}
+        >
           <div className="tab-list-scroll">
             <div
               className="tab-list"
               role="tablist"
-              aria-label="Frentes de uso do sistema"
+              aria-label="Frentes de uso do sistema. Avança sozinho; use as setas para navegar."
               onKeyDown={onKeyDown}
             >
               {tabs.map((tab, index) => {
@@ -87,16 +108,23 @@ export default function FeatureTabs() {
                     onClick={() => setActive(index)}
                   >
                     {tab.label}
-                    {selected && (
-                      /* `layoutId` faz a barra deslizar da aba anterior para
-                         esta em vez de sumir e reaparecer. */
-                      <motion.span
-                        className="tab-underline"
-                        layoutId={reduceMotion ? undefined : 'aba-ativa'}
-                        transition={{ duration: DUR.micro, ease: EASE_OUT }}
-                        aria-hidden="true"
-                      />
-                    )}
+
+                    {/* Indicador: trilha em todas as abas, preenchimento só na
+                        ativa. Sem movimento, a barra da ativa fica cheia e
+                        parada — o `animationend` não existe, e é o que
+                        desliga o avanço automático. */}
+                    <span className="tab-track" aria-hidden="true">
+                      {selected &&
+                        (reduceMotion ? (
+                          <span className="tab-progress is-static" />
+                        ) : (
+                          <span
+                            key={active}
+                            className="tab-progress"
+                            onAnimationEnd={goNext}
+                          />
+                        ))}
+                    </span>
                   </button>
                 );
               })}

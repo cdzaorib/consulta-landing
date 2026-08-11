@@ -8,7 +8,7 @@ export default function Blog() {
   const reduceMotion = usePrefersReducedMotion();
 
   return (
-    <section id="conteudo-blog" className="band-warm">
+    <section id="conteudo-blog" className="band-alt">
       <div className="wrap">
         <motion.div className="blog-head" {...reveal(reduceMotion, fadeUp)}>
           <div>

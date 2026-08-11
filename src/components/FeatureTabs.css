@@ -47,14 +47,50 @@
   color: var(--brand-deep);
 }
 
-.tab-underline {
+/* Trilha do indicador: existe em toda aba, para a barra ativa ter onde
+   correr e as inativas mostrarem o espaço que vão ocupar. */
+.tab-track {
   position: absolute;
   left: var(--space-3);
   right: var(--space-3);
   bottom: -1px;
   height: 2px;
   border-radius: var(--r-pill);
+  background: var(--n-300);
+  overflow: hidden;
+}
+
+.tab:not(.is-active) .tab-track {
+  background: transparent;
+}
+
+/* O preenchimento é o relógio do carrossel: `animationend` dispara o
+   próximo slide, então a barra e o avanço não têm como sair de sincronia. */
+.tab-progress {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
   background: var(--brand-mark);
+  transform-origin: left center;
+  animation: tab-fill 4s linear forwards;
+}
+
+.tab-progress.is-static {
+  transform: scaleX(1);
+}
+
+.tabs.is-paused .tab-progress {
+  animation-play-state: paused;
+}
+
+@keyframes tab-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
 /* -------------------------------------------------------------------------
@@ -123,8 +159,8 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: var(--sage-100);
-  color: var(--sage-700);
+  background: var(--n-100);
+  color: var(--brand-deep);
 }
 
 .tab-items .tick svg {

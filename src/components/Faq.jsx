@@ -17,7 +17,7 @@ export default function Faq() {
   const [open, setOpen] = useState(FAQ.items[0].id);
 
   return (
-    <section id="duvidas" className="faq band-warm">
+    <section id="duvidas" className="faq band-alt">
       <div className="wrap">
         <motion.div className="section-head center" {...reveal(reduceMotion, fadeUp)}>
           <p className="eyebrow">{FAQ.eyebrow}</p>

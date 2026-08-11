@@ -38,11 +38,11 @@ footer {
 }
 
 .foot-toggle:hover {
-  color: var(--sage-700);
+  color: var(--brand-deep);
 }
 
 .foot-toggle:hover .chevron {
-  color: var(--sage-600);
+  color: var(--brand-mark);
 }
 
 .chevron {
@@ -126,7 +126,7 @@ footer {
 
 .foot-social a:hover {
   color: var(--brand-mark);
-  background: var(--sage-100);
+  background: var(--n-100);
 }
 
 .foot-social svg {

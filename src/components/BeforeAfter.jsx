@@ -8,7 +8,7 @@ export default function BeforeAfter() {
   const reduceMotion = usePrefersReducedMotion();
 
   return (
-    <section id="mudanca" className="band-warm">
+    <section id="mudanca" className="band-alt">
       <div className="wrap">
         <motion.div className="section-head center" {...reveal(reduceMotion, fadeUp)}>
           <p className="eyebrow">Antes × depois</p>

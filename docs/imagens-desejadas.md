@@ -11,8 +11,14 @@ nestes caminhos exatos. O código já espera por eles.
 | `/wp-content/uploads/2024/05/Dark.svg` | `public/images/logo-conclinica.svg` |
 | `/wp-content/uploads/2025/10/conclinica-1.png` | `public/images/logo-conclinica.png` |
 | `/wp-content/uploads/2024/07/Rafael-Gualberto.webp` | `public/images/depoimentos/rafael-gualberto.webp` |
-| `/wp-content/uploads/2024/07/leonardo-daumas.webp` | `public/images/depoimentos/leonardo-daumas.webp` |
 | `/wp-content/uploads/2024/07/pedro-baches.png` | `public/images/depoimentos/pedro-baches.png` |
+
+Faltam também as três capas do blog. Não sei as URLs dos arquivos: elas
+estão dentro de cada post e o domínio é inalcançável daqui. As três páginas
+são `/plataforma-de-telemedicina-qual-a-melhor-plataforma-para-consultas-online/`,
+`/campanhas-preventivas-em-clinicas/` e `/fluxo-de-caixa-clinica-medica/`.
+Salvar em `public/images/blog/telemedicina.webp`, `campanhas.webp` e
+`fluxo-de-caixa.webp`, depois acrescentar `cover` ao post em `src/content.js`.
 
 Todos com o prefixo `https://conclinica.com.br`.
 
@@ -23,8 +29,10 @@ Assim que os arquivos existirem, o que falta é mecânico:
    `public/favicon.svg` e o `stroke` em `src/components/Logo.jsx`.
 2. Rodar `npm run check` para reconferir os 35 pares de contraste com a cor
    nova e ajustar a rampa sálvia se algum par cair abaixo de 4,5:1.
-3. Acrescentar o campo `photo` aos três depoimentos em `src/content.js` —
-   o componente já troca monograma por foto sozinho quando o campo existe.
+3. Acrescentar o campo `photo` a Rafael Gualberto e Pedro Baches em
+   `src/content.js` — o componente já troca monograma por foto sozinho
+   quando o campo existe, e o selo tem o mesmo tamanho, formato e anel nos
+   dois casos, então os três cards não mudam de forma.
 4. Rodar `npm run og` para regerar a prévia de compartilhamento com o logo
    oficial.
 

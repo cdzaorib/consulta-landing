@@ -38,8 +38,17 @@ export default function Blog() {
               variants={cardUp}
             >
               <a className="post" href={post.href}>
-                {/* Sem as fotos do blog, a "capa" é um degradê da paleta. */}
-                <span className="post-cover" aria-hidden="true">
+                <span className="post-cover">
+                  {post.cover && (
+                    <img
+                      src={post.cover.src}
+                      alt={post.cover.alt}
+                      width={post.cover.w}
+                      height={post.cover.h}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
                   <span className="post-tag">{post.tag}</span>
                 </span>
 

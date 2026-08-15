@@ -87,11 +87,10 @@ export const SHIFTS = [
    Título e lista de clientes vêm do carrossel "Clínicas e consultórios que
    confiam em nossos serviços" da home.
 
-   São doze clientes. Os quatro cujo arquivo de logo foi extraído do PDF de
-   referência aparecem como imagem; os outros oito entram como texto, porque
-   desenhar um logo de memória seria inventar a marca de outra empresa. Basta
-   salvar o arquivo em public/images/clientes/ e mover o nome de `others`
-   para `logos`.
+   São onze clientes (conferido pela sequência de wp-image IDs do carrossel,
+   125303–125313, sem lacuna) — todos com logo baixado de conclinica.com.br
+   e em `logos`. `others` segue no conteúdo só como opção para clientes
+   futuros sem arquivo de logo ainda.
    ------------------------------------------------------------------------- */
 
 export const CLIENTS = {
@@ -101,17 +100,20 @@ export const CLIENTS = {
     { name: 'NitMed Centro Médico', src: '/images/clientes/nitmed.webp', w: 384, h: 96 },
     { name: 'Clínica Médica Itacibá', src: '/images/clientes/itaciba.webp', w: 276, h: 160 },
     { name: 'Clínica Icaraí', src: '/images/clientes/icarai.webp', w: 220, h: 85 },
+    { name: 'Clínica SOU', src: '/images/clientes/sou.png', w: 280, h: 180 },
+    { name: 'Oftalmologia SEO', src: '/images/clientes/seo.jpg', w: 383, h: 132 },
+    { name: 'Otto Sinus', src: '/images/clientes/otto-sinus.png', w: 381, h: 132 },
+    { name: 'Genutarso', src: '/images/clientes/genutarso.avif', w: 160, h: 140 },
+    { name: 'DoutorTem', src: '/images/clientes/doutor-tem.png', w: 395, h: 127 },
+    { name: 'De Luca', src: '/images/clientes/de-luca.png', w: 457, h: 110 },
+    { name: 'Conit', src: '/images/clientes/conit.webp', w: 551, h: 177 },
   ],
-  others: [
-    'Clínica SOU',
-    'Oftalmologia SEO',
-    'Otto Sinus',
-    'Genutarso',
-    'DoutorTem',
-    'De Luca',
-    'Conit',
-    'Clínica do Sono',
-  ],
+  // O carrossel real do site (conclinica.com.br) tem 11 clientes, não 12: os
+  // wp-image IDs das logos vão em sequência de 125303 a 125313, sem lacuna.
+  // "Clínica do Sono", que estava aqui antes, não corresponde a nenhuma logo
+  // publicada — provavelmente uma duplicata equivocada de "Clínica SOU" — e
+  // foi removida por falta de evidência de que exista como cliente distinto.
+  others: [],
 };
 
 /* -------------------------------------------------------------------------
@@ -326,6 +328,7 @@ export const TESTIMONIALS = [
   {
     quote:
       'Através do Conclínica houve uma otimização nos processos de atendimento aos pacientes, além de mais segurança na emissão dos documentos entregues aos mesmos.',
+    photo: '/images/depoimentos/rafael-gualberto.webp',
     initials: 'RG',
     name: 'Rafael Gualberto',
     role: 'Ortopedia e traumatologia',
@@ -343,6 +346,7 @@ export const TESTIMONIALS = [
   {
     quote:
       'O Conclínica me ajudou muito ao permitir uma integração completa das minhas 5 clínicas. Posso cuidar da gestão de todas remotamente, com muita facilidade e transparência.',
+    photo: '/images/depoimentos/pedro-baches.png',
     initials: 'PB',
     name: 'Dr. Pedro Baches',
     role: 'Ortopedia e traumatologia · 5 unidades',
@@ -612,6 +616,12 @@ export const BLOG = {
       excerpt:
         'Se você está procurando a melhor plataforma de telemedicina para a sua clínica ou…',
       href: 'https://conclinica.com.br/plataforma-de-telemedicina-qual-a-melhor-plataforma-para-consultas-online/',
+      cover: {
+        src: '/images/blog/plataforma-de-telemedicina.webp',
+        w: 960,
+        h: 640,
+        alt: 'Médico em videochamada com paciente pelo laptop, ilustrando telemedicina',
+      },
     },
     {
       tag: 'Marketing médico',
@@ -619,6 +629,15 @@ export const BLOG = {
       excerpt:
         'Organizar campanhas preventivas faz parte da estratégia de muitas clínicas que desejam fortalecer o…',
       href: 'https://conclinica.com.br/campanhas-preventivas-em-clinicas/',
+      // A capa é a imagem oficial do post ("Campanhas Preventivas em
+      // Clínicas: Como Organizar Sem Caos"), que hoje já mudou de título no
+      // site — o link e o resumo aqui continuam batendo com a URL.
+      cover: {
+        src: '/images/blog/campanhas-preventivas.webp',
+        w: 960,
+        h: 540,
+        alt: 'Ilustração de campanha preventiva de saúde em clínica',
+      },
     },
     {
       // título e URL são reais; o resumo e a categoria foram escritos aqui
@@ -627,6 +646,12 @@ export const BLOG = {
       excerpt:
         'Como acompanhar entradas, saídas e repasses sem depender de planilha no fim do mês.',
       href: 'https://conclinica.com.br/fluxo-de-caixa-clinica-medica/',
+      cover: {
+        src: '/images/blog/fluxo-de-caixa.webp',
+        w: 960,
+        h: 640,
+        alt: 'Gráficos de fluxo de caixa e planilha financeira de clínica médica',
+      },
     },
   ],
 };

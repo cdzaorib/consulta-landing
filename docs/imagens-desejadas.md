@@ -1,125 +1,87 @@
 # Assets reais: o que já entrou e o que ainda falta
 
-## Para subir manualmente (a rede desta sessão não alcança o site)
+## Atualização — rede liberada (sessão local)
 
-O domínio `conclinica.com.br` é recusado pela política de saída (403 no
-CONNECT), então os arquivos abaixo precisam ser baixados por fora e salvos
-nestes caminhos exatos. O código já espera por eles.
-
-| Baixar de | Salvar como |
-| --- | --- |
-| `/wp-content/uploads/2024/05/Dark.svg` | `public/images/logo-conclinica.svg` |
-| `/wp-content/uploads/2025/10/conclinica-1.png` | `public/images/logo-conclinica.png` |
-| `/wp-content/uploads/2024/07/Rafael-Gualberto.webp` | `public/images/depoimentos/rafael-gualberto.webp` |
-| `/wp-content/uploads/2024/07/pedro-baches.png` | `public/images/depoimentos/pedro-baches.png` |
-
-Faltam também as três capas do blog. Não sei as URLs dos arquivos: elas
-estão dentro de cada post e o domínio é inalcançável daqui. As três páginas
-são `/plataforma-de-telemedicina-qual-a-melhor-plataforma-para-consultas-online/`,
-`/campanhas-preventivas-em-clinicas/` e `/fluxo-de-caixa-clinica-medica/`.
-Salvar em `public/images/blog/telemedicina.webp`, `campanhas.webp` e
-`fluxo-de-caixa.webp`, depois acrescentar `cover` ao post em `src/content.js`.
-
-Todos com o prefixo `https://conclinica.com.br`.
-
-Assim que os arquivos existirem, o que falta é mecânico:
-
-1. Ler a cor primária do `Dark.svg` (atributo `fill`/`stop-color` do símbolo)
-   e trocar `--brand-mark` em `src/styles/tokens.css`, mais o `fill` do
-   `public/favicon.svg` e o `stroke` em `src/components/Logo.jsx`.
-2. Rodar `npm run check` para reconferir os 35 pares de contraste com a cor
-   nova e ajustar a rampa sálvia se algum par cair abaixo de 4,5:1.
-3. Acrescentar o campo `photo` a Rafael Gualberto e Pedro Baches em
-   `src/content.js` — o componente já troca monograma por foto sozinho
-   quando o campo existe, e o selo tem o mesmo tamanho, formato e anel nos
-   dois casos, então os três cards não mudam de forma.
-4. Rodar `npm run og` para regerar a prévia de compartilhamento com o logo
-   oficial.
-
-
-Boa parte desta lista foi resolvida com o PDF de captura do site. As imagens
-foram extraídas com PyMuPDF, tratadas (recorte da moldura vazia, branco de
-fundo dos logos convertido em transparência) e salvas em `public/images/`.
+As sessões anteriores rodavam na nuvem, com o domínio `conclinica.com.br`
+bloqueado pelo proxy de saída (403 no CONNECT). Nesta sessão, rodando local,
+a rede alcança o domínio normalmente — todos os itens abaixo que dependiam
+disso foram resolvidos.
 
 ## Já resolvido
 
 | Item | Onde entrou | Arquivo |
 | --- | --- | --- |
 | Foto do médico do hero | `Hero.jsx`, atrás do card de agenda | `hero-medico.webp` (55 kB) |
-| Logos de 4 clientes | faixa de prova social (`LogosStrip.jsx`) | `clientes/*.png` |
+| Logos de 4 clientes (extraídos do PDF) | faixa de prova social (`LogosStrip.jsx`) | `clientes/mednil.webp`, `nitmed.webp`, `itaciba.webp`, `icarai.webp` |
+| Logos dos outros 7 clientes | faixa de prova social (`LogosStrip.jsx`) | `clientes/sou.png`, `seo.jpg`, `otto-sinus.png`, `genutarso.avif`, `doutor-tem.png`, `de-luca.png`, `conit.webp` |
 | Foto do Leonardo Daumas | avatar do depoimento | `depoimentos/leonardo-daumas.jpg` |
+| Foto do Rafael Gualberto | avatar do depoimento | `depoimentos/rafael-gualberto.webp` |
+| Foto do Dr. Pedro Baches | avatar do depoimento | `depoimentos/pedro-baches.png` |
+| Capas dos 3 posts do blog | `Blog.jsx`, campo `cover` de cada post | `blog/plataforma-de-telemedicina.webp`, `blog/campanhas-preventivas.webp`, `blog/fluxo-de-caixa.webp` |
 | Redes sociais | rodapé | Instagram, Facebook, YouTube e TikTok |
 | Cores da marca | `tokens.css` | `#008872`, `#01A98E`, `#1E282E`, `#FAAB1C` |
 | Preços dos planos | `content.js` | R$ 89 / R$ 119 / R$ 169 por profissional |
 | Imagem de compartilhamento | `public/og.png`, via `npm run og` | 1200×630 |
 
-Os clientes cujos logos entraram: **MedNil** (Centro de Especialidades
-Integradas de Nilópolis), **NitMed Centro Médico**, **Clínica Médica Itacibá**
-e **Clínica Icaraí**.
+Os onze clientes do carrossel real (conferido pela sequência de wp-image IDs
+125303–125311, sem lacuna): **MedNil**, **NitMed Centro Médico**, **Clínica
+Médica Itacibá**, **Clínica Icaraí**, **Clínica SOU**, **Oftalmologia SEO**,
+**Otto Sinus**, **Genutarso**, **DoutorTem**, **De Luca** e **Conit**.
 
----
+> **Correção:** a lista anterior tinha 12 nomes, incluindo "Clínica do Sono"
+> além de "Clínica SOU". O carrossel real do site só tem 11 logos — não há
+> nenhuma "Clínica do Sono" publicada. Era provavelmente uma duplicata
+> equivocada de "Clínica SOU"; removida por falta de evidência.
 
-## 1. Arquivo vetorial do logo — o que falta de mais visível
+### Otimização aplicada
 
-**Onde:** cabeçalho de https://conclinica.com.br/
+`blog/campanhas-preventivas.png` veio do site com 886 kB (PNG de 960×540).
+Recomprimido para WebP a 80% de qualidade — 22 kB, mesma resolução. O mesmo
+tratamento (resize + WebP 80%) foi aplicado às outras duas capas de blog e ao
+logo da Conit (`clientes/conit.png`, 106 kB → `conit.webp`, 11 kB), que também
+veio pesado para o tamanho de exibição.
 
-**O que pegar:** o SVG do logo (ou PNG em alta) e o favicon oficial.
+## Ainda pendente
 
-As **cores** já estão certas. O que continua sendo aproximação é o **desenho**
-do símbolo: `Logo.jsx` e `public/favicon.svg` reconstroem o laço de infinito à
-mão. Em tamanho pequeno passa bem, mas o traço interno e os dois pontinhos do
-original não estão fiéis.
+### 1. Logo oficial — arquivo já baixado, integração não feita
 
-Trocar o `<svg>` em `src/components/Logo.jsx`, o `public/favicon.svg` e o
-markup do `.lockup` em `scripts/make-og.mjs` (depois rodar `npm run og`).
+`public/images/logo-conclinica.svg` (variante branca, para fundo escuro — o
+arquivo do site chama-se "Dark.svg" porque é para *usar sobre* fundo escuro)
+e `public/images/logo-conclinica.png` (lockup colorido completo, 703×99, para
+fundo claro) já estão salvos.
 
-## 2. Fotos dos outros dois depoimentos
+**Por que não trocou sozinho:** substituir o `<svg>` desenhado à mão em
+`src/components/Logo.jsx` muda a identidade visual do cabeçalho e do rodapé.
+O próprio checklist original pede, junto disso, reconferir contraste
+(`npm run check`) e atualizar `public/favicon.svg` e `scripts/make-og.mjs` —
+um pacote de mudanças maior que baixar uma imagem. Ficou pronto para quem
+quiser aplicar.
 
-**Onde:** carrossel "O que os gestores e médicos dizem sobre nosso sistema".
+### 2. Capturas das telas do produto — investigado, sem imagem solta disponível
 
-Falta a foto de **Rafael Gualberto** e de **Dr. Pedro Baches** — o PDF só
-trouxe a do Leonardo Daumas. Os dois seguem com monograma, e o componente já
-troca sozinho para `<img>` quando o campo `photo` existe no depoimento.
-
-## 3. Capturas das telas do produto em resolução cheia
-
-| Bloco | Tela | Página de origem |
+| Bloco | Página de origem | O que tem lá |
 | --- | --- | --- |
-| 08h | Agenda do dia com os status | https://conclinica.com.br/agenda-medica/ |
-| 10h | Prontuário eletrônico com IA | https://conclinica.com.br/software-medico-clinica/ |
-| 17h | Cobrança / novo boleto | https://conclinica.com.br/gestao-clinicas/controle-financeiro/ |
+| 08h — Agenda | `/agenda-medica/` | `og:image` é uma foto de marketing (médica segurando tablet) com um recorte da agenda sobreposto — não é um screenshot limpo |
+| 10h — Prontuário | `/software-medico-clinica/` | `og:image` é foto de banco de imagens (médica no laptop), sem nenhuma UI visível |
+| 17h — Financeiro | `/gestao-clinicas/controle-financeiro/` | `og:image` é foto de banco de imagens (mãos com laptops e papel), sem UI visível |
 
-Os três blocos de "Um dia na clínica" mostram um recorte reconstruído em
-HTML/CSS (`DayScreen.jsx`), com os rótulos, status e campos reais. Com as
-imagens, cada `<DayScreen>` vira um `<img>`.
+Nenhuma das três páginas tem um screenshot isolado da interface — só fotos de
+divulgação. Encaixar essas fotos nos blocos de "Um dia na clínica" pioraria a
+consistência visual (proporção, moldura, presença de pessoas/objetos
+estranhos ao card). `DayScreen.jsx` (a reconstrução em HTML/CSS, fiel aos
+rótulos e dados reais) segue sendo a melhor opção até existir um screenshot
+de fato limpo da interface.
 
-## 4. Imagens de capa do blog
+### 3. URLs de 11 links do rodapé
 
-O PDF trouxe só uma capa (a do post sobre campanhas preventivas). Com uma
-única foto entre três cards, a fileira ficaria desigual, então nenhuma foi
-usada — as capas continuam em degradê da paleta. Vale pegar as três de uma vez.
+Sem mudança nesta sessão — seguem marcados com `pending: true` em
+`src/content.js` (colunas Soluções, Suporte, Conteúdo e Contato).
 
-Dois dos três posts já estão com título, resumo, categoria e URL do site; o
-terceiro ("Fluxo de caixa") tem título e URL reais, mas resumo e categoria
-escritos aqui.
-
-## 5. URLs de 11 links do rodapé
-
-Os rótulos e a estrutura das quatro colunas estão corretos. Faltam 11
-endereços, marcados com `pending: true` em `src/content.js`:
-
-| Coluna | Links pendentes |
-| --- | --- |
-| Soluções | Cobrança inteligente, Faturamento |
-| Suporte | Quem somos, Termos de uso, Mapa do site, Mapa do blog |
-| Conteúdo | Materiais gratuitos, Casos de sucesso, CID 10, Vídeos |
-| Contato | Contato |
-
-## 6. og:image com URL absoluta, na hora de publicar
+### 4. og:image com URL absoluta, na hora de publicar
 
 `public/og.png` já existe e as meta tags estão no `index.html`, mas o
-`og:image` aponta para um caminho relativo. WhatsApp e Facebook não montam o
-card sem URL absoluta — trocar pelo domínio final ao publicar.
+`og:image` aponta para um caminho relativo. Trocar pelo domínio final ao
+publicar.
 
 ---
 
@@ -128,16 +90,16 @@ card sem URL absoluta — trocar pelo domínio final ao publicar.
 - **Preço do plano Enterprise.** Os outros três estão publicados; o Enterprise
   entra como faixa "Falar com a equipe".
 - **Periodicidade do preço.** A página diz "por profissional de saúde" sem
-  dizer se é mensal ou anual. A nossa repete o mesmo texto, sem inventar
-  "/mês".
+  dizer se é mensal ou anual.
 - **Tempo de mercado.** Não aparece no site.
+- **Título e resumo do post "Campanhas preventivas".** O site já renomeou
+  esse post para "Campanhas Preventivas em Clínicas: Como Organizar Sem
+  Caos" (og:title atual); `content.js` mantém o título mais antigo. A URL
+  (`/campanhas-preventivas-em-clinicas/`) continua a mesma, então o link e a
+  capa estão corretos — só o título/resumo do card ficaram desatualizados.
 
 ## Cuidado com os números da faixa escura
 
 Os valores em uso — **12M+ marcações, 3M+ pacientes, 10K+ médicos, 500+
 clientes ativos** — vieram de um screenshot da home em que os contadores já
-haviam terminado de animar.
-
-No **PDF** de captura esses mesmos contadores aparecem como `0M+ / 0K+ / 0+`,
-porque a captura pegou o estado inicial da animação. **Os zeros do PDF não são
-os valores reais** — não substituir por eles.
+haviam terminado de animar. Não confirmados novamente nesta sessão.

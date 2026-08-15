@@ -3,7 +3,7 @@
   border-top: 1px solid var(--line);
 }
 
-/* Doze clientes é conteúdo demais para a faixa lado a lado que havia aqui:
+/* Onze clientes é conteúdo demais para a faixa lado a lado que havia aqui:
    empilhado e centralizado, cada parte tem a largura inteira. */
 .clients .wrap {
   display: flex;

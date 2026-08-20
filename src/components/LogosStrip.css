@@ -38,8 +38,11 @@
   width: auto;
   max-width: 148px;
   object-fit: contain;
-  filter: grayscale(0.55);
-  opacity: 0.78;
+  /* Sobre o branco puro o tratamento anterior (0,55 de cinza a 78% de
+     opacidade) apagava demais os logos claros — vinha calibrado para o
+     fundo sálvia. Aliviado nos dois eixos. */
+  filter: grayscale(0.35);
+  opacity: 0.9;
   transition:
     filter var(--dur) var(--ease),
     opacity var(--dur) var(--ease);

@@ -22,6 +22,7 @@ disso foram resolvidos.
 | Cores da marca | `tokens.css` | `#008872`, `#01A98E`, `#1E282E`, `#FAAB1C` |
 | Preços dos planos | `content.js` | R$ 89 / R$ 119 / R$ 169 por profissional |
 | Imagem de compartilhamento | `public/og.png`, via `npm run og` | 1200×630 |
+| Símbolo oficial do logo | `Logo.jsx`, `public/favicon.svg` e `scripts/make-og.mjs` | extraído de `logo-conclinica.svg` |
 
 Os onze clientes do carrossel real (conferido pela sequência de wp-image IDs
 125303–125311, sem lacuna): **MedNil**, **NitMed Centro Médico**, **Clínica
@@ -41,23 +42,26 @@ tratamento (resize + WebP 80%) foi aplicado às outras duas capas de blog e ao
 logo da Conit (`clientes/conit.png`, 106 kB → `conit.webp`, 11 kB), que também
 veio pesado para o tamanho de exibição.
 
+## Sobre o logo
+
+O símbolo do lockup passou a ser o oficial: os dois caminhos com máscara
+saíram direto de `public/images/logo-conclinica.svg` (o arquivo da empresa),
+com o `fill` do `<g>` trocado de branco para a cor da marca. A reconstrução
+à mão — dois círculos e uma barra diagonal — saiu de cena, junto com os
+mesmos desenhos no `favicon.svg` e no gerador da imagem de compartilhamento.
+
+Um detalhe que o arquivo original esconde: as máscaras são de luminância, e
+o `<path>` de dentro do `<mask>` precisa continuar **branco**. Recolorir esse
+path junto com o resto faz o símbolo aparecer lavado, porque a luminância
+mais baixa da cor vira transparência parcial. Quem recebe a cor é só o
+`<path>` de dentro do `<g>`.
+
+A palavra continua em texto (IBM Plex Sans), não em caminho: mantém o lockup
+selecionável, recolorível e na escala de tipo do resto da página.
+
 ## Ainda pendente
 
-### 1. Logo oficial — arquivo já baixado, integração não feita
-
-`public/images/logo-conclinica.svg` (variante branca, para fundo escuro — o
-arquivo do site chama-se "Dark.svg" porque é para *usar sobre* fundo escuro)
-e `public/images/logo-conclinica.png` (lockup colorido completo, 703×99, para
-fundo claro) já estão salvos.
-
-**Por que não trocou sozinho:** substituir o `<svg>` desenhado à mão em
-`src/components/Logo.jsx` muda a identidade visual do cabeçalho e do rodapé.
-O próprio checklist original pede, junto disso, reconferir contraste
-(`npm run check`) e atualizar `public/favicon.svg` e `scripts/make-og.mjs` —
-um pacote de mudanças maior que baixar uma imagem. Ficou pronto para quem
-quiser aplicar.
-
-### 2. Capturas das telas do produto — investigado, sem imagem solta disponível
+### 1. Capturas das telas do produto — investigado, sem imagem solta disponível
 
 | Bloco | Página de origem | O que tem lá |
 | --- | --- | --- |
@@ -72,12 +76,12 @@ estranhos ao card). `DayScreen.jsx` (a reconstrução em HTML/CSS, fiel aos
 rótulos e dados reais) segue sendo a melhor opção até existir um screenshot
 de fato limpo da interface.
 
-### 3. URLs de 11 links do rodapé
+### 2. URLs de 11 links do rodapé
 
 Sem mudança nesta sessão — seguem marcados com `pending: true` em
 `src/content.js` (colunas Soluções, Suporte, Conteúdo e Contato).
 
-### 4. og:image com URL absoluta, na hora de publicar
+### 3. og:image com URL absoluta, na hora de publicar
 
 `public/og.png` já existe e as meta tags estão no `index.html`, mas o
 `og:image` aponta para um caminho relativo. Trocar pelo domínio final ao
@@ -87,16 +91,12 @@ publicar.
 
 ## Dados a confirmar com a empresa
 
-- **Preço do plano Enterprise.** Os outros três estão publicados; o Enterprise
-  entra como faixa "Falar com a equipe".
 - **Periodicidade do preço.** A página diz "por profissional de saúde" sem
   dizer se é mensal ou anual.
 - **Tempo de mercado.** Não aparece no site.
-- **Título e resumo do post "Campanhas preventivas".** O site já renomeou
-  esse post para "Campanhas Preventivas em Clínicas: Como Organizar Sem
-  Caos" (og:title atual); `content.js` mantém o título mais antigo. A URL
-  (`/campanhas-preventivas-em-clinicas/`) continua a mesma, então o link e a
-  capa estão corretos — só o título/resumo do card ficaram desatualizados.
+- **Resumo do post "Campanhas preventivas".** O título do card já foi
+  atualizado para o og:title atual do site; o resumo segue sendo o trecho
+  antigo, truncado, e vale reconferir.
 
 ## Cuidado com os números da faixa escura
 

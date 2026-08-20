@@ -624,8 +624,11 @@ export const BLOG = {
       },
     },
     {
+      // O site renomeou este post: o og:title atual é "Campanhas Preventivas
+      // em Clínicas: Como Organizar Sem Caos". A URL não mudou. Aqui vai o
+      // título novo, em caixa de sentença como os outros cards.
       tag: 'Marketing médico',
-      title: 'Como organizar campanhas preventivas sem aumentar a carga operacional',
+      title: 'Campanhas preventivas em clínicas: como organizar sem caos',
       excerpt:
         'Organizar campanhas preventivas faz parte da estratégia de muitas clínicas que desejam fortalecer o…',
       href: 'https://conclinica.com.br/campanhas-preventivas-em-clinicas/',

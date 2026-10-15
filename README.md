@@ -3,7 +3,7 @@
 Landing page do Conclínica, sistema de gestão para clínicas e consultórios
 (agenda online, prontuário eletrônico, faturamento TISS e financeiro).
 
-Stack: React 19 + Vite + Framer Motion, sem TypeScript.
+Stack: React 19 + Vite + Framer Motion, sem TypeScript .
 
 ## Scripts
 
